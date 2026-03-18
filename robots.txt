@@ -1,0 +1,3 @@
+User-Agent: *
+Allow: /
+Sitemap:https://legal-vista.com/sitemap.xml
