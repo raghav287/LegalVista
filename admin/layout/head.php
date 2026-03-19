@@ -14,11 +14,11 @@
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="<?= asset_url(
-        "images/brand/favicon.ico",
+        "images/brand/fevicon.png",
     ) ?>">
 
     <!-- TITLE -->
-    <title>Sash – <?php echo $pageTitle ?? "Admin"; ?> </title>
+    <title>Legal Vista Ltd – <?php echo $pageTitle ?? "Admin"; ?> </title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="<?= asset_url(

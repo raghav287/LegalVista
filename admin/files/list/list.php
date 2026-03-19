@@ -3,7 +3,7 @@ require_once dirname(__DIR__, 2) . "/bootstrap.php";
 require_once APP_ROOT . "/app/auth.php";
 requireAdminLogin();
 require_once APP_ROOT . "/app/module-data.php";
-$pageTitle = "Data Listings";
+$pageTitle = "Contact Enquiries";
 $listingItems = getListingItems();
 include LAYOUT_PATH . "/head.php";
 ?>
@@ -35,7 +35,7 @@ include LAYOUT_PATH . "/head.php";
 
                         <!-- PAGE-HEADER -->
                         <div class="page-header">
-                            <h1 class="page-title">Data Listings</h1>
+                            <h1 class="page-title">Contact Enquiries</h1>
                             <div>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
@@ -48,7 +48,7 @@ include LAYOUT_PATH . "/head.php";
                             $_GET["saved"] === "1"
                         ): ?>
                             <div class="alert alert-success">
-                                Listing saved successfully.
+                                Enquiry saved successfully.
                             </div>
                         <?php endif; ?>
                         <?php if (isset($_GET["deleted"])): ?>
@@ -56,8 +56,8 @@ include LAYOUT_PATH . "/head.php";
                                 ? "success"
                                 : "danger" ?>">
                                 <?= $_GET["deleted"] === "1"
-                                    ? "Listing deleted successfully."
-                                    : "Unable to delete the listing right now." ?>
+                                    ? "Enquiry deleted successfully."
+                                    : "Unable to delete the enquiry right now." ?>
                             </div>
                         <?php endif; ?>
                         <!-- PAGE-HEADER END -->
@@ -67,7 +67,7 @@ include LAYOUT_PATH . "/head.php";
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header d-flex justify-content-between">
-                                        <h3 class="card-title">Responsive DataTable</h3>
+                                        <h3 class="card-title">Enquiries</h3>
                                         <a href="<?= file_url(
                                             "form/form.php",
                                         ) ?>" class="btn btn-primary btn-sm"><i class="fe fe-plus"></i> Add New</a>
@@ -78,9 +78,10 @@ include LAYOUT_PATH . "/head.php";
                                                 <thead>
                                                     <tr>
                                                         <th class="border-bottom-0">Name</th>
-                                                        <th class="border-bottom-0">Position</th>
-                                                        <th class="border-bottom-0">Start date</th>
-                                                        <th class="border-bottom-0">Salary</th>
+                                                        <th class="border-bottom-0">Email</th>
+                                                        <th class="border-bottom-0">Service</th>
+                                                        <th class="border-bottom-0">Message</th>
+                                                        <th class="border-bottom-0">Created At</th>
                                                         <th class="border-bottom-0">Actions</th>
                                                     </tr>
                                                 </thead>
@@ -89,7 +90,7 @@ include LAYOUT_PATH . "/head.php";
                                                         empty($listingItems)
                                                     ): ?>
                                                         <tr>
-                                                            <td colspan="5" class="text-center text-muted">No records found.</td>
+                                                            <td colspan="6" class="text-center text-muted">No records found.</td>
                                                         </tr>
                                                     <?php endif; ?>
                                                     <?php foreach (
@@ -101,17 +102,16 @@ include LAYOUT_PATH . "/head.php";
                                                                 $item["name"],
                                                             ) ?></td>
                                                             <td><?= htmlspecialchars(
-                                                                $item[
-                                                                    "position"
-                                                                ],
+                                                                $item["email"],
                                                             ) ?></td>
                                                             <td><?= htmlspecialchars(
-                                                                $item[
-                                                                    "start_date"
-                                                                ],
+                                                                $item["service"],
                                                             ) ?></td>
                                                             <td><?= htmlspecialchars(
-                                                                $item["salary"],
+                                                                $item["message"],
+                                                            ) ?></td>
+                                                            <td><?= htmlspecialchars(
+                                                                $item["created_at"],
                                                             ) ?></td>
                                                             <td>
                                                                 <a href="<?= file_url(

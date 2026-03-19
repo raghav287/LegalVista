@@ -5,6 +5,18 @@ requireAdminLogin();
 require_once APP_ROOT . "/app/module-data.php";
 $pageTitle = "User Profile";
 $profileData = getProfileDetails();
+$adminAccount = getAdminUser((int) ($_SESSION["admin_id"] ?? 0)) ?? [];
+$profilePicturePath =
+    $adminAccount["profile_picture"] ??
+    ($_SESSION["admin_profile_picture"] ?? "");
+$profilePictureUrl = asset_url("images/users/21.jpg");
+if ($profilePicturePath !== "") {
+    if (strpos($profilePicturePath, "images/") === 0) {
+        $profilePictureUrl = asset_url($profilePicturePath);
+    } else {
+        $profilePictureUrl = file_url($profilePicturePath);
+    }
+}
 include LAYOUT_PATH . "/head.php";
 ?>
 
@@ -57,8 +69,10 @@ include LAYOUT_PATH . "/head.php";
                                                             <div class="profile-cover__action bg-img"></div>
                                                             <div class="profile-cover__img">
                                                                 <div class="profile-img-1">
-                                                                    <img src="<?= asset_url(
-                                                                        "images/users/21.jpg",
+                                                                    <img src="<?= htmlspecialchars(
+                                                                        $profilePictureUrl,
+                                                                        ENT_QUOTES,
+                                                                        "UTF-8",
                                                                     ) ?>" alt="img">
                                                                 </div>
                                                             <div class="profile-img-content text-dark text-start">

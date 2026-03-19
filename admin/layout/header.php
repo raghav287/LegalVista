@@ -1,8 +1,20 @@
+<?php
+$headerProfilePicturePath = $_SESSION["admin_profile_picture"] ?? "";
+$headerProfilePictureUrl = asset_url("images/users/21.jpg");
+if ($headerProfilePicturePath !== "") {
+    if (strpos($headerProfilePicturePath, "images/") === 0) {
+        $headerProfilePictureUrl = asset_url($headerProfilePicturePath);
+    } else {
+        $headerProfilePictureUrl = file_url($headerProfilePicturePath);
+    }
+}
+?>
 <!-- app-Header -->
 <div class="app-header header sticky">
     <div class="container-fluid main-container">
         <div class="d-flex">
-            <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
+            <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar"
+                href="javascript:void(0)"></a>
             <!-- sidebar-toggle-->
             <a class="logo-horizontal " href="<?= file_url(
                 "dashboard/dashboard.php",
@@ -23,8 +35,7 @@
                 <!-- SEARCH -->
                 <button class="navbar-toggler navresponsive-toggler d-lg-none ms-auto" type="button"
                     data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4"
-                    aria-controls="navbarSupportedContent-4" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                    aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon fe fe-more-vertical"></span>
                 </button>
                 <div class="navbar navbar-collapse responsive-navbar p-0">
@@ -86,10 +97,13 @@
 
                             <!-- PROFILE -->
                             <div class="dropdown d-flex profile-1">
-                                    <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
-                                        <img src="<?= asset_url(
-                                            "images/users/21.jpg",
-                                        ) ?>" alt="profile-user" class="avatar profile-user brround cover-image">
+                                <a href="javascript:void(0)" data-bs-toggle="dropdown"
+                                    class="nav-link leading-none d-flex">
+                                    <img src="<?= htmlspecialchars(
+                                        $headerProfilePictureUrl,
+                                        ENT_QUOTES,
+                                        "UTF-8",
+                                    ) ?>" alt="profile-user" class="avatar profile-user brround cover-image">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                     <!--<div class="drop-heading">
@@ -99,11 +113,11 @@
                                         </div>
                                     </div>-->
                                     <div class="dropdown-divider m-0"></div>
-                                    <a class="dropdown-item" href="<?= file_url(
+                                    <!-- <a class="dropdown-item" href="<?= file_url(
                                         "profile/profile.php",
                                     ) ?>">
                                         <i class="dropdown-icon fe fe-user"></i> Profile
-                                    </a>
+                                    </a> -->
                                     <a class="dropdown-item" href="<?= file_url(
                                         "edit-profile/edit-profile.php",
                                     ) ?>">
@@ -115,7 +129,7 @@
                                     <a class="dropdown-item" href="<?= file_url(
                                         "login/logout.php",
                                     ) ?>">
-                                        <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
+                                        <i class="dropdown-icon fe fe-alert-circle"></i> Log Out
                                     </a>
                                 </div>
                             </div>

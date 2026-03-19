@@ -32,6 +32,7 @@ CREATE TABLE `admin_users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
+  `profile_picture` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -39,8 +40,8 @@ CREATE TABLE `admin_users` (
 -- Dumping data for table `admin_users`
 --
 
-INSERT INTO `admin_users` (`id`, `username`, `password`, `email`, `created_at`) VALUES
-(1, 'admin', '$2y$10$oJbGNiucC8pTQo6P.5NcmOntBrZc/P4YMQnf.eP83arWkExasfdDq', 'admin@example.com', '2026-03-18 10:56:51');
+INSERT INTO `admin_users` (`id`, `username`, `password`, `email`, `profile_picture`, `created_at`) VALUES
+(1, 'admin', '$2y$10$oJbGNiucC8pTQo6P.5NcmOntBrZc/P4YMQnf.eP83arWkExasfdDq', 'admin@example.com', NULL, '2026-03-18 10:56:51');
 
 -- --------------------------------------------------------
 
@@ -66,6 +67,33 @@ INSERT INTO `dashboard_metrics` (`id`, `metric_label`, `metric_value`, `trend_di
 (2, 'Total Profit', '$67,987', 'down', '0.75%', 'Last 6 days'),
 (3, 'Total Expenses', '$76,965', 'up', '0.9%', 'Last 9 days'),
 (4, 'Total Cost', '$59,765', 'up', '0.6%', 'Last year');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `homepage_packages`
+--
+
+CREATE TABLE `homepage_packages` (
+  `id` int(11) NOT NULL,
+  `package_name` varchar(100) NOT NULL,
+  `price_eur` varchar(50) NOT NULL,
+  `services_text` text NOT NULL,
+  `button_url` varchar(255) NOT NULL DEFAULT 'company-registration.php',
+  `is_featured` tinyint(1) NOT NULL DEFAULT 0,
+  `badge_text` varchar(100) DEFAULT NULL,
+  `sort_order` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `homepage_packages`
+--
+
+INSERT INTO `homepage_packages` (`id`, `package_name`, `price_eur`, `services_text`, `button_url`, `is_featured`, `badge_text`, `sort_order`) VALUES
+(1, 'Bronze', '499', 'Limited Liability Company (LLC) Registration in 24 Hours\nCertificate of Incorporation\nLegal Address for 1 year\nAll Govt. Fees & Charges', 'company-registration.php', 0, '', 1),
+(2, 'Silver', '799', 'Limited Liability Company (LLC) Registration in 24 Hours\nCertificate of Incorporation\nLegal Address for 1 year\nAll Govt. Fees & Charges\nRegistration of Company with Georgian Revenue Service', 'company-registration.php', 1, 'Most Popular', 2),
+(3, 'Gold', '1199', 'Limited Liability Company (LLC) Registration in 24 Hours\nCertificate of Incorporation\nLegal Address for 1 year\nAll Govt. Fees & Charges\nRegistration of Company with Georgian Revenue Service\nVAT Registration\nCorporate Bank Account', 'company-registration.php', 0, '', 3),
+(4, 'Platinum', '1599', 'Limited Liability Company (LLC) Registration in 24 Hours\nCertificate of Incorporation\nLegal Address for 1 year\nAll Govt. Fees & Charges\nRegistration of Company with Georgian Revenue Service\nVAT Registration\nCorporate Bank Account\nMonthly Tax Filing for 1 year', 'company-registration.php', 0, '', 4);
 
 -- --------------------------------------------------------
 
@@ -136,6 +164,12 @@ ALTER TABLE `dashboard_metrics`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `homepage_packages`
+--
+ALTER TABLE `homepage_packages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `listing_items`
 --
 ALTER TABLE `listing_items`
@@ -161,6 +195,12 @@ ALTER TABLE `admin_users`
 -- AUTO_INCREMENT for table `dashboard_metrics`
 --
 ALTER TABLE `dashboard_metrics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `homepage_packages`
+--
+ALTER TABLE `homepage_packages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --

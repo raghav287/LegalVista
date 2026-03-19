@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 require_once APP_ROOT . "/config/database.php";
 
-/**
- * Lazily reuses the shared module connection so multiple helpers can run without extra opens.
- */
 function getModuleConnection(): ?\mysqli
 {
     static $connection = null;
@@ -44,6 +41,7 @@ function tryFetchRows(?\mysqli $connection, string $sql): array
     if ($connection === null) {
         return $rows;
     }
+
     try {
         if ($result = $connection->query($sql)) {
             while ($row = $result->fetch_assoc()) {
@@ -54,14 +52,314 @@ function tryFetchRows(?\mysqli $connection, string $sql): array
     } catch (\mysqli_sql_exception $e) {
         error_log("Query failed: {$e->getMessage()}");
     }
+
     return $rows;
+}
+
+function adminUsersHasProfilePictureColumn(?\mysqli $connection = null): bool
+{
+    static $hasColumn = null;
+
+    if ($hasColumn !== null) {
+        return $hasColumn;
+    }
+
+    $connection = $connection ?? getModuleConnection();
+    if ($connection === null) {
+        $hasColumn = false;
+        return $hasColumn;
+    }
+
+    try {
+        $result = $connection->query("SHOW COLUMNS FROM admin_users LIKE 'profile_picture'");
+        $hasColumn = $result !== false && $result->num_rows > 0;
+        if ($result !== false) {
+            $result->free();
+        }
+    } catch (\mysqli_sql_exception $e) {
+        error_log("Admin users column lookup failed: {$e->getMessage()}");
+        $hasColumn = false;
+    }
+
+    return $hasColumn;
+}
+
+function getAdminUser(int $adminId): ?array
+{
+    if ($adminId <= 0) {
+        return null;
+    }
+
+    $connection = getModuleConnection();
+    if ($connection === null) {
+        return null;
+    }
+
+    $selectProfilePicture = adminUsersHasProfilePictureColumn($connection)
+        ? "profile_picture"
+        : "NULL AS profile_picture";
+
+    try {
+        $stmt = $connection->prepare(
+            "SELECT id, username, email, {$selectProfilePicture} FROM admin_users WHERE id = ? LIMIT 1",
+        );
+        if ($stmt === false) {
+            return null;
+        }
+
+        $stmt->bind_param("i", $adminId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $stmt->close();
+
+        return $row ?: null;
+    } catch (\mysqli_sql_exception $e) {
+        error_log("Admin user fetch failed: {$e->getMessage()}");
+        return null;
+    }
+}
+
+function updateAdminAccount(
+    int $adminId,
+    string $username,
+    string $email,
+    ?string $profilePictureRelative = null,
+): bool {
+    if ($adminId <= 0) {
+        return false;
+    }
+
+    $connection = getModuleConnection();
+    if ($connection === null) {
+        return false;
+    }
+
+    $username = trim($username);
+    $email = trim($email);
+
+    if ($username === "" || $email === "") {
+        return false;
+    }
+
+    try {
+        if (adminUsersHasProfilePictureColumn($connection) && $profilePictureRelative !== null) {
+            $stmt = $connection->prepare(
+                "UPDATE admin_users SET username = ?, email = ?, profile_picture = ? WHERE id = ?",
+            );
+            if ($stmt === false) {
+                return false;
+            }
+            $stmt->bind_param(
+                "sssi",
+                $username,
+                $email,
+                $profilePictureRelative,
+                $adminId,
+            );
+        } else {
+            $stmt = $connection->prepare(
+                "UPDATE admin_users SET username = ?, email = ? WHERE id = ?",
+            );
+            if ($stmt === false) {
+                return false;
+            }
+            $stmt->bind_param("ssi", $username, $email, $adminId);
+        }
+
+        $stmt->execute();
+        $stmt->close();
+        return true;
+    } catch (\mysqli_sql_exception $e) {
+        error_log("Admin account update failed: {$e->getMessage()}");
+        return false;
+    }
+}
+
+function getHomepagePackages(): array
+{
+    $rows = tryFetchRows(
+        getModuleConnection(),
+        "SELECT id, package_name, price_eur, services_text, button_url, is_featured, badge_text, sort_order FROM homepage_packages ORDER BY sort_order ASC, id ASC",
+    );
+
+    return $rows !== [] ? $rows : getHomepagePackagesFallback();
+}
+
+function getHomepagePackagesFallback(): array
+{
+    return [
+        [
+            "id" => 1,
+            "package_name" => "Bronze",
+            "price_eur" => "499",
+            "services_text" => "Limited Liability Company (LLC) Registration in 24 Hours\nCertificate of Incorporation\nLegal Address for 1 year\nAll Govt. Fees & Charges",
+            "button_url" => "company-registration.php",
+            "is_featured" => "0",
+            "badge_text" => "",
+            "sort_order" => 1,
+        ],
+        [
+            "id" => 2,
+            "package_name" => "Silver",
+            "price_eur" => "799",
+            "services_text" => "Limited Liability Company (LLC) Registration in 24 Hours\nCertificate of Incorporation\nLegal Address for 1 year\nAll Govt. Fees & Charges\nRegistration of Company with Georgian Revenue Service",
+            "button_url" => "company-registration.php",
+            "is_featured" => "1",
+            "badge_text" => "Most Popular",
+            "sort_order" => 2,
+        ],
+        [
+            "id" => 3,
+            "package_name" => "Gold",
+            "price_eur" => "1199",
+            "services_text" => "Limited Liability Company (LLC) Registration in 24 Hours\nCertificate of Incorporation\nLegal Address for 1 year\nAll Govt. Fees & Charges\nRegistration of Company with Georgian Revenue Service\nVAT Registration\nCorporate Bank Account",
+            "button_url" => "company-registration.php",
+            "is_featured" => "0",
+            "badge_text" => "",
+            "sort_order" => 3,
+        ],
+        [
+            "id" => 4,
+            "package_name" => "Platinum",
+            "price_eur" => "1599",
+            "services_text" => "Limited Liability Company (LLC) Registration in 24 Hours\nCertificate of Incorporation\nLegal Address for 1 year\nAll Govt. Fees & Charges\nRegistration of Company with Georgian Revenue Service\nVAT Registration\nCorporate Bank Account\nMonthly Tax Filing for 1 year",
+            "button_url" => "company-registration.php",
+            "is_featured" => "0",
+            "badge_text" => "",
+            "sort_order" => 4,
+        ],
+    ];
+}
+
+function getHomepagePackageById(int $id): ?array
+{
+    if ($id <= 0) {
+        return null;
+    }
+
+    $connection = getModuleConnection();
+    if ($connection === null) {
+        return null;
+    }
+
+    try {
+        $stmt = $connection->prepare(
+            "SELECT id, package_name, price_eur, services_text, button_url, is_featured, badge_text, sort_order FROM homepage_packages WHERE id = ? LIMIT 1",
+        );
+        if ($stmt === false) {
+            return null;
+        }
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $stmt->close();
+        return $row ?: null;
+    } catch (\mysqli_sql_exception $e) {
+        error_log("Homepage package fetch failed: {$e->getMessage()}");
+        return null;
+    }
+}
+
+function saveHomepagePackage(array $data): ?int
+{
+    $connection = getModuleConnection();
+    if ($connection === null) {
+        return null;
+    }
+
+    $id = !empty($data["id"]) ? (int) $data["id"] : null;
+    $packageName = trim((string) ($data["package_name"] ?? ""));
+    $priceEur = trim((string) ($data["price_eur"] ?? ""));
+    $servicesText = trim((string) ($data["services_text"] ?? ""));
+    $buttonUrl = trim((string) ($data["button_url"] ?? ""));
+    $isFeatured = !empty($data["is_featured"]) ? 1 : 0;
+    $badgeText = trim((string) ($data["badge_text"] ?? ""));
+    $sortOrder = isset($data["sort_order"]) ? (int) $data["sort_order"] : 0;
+
+    try {
+        if ($id) {
+            $stmt = $connection->prepare(
+                "UPDATE homepage_packages SET package_name = ?, price_eur = ?, services_text = ?, button_url = ?, is_featured = ?, badge_text = ?, sort_order = ? WHERE id = ?",
+            );
+            if ($stmt === false) {
+                return null;
+            }
+            $stmt->bind_param(
+                "ssssisii",
+                $packageName,
+                $priceEur,
+                $servicesText,
+                $buttonUrl,
+                $isFeatured,
+                $badgeText,
+                $sortOrder,
+                $id,
+            );
+            $stmt->execute();
+            $stmt->close();
+            return $id;
+        }
+
+        $stmt = $connection->prepare(
+            "INSERT INTO homepage_packages (package_name, price_eur, services_text, button_url, is_featured, badge_text, sort_order) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        );
+        if ($stmt === false) {
+            return null;
+        }
+        $stmt->bind_param(
+            "ssssisi",
+            $packageName,
+            $priceEur,
+            $servicesText,
+            $buttonUrl,
+            $isFeatured,
+            $badgeText,
+            $sortOrder,
+        );
+        $stmt->execute();
+        $newId = $stmt->insert_id;
+        $stmt->close();
+        return $newId ?: null;
+    } catch (\mysqli_sql_exception $e) {
+        error_log("Homepage package save failed: {$e->getMessage()}");
+        return null;
+    }
+}
+
+function deleteHomepagePackage(int $id): bool
+{
+    if ($id <= 0) {
+        return false;
+    }
+
+    $connection = getModuleConnection();
+    if ($connection === null) {
+        return false;
+    }
+
+    try {
+        $stmt = $connection->prepare("DELETE FROM homepage_packages WHERE id = ?");
+        if ($stmt === false) {
+            return false;
+        }
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $affected = $stmt->affected_rows;
+        $stmt->close();
+        return $affected > 0;
+    } catch (\mysqli_sql_exception $e) {
+        error_log("Homepage package delete failed: {$e->getMessage()}");
+        return false;
+    }
 }
 
 function getListingItems(): array
 {
     $rows = tryFetchRows(
         getModuleConnection(),
-        "SELECT id, name, position, start_date, salary FROM listing_items ORDER BY id",
+        "SELECT id, name, email, service, message, created_at FROM contact_enquiries ORDER BY id DESC",
     );
     return $rows !== [] ? $rows : getListingItemsFallback();
 }
@@ -71,24 +369,27 @@ function getListingItemsFallback(): array
     return [
         [
             "id" => 1,
-            "name" => "Bella Chloe",
-            "position" => "System Developer",
-            "start_date" => "2018-03-12",
-            "salary" => '$654,765',
+            "name" => "John Doe",
+            "email" => "john@example.com",
+            "service" => "Company Registration Packages",
+            "message" => "Need help with company setup in Georgia.",
+            "created_at" => "2026-03-19 10:00:00",
         ],
         [
             "id" => 2,
-            "name" => "Donna Bond",
-            "position" => "Account Manager",
-            "start_date" => "2012-02-21",
-            "salary" => '$543,654',
+            "name" => "Jane Smith",
+            "email" => "jane@example.com",
+            "service" => "Accounting & Taxation",
+            "message" => "Looking for monthly accounting support.",
+            "created_at" => "2026-03-19 10:30:00",
         ],
         [
             "id" => 3,
-            "name" => "Kyle Newton",
-            "position" => "Lead Designer",
-            "start_date" => "2015-07-08",
-            "salary" => '$498,121',
+            "name" => "Alex Brown",
+            "email" => "alex@example.com",
+            "service" => "Resident Permit",
+            "message" => "Please guide me on residence permit options.",
+            "created_at" => "2026-03-19 11:00:00",
         ],
     ];
 }
@@ -102,8 +403,11 @@ function getListingItemById(int $id): ?array
 
     try {
         $stmt = $connection->prepare(
-            "SELECT id, name, position, start_date, salary FROM listing_items WHERE id = ? LIMIT 1",
+            "SELECT id, name, email, service, message, created_at FROM contact_enquiries WHERE id = ? LIMIT 1",
         );
+        if ($stmt === false) {
+            return null;
+        }
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -125,21 +429,24 @@ function saveListingItem(array $data): ?int
 
     $id = !empty($data["id"]) ? (int) $data["id"] : null;
     $name = $data["name"] ?? "";
-    $position = $data["position"] ?? "";
-    $startDate = $data["start_date"] ?? "";
-    $salary = $data["salary"] ?? "";
+    $email = $data["email"] ?? "";
+    $service = $data["service"] ?? "";
+    $message = $data["message"] ?? "";
 
     try {
         if ($id) {
             $stmt = $connection->prepare(
-                "UPDATE listing_items SET name = ?, position = ?, start_date = ?, salary = ? WHERE id = ?",
+                "UPDATE contact_enquiries SET name = ?, email = ?, service = ?, message = ? WHERE id = ?",
             );
+            if ($stmt === false) {
+                return null;
+            }
             $stmt->bind_param(
                 "ssssi",
                 $name,
-                $position,
-                $startDate,
-                $salary,
+                $email,
+                $service,
+                $message,
                 $id,
             );
             $stmt->execute();
@@ -148,9 +455,12 @@ function saveListingItem(array $data): ?int
         }
 
         $stmt = $connection->prepare(
-            "INSERT INTO listing_items (name, position, start_date, salary) VALUES (?, ?, ?, ?)",
+            "INSERT INTO contact_enquiries (name, email, service, message) VALUES (?, ?, ?, ?)",
         );
-        $stmt->bind_param("ssss", $name, $position, $startDate, $salary);
+        if ($stmt === false) {
+            return null;
+        }
+        $stmt->bind_param("ssss", $name, $email, $service, $message);
         $stmt->execute();
         $newId = $stmt->insert_id;
         $stmt->close();
@@ -169,7 +479,10 @@ function deleteListingItem(int $id): bool
     }
 
     try {
-        $stmt = $connection->prepare("DELETE FROM listing_items WHERE id = ?");
+        $stmt = $connection->prepare("DELETE FROM contact_enquiries WHERE id = ?");
+        if ($stmt === false) {
+            return false;
+        }
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $affected = $stmt->affected_rows;
@@ -190,10 +503,15 @@ function getProfileRow(): ?array
 
     $query =
         "SELECT id, full_name, job_title, location, country, languages, email, phone, about, experience, company FROM profiles ORDER BY id DESC LIMIT 1";
-    if ($result = $connection->query($query)) {
-        $row = $result->fetch_assoc();
-        $result->free();
-        return $row ?: null;
+
+    try {
+        if ($result = $connection->query($query)) {
+            $row = $result->fetch_assoc();
+            $result->free();
+            return $row ?: null;
+        }
+    } catch (\mysqli_sql_exception $e) {
+        error_log("Profile fetch failed: {$e->getMessage()}");
     }
 
     return null;
@@ -252,6 +570,9 @@ function saveProfileDetails(array $data): bool
             $stmt = $connection->prepare(
                 "UPDATE profiles SET full_name = ?, job_title = ?, location = ?, country = ?, languages = ?, email = ?, phone = ?, about = ?, experience = ?, company = ? WHERE id = ?",
             );
+            if ($stmt === false) {
+                return false;
+            }
             $stmt->bind_param(
                 "ssssssssssi",
                 $fullName,
@@ -270,6 +591,9 @@ function saveProfileDetails(array $data): bool
             $stmt = $connection->prepare(
                 "INSERT INTO profiles (full_name, job_title, location, country, languages, email, phone, about, experience, company) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             );
+            if ($stmt === false) {
+                return false;
+            }
             $stmt->bind_param(
                 "ssssssssss",
                 $fullName,

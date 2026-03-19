@@ -4,14 +4,14 @@ require_once APP_ROOT . "/app/auth.php";
 requireAdminLogin();
 require_once APP_ROOT . "/app/module-data.php";
 
-$pageTitle = "Listing Form";
+$pageTitle = "Enquiry Form";
 $errors = [];
 $listingId = null;
 $formValues = [
     "name" => "",
-    "position" => "",
-    "start_date" => "",
-    "salary" => "",
+    "email" => "",
+    "service" => "",
+    "message" => "",
 ];
 
 if (!empty($_GET["id"])) {
@@ -20,9 +20,9 @@ if (!empty($_GET["id"])) {
     if ($item !== null) {
         $formValues = [
             "name" => $item["name"],
-            "position" => $item["position"],
-            "start_date" => $item["start_date"],
-            "salary" => $item["salary"],
+            "email" => $item["email"],
+            "service" => $item["service"],
+            "message" => $item["message"],
         ];
     }
 }
@@ -31,9 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $listingId = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
     $formValues = [
         "name" => trim($_POST["name"] ?? ""),
-        "position" => trim($_POST["position"] ?? ""),
-        "start_date" => trim($_POST["start_date"] ?? ""),
-        "salary" => trim($_POST["salary"] ?? ""),
+        "email" => trim($_POST["email"] ?? ""),
+        "service" => trim($_POST["service"] ?? ""),
+        "message" => trim($_POST["message"] ?? ""),
     ];
 
     foreach ($formValues as $key => $value) {
@@ -47,9 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $savedId = saveListingItem([
             "id" => $listingId ?: null,
             "name" => $formValues["name"],
-            "position" => $formValues["position"],
-            "start_date" => $formValues["start_date"],
-            "salary" => $formValues["salary"],
+            "email" => $formValues["email"],
+            "service" => $formValues["service"],
+            "message" => $formValues["message"],
         ]);
         if ($savedId !== null) {
             header("Location: " . file_url("list/list.php") . "?saved=1");
@@ -88,7 +88,7 @@ include LAYOUT_PATH . "/head.php";
 
                         <!-- PAGE-HEADER -->
                         <div class="page-header">
-                            <h1 class="page-title">Basic Form</h1>
+                            <h1 class="page-title">Enquiry Form</h1>
                             <div>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
@@ -103,7 +103,7 @@ include LAYOUT_PATH . "/head.php";
                             <div class="col-md-12 col-xl-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">General Form Elements</h3>
+                                        <h3 class="card-title">Manage Enquiry</h3>
                                     </div>
                                     <div class="card-body">
                                         <?php if (!empty($errors)): ?>
@@ -131,40 +131,36 @@ include LAYOUT_PATH . "/head.php";
                                                 ) ?>" placeholder="Enter full name" required>
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-label">Position</label>
-                                                <input type="text" class="form-control" name="position" value="<?= htmlspecialchars(
-                                                    $formValues["position"],
-                                                ) ?>" placeholder="Enter title" required>
+                                                <label class="form-label">Email</label>
+                                                <input type="email" class="form-control" name="email" value="<?= htmlspecialchars(
+                                                    $formValues["email"],
+                                                ) ?>" placeholder="Enter email" required>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label class="form-label">Start Date</label>
-                                                        <input type="date" class="form-control" name="start_date" value="<?= htmlspecialchars(
+                                                        <label class="form-label">Service</label>
+                                                        <input type="text" class="form-control" name="service" value="<?= htmlspecialchars(
                                                             $formValues[
-                                                                "start_date"
+                                                                "service"
                                                             ],
-                                                        ) ?>" required>
+                                                        ) ?>" placeholder="Enter service" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label">Salary</label>
-                                                        <input type="text" class="form-control" name="salary" value="<?= htmlspecialchars(
-                                                            $formValues[
-                                                                "salary"
-                                                            ],
-                                                        ) ?>" placeholder="Enter salary" required>
-                                                    </div>
-                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Message</label>
+                                                <textarea class="form-control" name="message" rows="5" placeholder="Enter message" required><?= htmlspecialchars(
+                                                    $formValues["message"],
+                                                ) ?></textarea>
                                             </div>
                                             <div class="mt-4 d-flex gap-2">
                                                 <button type="submit" class="btn btn-primary"><?= $listingId
                                                     ? "Update"
-                                                    : "Add" ?> Listing</button>
+                                                    : "Add" ?> Enquiry</button>
                                                 <a class="btn btn-secondary" href="<?= file_url(
                                                     "list/list.php",
-                                                ) ?>">Back to Listings</a>
+                                                ) ?>">Back to Enquiries</a>
                                             </div>
                                         </form>
                                     </div>

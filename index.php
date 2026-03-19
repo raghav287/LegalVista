@@ -40,6 +40,22 @@ if(isset($_POST['submit'])){
     }
  }
 }
+
+require_once __DIR__ . '/admin/bootstrap.php';
+require_once APP_ROOT . '/app/module-data.php';
+
+$homepagePackages = getHomepagePackages();
+$startingPackagePrice = null;
+foreach ($homepagePackages as $homepagePackage) {
+    $rawPrice = preg_replace('/[^\d.]/', '', (string) ($homepagePackage['price_eur'] ?? ''));
+    if ($rawPrice === '') {
+        continue;
+    }
+    $numericPrice = (float) $rawPrice;
+    if ($startingPackagePrice === null || $numericPrice < $startingPackagePrice) {
+        $startingPackagePrice = $numericPrice;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -340,7 +356,7 @@ if(isset($_POST['submit'])){
 
                                         <h6>With Our Expert Guidance Today</h6>
 
-                                        <h2>Packages Starting As Low As 499 Euros</h2>
+                                        <h2>Packages Starting As Low As <?= htmlspecialchars($startingPackagePrice !== null ? rtrim(rtrim(number_format($startingPackagePrice, 2, '.', ''), '0'), '.') : '499') ?> Euros</h2>
 
                                         <h5>No Hidden Costs or Last Minute Surprises</h5>
 
@@ -401,207 +417,51 @@ if(isset($_POST['submit'])){
 
                     <div class="pbmit-ptables-w wpb_content_element">
                         <div class="row">
-                            <div class="pbmit-ptable-column-w col-md-12 col-lg-3 ">
-                                <div class="pbmit-ptable-column-inner  ">
-                                    <div class="pbmit-ptablebox pbmit-ptablebox-style-1">
-                                        <div class="pbmit-ptable-main">
-                                            <h3 class="pbmit-ptable-heading">Bronze</h3>
-                                            <div class="pbmit-sep"></div>
+                            <?php foreach ($homepagePackages as $package): ?>
+                                <?php
+                                $services = preg_split('/\r\n|\r|\n/', (string) ($package['services_text'] ?? '')) ?: [];
+                                $isFeatured = !empty($package['is_featured']);
+                                $buttonUrl = trim((string) ($package['button_url'] ?? 'company-registration.php'));
+                                $buttonClass = $isFeatured
+                                    ? 'pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md jklllllllll'
+                                    : 'pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md';
+                                ?>
+                                <div class="pbmit-ptable-column-w col-md-12 col-lg-3 <?= $isFeatured ? 'pbmit-ptablebox-featured-col' : '' ?>">
+                                    <div class="pbmit-ptable-column-inner">
+                                        <?php if ($isFeatured && trim((string) ($package['badge_text'] ?? '')) !== ''): ?>
+                                            <div class="absoult">
+                                                <h6><?= htmlspecialchars($package['badge_text']) ?> <i class="fa fa-star" aria-hidden="true"></i></h6>
+                                            </div>
+                                        <?php endif; ?>
+                                        <div class="pbmit-ptablebox pbmit-ptablebox-style-1">
+                                            <div class="pbmit-ptable-main">
+                                                <h3 class="pbmit-ptable-heading"><?= htmlspecialchars($package['package_name']) ?></h3>
+                                                <div class="pbmit-sep"></div>
+                                            </div>
+                                            <div class="pbmit-ptablebox-colum pbmit-ptablebox-featurebox min-heightt">
+                                                <h6 class="servicessss">Services</h6>
+                                                <ul class="list-style-two jklllll<?= $isFeatured ? ' active' : '' ?>">
+                                                    <?php foreach ($services as $serviceLine): ?>
+                                                        <?php $serviceLine = trim($serviceLine); ?>
+                                                        <?php if ($serviceLine === '') { continue; } ?>
+                                                        <li><?= htmlspecialchars($serviceLine) ?></li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                            </div>
 
+                                            <h6 class="servicessss pr-555">Price</h6>
+
+                                            <div class="pbmit-ptable-price-w">
+                                                <div class="pbmit-ptable-price kkk">€<?= htmlspecialchars((string) $package['price_eur']) ?></div>
+                                            </div>
+
+                                            <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline">
+                                                <a class="<?= $buttonClass ?>" href="<?= htmlspecialchars($buttonUrl) ?>" title="">Select Package</a>
+                                            </div>
                                         </div>
-                                        <div class="pbmit-ptablebox-colum pbmit-ptablebox-featurebox min-heightt">
-
-
-
-
-                                            <h6 class="servicessss">Services</h6>
-
-
-
-
-                                            <ul class="list-style-two jklllll">
-                                                <li>Limited Liability Company (LLC)
-                                                    Registration in 24 Hours</li>
-                                                <li>Certificate of Incorporation</li>
-                                                <li>Legal Address for 1 year</li>
-                                                <li>All Govt. Fees & Charges</li>
-                                            </ul>
-                                        </div>
-
-
-                                        <h6 class="servicessss pr-555">Price</h6>
-
-
-
-
-
-
-
-
-
-                                        <div class="pbmit-ptable-price-w">
-                                            <div class="pbmit-ptable-price kkk">€499</div>
-                                            <!-- <div class="pbmit-ptable-cur-symbol-after">€</div> -->
-                                            <!-- <div class="pbmit-ptable-frequency">EUR</div> -->
-                                        </div>
-
-
-                                        <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline"> <a
-                                                class="pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md"
-                                                href="company-registration.php" title="">Select Package</a> </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="pbmit-ptable-column-w col-md-12 col-lg-3  pbmit-ptablebox-featured-col">
-                                <div class="pbmit-ptable-column-inner ">
-                                    <div class="absoult">
-                                        <h6> Most Popular <i class="fa fa-star" aria-hidden="true"></i> </h6>
-                                    </div>
-                                    <div class="pbmit-ptablebox pbmit-ptablebox-style-1">
-                                        <div class="pbmit-ptable-main">
-                                            <h3 class="pbmit-ptable-heading">Silver</h3>
-                                            <div class="pbmit-sep"></div>
-
-                                        </div>
-                                        <div class="pbmit-ptablebox-colum pbmit-ptablebox-featurebox min-heightt">
-
-                                            <h6 class="servicessss">Services</h6>
-                                            <ul class="list-style-two jklllll active">
-                                                <li>Limited Liability Company (LLC)
-                                                    Registration in 24 Hours
-                                                </li>
-                                                <li>Certificate of Incorporation</li>
-                                                <li>Legal Address for 1 year</li>
-                                                <li>All Govt. Fees & Charges</li>
-                                                <li>Registration of Company with
-                                                    Georgian Revenue Service
-                                                </li>
-                                            </ul>
-                                        </div>
-
-
-
-                                        <h6 class="servicessss pr-555">Price</h6>
-
-
-
-
-                                        <div class="pbmit-ptable-price-w">
-                                            <div class="pbmit-ptable-price kkk">€799</div>
-                                            <!-- <div class="pbmit-ptable-cur-symbol-after">€</div> -->
-                                            <!-- <div class="pbmit-ptable-frequency">EUR</div> -->
-                                        </div>
-
-                                        <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline"> <a
-                                                class="pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md jklllllllll"
-                                                href="company-registration.php" title="">Select Package</a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pbmit-ptable-column-w col-md-12 col-lg-3 ">
-                                <div class="pbmit-ptable-column-inner ">
-                                    <div class="pbmit-ptablebox pbmit-ptablebox-style-1">
-                                        <div class="pbmit-ptable-main">
-                                            <h3 class="pbmit-ptable-heading">Gold</h3>
-                                            <div class="pbmit-sep"></div>
-
-                                        </div>
-                                        <div class="pbmit-ptablebox-colum pbmit-ptablebox-featurebox min-heightt">
-
-                                            <h6 class="servicessss">Services</h6>
-                                            <ul class="list-style-two jklllll">
-                                                <li>Limited Liability Company (LLC)
-                                                    Registration in 24 Hours
-                                                </li>
-                                                <li>Certificate of Incorporation</li>
-                                                <li>Legal Address for 1 year</li>
-                                                <li>All Govt. Fees & Charges</li>
-                                                <li>Registration of Company with
-                                                    Georgian Revenue Service
-                                                </li>
-                                                <li>VAT Registration</li>
-                                                <li>Corporate Bank Account</li>
-                                            </ul>
-                                        </div>
-
-
-
-
-
-
-                                        <h6 class="servicessss pr-555">Price</h6>
-
-
-
-                                        <div class="pbmit-ptable-price-w">
-                                            <div class="pbmit-ptable-price kkk">€1,199</div>
-                                            <!--    <div class="pbmit-ptable-cur-symbol-after">€</div>
-              <div class="pbmit-ptable-frequency">EUR</div> -->
-                                        </div>
-
-
-                                        <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline"> <a
-                                                class="pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md"
-                                                href="company-registration.php" title="">Select Package</a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pbmit-ptable-column-w col-md-12 col-lg-3 ">
-                                <div class="pbmit-ptable-column-inner ">
-                                    <div class="pbmit-ptablebox pbmit-ptablebox-style-1">
-                                        <div class="pbmit-ptable-main">
-                                            <!--<div class="pbmit-ptable-icon">
-              <div class="pbmit-sbox-icon-wrapper"><i class=""></i></div>
-            </div>-->
-                                            <h3 class="pbmit-ptable-heading">Platinum</h3>
-                                            <div class="pbmit-sep"></div>
-
-                                        </div>
-                                        <div class="pbmit-ptablebox-colum pbmit-ptablebox-featurebox min-heightt">
-
-
-
-
-
-
-                                            <h6 class="servicessss">Services</h6>
-
-
-                                            <ul class="list-style-two jklllll">
-                                                <li>Limited Liability Company (LLC)
-                                                    Registration in 24 Hours</li>
-                                                <li>Certificate of Incorporation</li>
-                                                <li>Legal Address for 1 year</li>
-                                                <li>All Govt. Fees & Charges</li>
-                                                <li>Registration of Company with
-                                                    Georgian Revenue Service</li>
-                                                <li>VAT Registration</li>
-                                                <li>Corporate Bank Account</li>
-                                                <li>Monthly Tax Filing for 1 year</li>
-                                            </ul>
-                                        </div>
-
-
-                                        <h6 class="servicessss pr-555">Price</h6>
-
-
-
-
-
-                                        <div class="pbmit-ptable-price-w">
-
-                                            <div class="pbmit-ptable-price kkk">€1,599</div>
-                                            <!--        <div class="pbmit-ptable-cur-symbol-after">€</div>
-              <div class="pbmit-ptable-frequency">EUR</div> -->
-                                        </div>
-
-
-                                        <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline"> <a
-                                                class="pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md"
-                                                href="company-registration.php" title="">Select Package</a> </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
 
@@ -1231,150 +1091,8 @@ if(isset($_POST['submit'])){
 
 
 
-            <!-- Contact Form -->
-            <section>
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <div class="contact-details">
-                                <div class="pbmit-heading-subheading">
-                                    <h4 class="pbmit-subtitle">GET IN TOUCH</h4>
-                                    <h2 class="pbmit-title">Prepare for<br> Your Next Step in Georgia!
-
-                                    </h2>
-                                </div>
 
 
-
-
-                                <div class="tettttt">
-
-
-
-                                    <p>Schedule your <strong>free 30-minute consultation today</strong>, and let us
-                                        assist you in planning a tailored solution that meets your specific needs.
-                                        Whether you are considering relocation, exploring investment opportunities, or
-                                        seeking legal guidance on Georgian regulations, our experienced team is here to
-                                        provide comprehensive support.<br><br>
-
-                                        We typically respond within one hour, ensuring timely communication as we guide
-                                        you through every step of the process.</p>
-
-
-
-                                </div>
-
-
-
-
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="contact-form jklll">
-                                <div class="pbmit-heading-subheading">
-                                    <h4 class="pbmit-subtitle">PLEASE Fill Form</h4>
-                                    <h2 class="pbmit-title text-white">Get In Touch With Us Now
-
-                                    </h2>
-
-
-                                </div>
-
-
-                                <form method="post" id="contact-form" action="index.php">
-
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                            <input name="name" type="text" class="form-control" placeholder="Name *"
-                                                value="<?php if(isset($name)){ echo $name; } ?>" required>
-                                            <?php if(isset($error['name'])){ echo $error['name']; }?>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                            <input name="email" type="email" class="form-control" placeholder="Email *"
-                                                value="<?php if(isset($email)){ echo $email; } ?>" required>
-                                            <?php if(isset($error['email'])){ echo $error['email']; }?>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row clearfix">
-
-
-                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <select name="service" class="form-control" required>
-                                                <option value="">--Select Service -- </option>
-                                                <option value="Company Registration Packages"
-                                                    <?php if(isset($_POST['service']) && $_POST['service']=="Company Registration Packages"){ echo "selected='selected'";} ?>>
-                                                    Company Registration Packages</option>
-                                                <option value="Accounting & Taxation"
-                                                    <?php if(isset($_POST['service']) && $_POST['service']=="Accounting & Taxation"){ echo "selected='selected'";} ?>>
-                                                    Accounting & Taxation</option>
-                                                <option value="Resident Permit"
-                                                    <?php if(isset($_POST['service']) && $_POST['service']=="Resident Permit"){ echo "selected='selected'";} ?>>
-                                                    Resident Permit</option>
-                                                <option value="Bank Account Opening"
-                                                    <?php if(isset($_POST['service']) && $_POST['service']=="Bank Account Opening"){ echo "selected='selected'";} ?>>
-                                                    Bank Account Opening</option>
-                                                <option value="Tax Residency"
-                                                    <?php if(isset($_POST['service']) && $_POST['service']=="Tax Residency"){ echo "selected='selected'";} ?>>
-                                                    Tax Residency</option>
-                                                <option value="Nominee Services"
-                                                    <?php if(isset($_POST['service']) && $_POST['service']=="Nominee Services"){ echo "selected='selected'";} ?>>
-                                                    Nominee Services</option>
-
-                                            </select>
-                                            <?php if(isset($error['service'])){ echo $error['service']; }?>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row clearfix">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-
-                                            <textarea name="message" rows="4" class="form-control"
-                                                placeholder=" Message *" required><?php if(isset($message)){ echo $message; } ?>
-</textarea>
-                                            <?php if(isset($error['message'])){ echo $error['message']; }?>
-
-
-                                        </div>
-                                    </div>
-                                    <div class="row clearfix">
-
-                                        <div class="col-md-12 col-lg-6">
-                                            <button type="submit" name="submit"
-                                                class="pbmit-btn pbmit-btn-global pbmit-btn-shape-round w-100 jkl">
-                                                <i
-                                                    class="form-btn-loader fa fa-circle-o-notch fa-spin fa-fw margin-bottom d-none"></i>
-                                                SEND MESSAGE
-                                            </button>
-                                        </div>
-                                        <div class="col-md-12 col-lg-12 message-status"></div>
-                                    </div>
-                                </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Contact Form End -->
 
 
             <?php include("includes/lead-form.php"); ?>
@@ -1525,7 +1243,6 @@ if(isset($_POST['submit'])){
                             </div>
 
                         </div>
-                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </section>
@@ -1794,10 +1511,6 @@ if(isset($_POST['submit'])){
                 },
                 slidesPerView: 1,
                 spaceBetween: 30,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
                 breakpoints: {
                     768: {
                         slidesPerView: 2
