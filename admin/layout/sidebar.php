@@ -48,7 +48,7 @@
                         "list/list.php",
                     ) ?>">
                         <i class="side-menu__icon fe fe-list"></i>
-                        <span class="side-menu__label">Listings / Tables</span>
+                        <span class="side-menu__label">Lead Management</span>
                     </a>
                 </li>
 

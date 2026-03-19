@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
     $mail->Body="<p><strong>Name</strong> : $name<br/><strong>Email</strong>: $email<br/><strong>Package</strong>: $package<br/><strong>Message</strong>: $message</p>";
     $mail->Subject="Accounting & Taxation  Form Submitted By : ".$name."";
     if($mail->Send()){
-        echo "<script>window.location='thanks.php'</script>";
+        echo "<script>window.location='thanks'</script>";
     }
  }
 }
@@ -92,7 +92,7 @@ if(isset($_POST['submit'])){
       </div>
       <div class="modal-body">
         <div class="popup-form">
-          <form method="post" id="contact-form" action="accounting-and-taxation.php">
+          <form method="post" id="contact-form" action="accounting-and-taxation">
             <div class="row"> 
               
               <!-- Name -->

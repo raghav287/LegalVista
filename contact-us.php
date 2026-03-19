@@ -44,7 +44,7 @@ if(isset($_POST['submit'])){
     $mail->Body="<p><strong>Name</strong> : $name<br/><strong>Email</strong>: $email<br/><strong>Service</strong>: $service<br/><strong>Package</strong>: $package<br/><strong>Message</strong>: $message</p>";
     $mail->Subject="Book Now Form Submitted By : ".$name."";
     if($mail->Send()){
-        echo "<script>window.location='thanks.php'</script>";
+        echo "<script>window.location='thanks'</script>";
     }
  }
 }

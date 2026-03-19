@@ -4,5 +4,6 @@ CREATE TABLE contact_enquiries (
     email VARCHAR(100),
     service VARCHAR(150),
     message TEXT,
+    status VARCHAR(50) NOT NULL DEFAULT 'New',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

@@ -71,7 +71,7 @@
 
             <div class="site-branding"> 
     <span class="site-title"> 
-        <a href="index.php"> 
+        <a href="index"> 
             <img class="logo-img" src="images/logo.png" alt="" /> 
         </a> 
     </span> 
@@ -93,18 +93,18 @@
     <ul class="navigation clearfix">
                       <!-- <li ><a href="">About </a></li> -->
                       
-                      <li><a href="company-registration.php" class="active">Company Registration </a></li>
+                      <li><a href="company-registration" class="active">Company Registration </a></li>
                       <li class="dropdown"> <a href="#">Other Services</a>
                         <ul>
-                          <li><a href="accounting-and-taxation.php">Accounting & Taxation</a></li>
-                          <li><a href="resident-permit.php">Resident Permit </a></li>
-                          <li><a href="bank-account-opening.php">Bank Account Opening </a></li>
-                          <li><a href="tax-residency.php">Tax Residency </a></li>
-                          <li><a href="nominee-services.php">Nominee Services</a></li>
+                          <li><a href="accounting-and-taxation">Accounting & Taxation</a></li>
+                          <li><a href="resident-permit">Resident Permit </a></li>
+                          <li><a href="bank-account-opening">Bank Account Opening </a></li>
+                          <li><a href="tax-residency">Tax Residency </a></li>
+                          <li><a href="nominee-services">Nominee Services</a></li>
                         </ul>
                       </li>
-                      <li><a href="articles-and-resources.php">Articles & Resources</a></li>
-                      <!-- <li><a href="contact-us.php">Contact </a></li> -->
+                      <li><a href="articles-and-resources">Articles & Resources</a></li>
+                      <!-- <li><a href="contact-us">Contact </a></li> -->
                     </ul>
                   </div>
                 </div>

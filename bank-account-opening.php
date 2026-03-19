@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
     $mail->Body="<p><strong>Name</strong> : $name<br/><strong>Email</strong>: $email<br/><strong>Service</strong>: $service<br/><strong>Message</strong>: $message</p>";
     $mail->Subject="Bank Account Opening  Form Submitted By : ".$name."";
     if($mail->Send()){
-        echo "<script>window.location='thanks.php'</script>";
+        echo "<script>window.location='thanks'</script>";
     }
  }
 }
@@ -113,7 +113,7 @@ if(isset($_POST['submit'])){
       </div>
       <div class="modal-body">
         <div class="popup-form">
-          <form method="post" id="contact-form" action="bank-account-opening.php">
+          <form method="post" id="contact-form" action="bank-account-opening">
             <div class="row"> 
               
               <!-- Name -->
@@ -272,7 +272,7 @@ if(isset($_POST['submit'])){
                           <div class="row cnt">
                             <div class="col-md-12">
           <h4>Ready to Take Advantage of Georgian Banking Benefits?</h4>
-          <p>Open your Georgian bank account today to enjoy the benefits.  <a href="contact-us.php" >Contact Us</a> now to get started and maximize your banking experience in Georgia.</p>
+          <p>Open your Georgian bank account today to enjoy the benefits.  <a href="contact-us" >Contact Us</a> now to get started and maximize your banking experience in Georgia.</p>
 
          
                             </div>

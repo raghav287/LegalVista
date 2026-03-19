@@ -5,6 +5,17 @@ requireAdminLogin();
 require_once APP_ROOT . "/app/module-data.php";
 $pageTitle = "Contact Enquiries";
 $listingItems = getListingItems();
+
+function getLeadStatusBadgeClass(string $status): string
+{
+    return match ($status) {
+        "Contacted" => "badge bg-info",
+        "Qualified" => "badge bg-success",
+        "Closed" => "badge bg-secondary",
+        default => "badge bg-warning text-dark",
+    };
+}
+
 include LAYOUT_PATH . "/head.php";
 ?>
 
@@ -73,6 +84,19 @@ include LAYOUT_PATH . "/head.php";
                                         ) ?>" class="btn btn-primary btn-sm"><i class="fe fe-plus"></i> Add New</a>
                                     </div>
                                     <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-md-4">
+                                                <label for="status-filter" class="form-label">Filter by status</label>
+                                                <select id="status-filter" class="form-control form-select">
+                                                    <option value="">All Statuses</option>
+                                                    <?php foreach (getLeadStatusOptions() as $statusOption): ?>
+                                                        <option value="<?= htmlspecialchars($statusOption) ?>">
+                                                            <?= htmlspecialchars($statusOption) ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="table-responsive">
                                             <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
                                                 <thead>
@@ -81,6 +105,7 @@ include LAYOUT_PATH . "/head.php";
                                                         <th class="border-bottom-0">Email</th>
                                                         <th class="border-bottom-0">Service</th>
                                                         <th class="border-bottom-0">Message</th>
+                                                        <th class="border-bottom-0">Status</th>
                                                         <th class="border-bottom-0">Created At</th>
                                                         <th class="border-bottom-0">Actions</th>
                                                     </tr>
@@ -90,7 +115,7 @@ include LAYOUT_PATH . "/head.php";
                                                         empty($listingItems)
                                                     ): ?>
                                                         <tr>
-                                                            <td colspan="6" class="text-center text-muted">No records found.</td>
+                                                            <td colspan="7" class="text-center text-muted">No records found.</td>
                                                         </tr>
                                                     <?php endif; ?>
                                                     <?php foreach (
@@ -110,6 +135,11 @@ include LAYOUT_PATH . "/head.php";
                                                             <td><?= htmlspecialchars(
                                                                 $item["message"],
                                                             ) ?></td>
+                                                            <td data-status="<?= htmlspecialchars($item["status"] ?? "New") ?>">
+                                                                <span class="<?= htmlspecialchars(getLeadStatusBadgeClass($item["status"] ?? "New")) ?>">
+                                                                    <?= htmlspecialchars($item["status"] ?? "New") ?>
+                                                                </span>
+                                                            </td>
                                                             <td><?= htmlspecialchars(
                                                                 $item["created_at"],
                                                             ) ?></td>
@@ -193,6 +223,30 @@ include LAYOUT_PATH . "/head.php";
         "plugins/datatable/responsive.bootstrap5.min.js",
     ) ?>"></script>
     <script src="<?= asset_url("js/table-data.js") ?>"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const filter = document.getElementById("status-filter");
+            const rows = document.querySelectorAll("#responsive-datatable tbody tr");
+
+            if (!filter) {
+                return;
+            }
+
+            filter.addEventListener("change", function () {
+                const selectedStatus = this.value.toLowerCase();
+
+                rows.forEach(function (row) {
+                    const statusCell = row.querySelector("[data-status]");
+                    if (!statusCell) {
+                        return;
+                    }
+
+                    const rowStatus = statusCell.getAttribute("data-status").toLowerCase();
+                    row.style.display = selectedStatus === "" || rowStatus === selectedStatus ? "" : "none";
+                });
+            });
+        });
+    </script>
 
 </body>
 

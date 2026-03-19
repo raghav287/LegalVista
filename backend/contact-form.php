@@ -15,9 +15,22 @@ if(isset($_POST['submit'])){
     $service = $_POST['service'];
     $message = $_POST['message'];
 
+    $hasStatusColumn = false;
+    try {
+        $columnCheck = $pdo->query("SHOW COLUMNS FROM contact_enquiries LIKE 'status'");
+        $hasStatusColumn = $columnCheck !== false && $columnCheck->fetch() !== false;
+    } catch (PDOException $e) {
+        $hasStatusColumn = false;
+    }
+
     // INSERT
-    $stmt = $pdo->prepare("INSERT INTO contact_enquiries (name, email, service, message) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$name, $email, $service, $message]);
+    if ($hasStatusColumn) {
+        $stmt = $pdo->prepare("INSERT INTO contact_enquiries (name, email, service, message, status) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([$name, $email, $service, $message, "New"]);
+    } else {
+        $stmt = $pdo->prepare("INSERT INTO contact_enquiries (name, email, service, message) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$name, $email, $service, $message]);
+    }
 
     // MAIL
     $mail = new PHPMailer(true);
@@ -47,6 +60,6 @@ if(isset($_POST['submit'])){
     $mail->Body = "Hi $name, we received your enquiry.";
     $mail->send();
 
-    header("Location: ../index.php");
+    header("Location: ../index");
     exit();
 }

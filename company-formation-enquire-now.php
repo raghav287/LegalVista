@@ -117,7 +117,7 @@
             <div class="col-md-7">
               <div class="contact-form">
          
-                <form method="post" id="contact-form" action="send.php">
+                <form method="post" id="contact-form" action="send">
                   <div class="row"> 
                     <div class="col-md-12 col-lg-12">
                       <input type="text" name="name" class="form-control" placeholder="Name" required>

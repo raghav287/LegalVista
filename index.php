@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
     $mail->Body="<p><strong>Name</strong> : $name<br/><strong>Email</strong>: $email<br/><strong>Service</strong>: $service<br/><strong>Package</strong>: $package<br/><strong>Message</strong>: $message</p>";
     $mail->Subject="Get in Touch  Form Submitted By : ".$name."";
     if($mail->Send()){
-        echo "<script>window.location='thanks.php'</script>";
+        echo "<script>window.location='thanks'</script>";
     }
  }
 }
@@ -361,7 +361,7 @@ foreach ($homepagePackages as $homepagePackage) {
                                         <h5>No Hidden Costs or Last Minute Surprises</h5>
 
                                         <div class="btnnn">
-                                            <a href="company-registration.php" class="pbmit-btn pbmit-btn-global">
+                                            <a href="company-registration" class="pbmit-btn pbmit-btn-global">
 
                                                 View Packages
                                                 <i class="themifyicon ti-arrow-right"></i>
@@ -773,7 +773,7 @@ foreach ($homepagePackages as $homepagePackage) {
           <img src="images/nominee-services111.png">
           </div>
           <h3 class="ts-title">
-            <a href="nominee-services.php">Nominee Services </a>
+            <a href="nominee-services">Nominee Services </a>
           </h3>
           <p> Preserve Your Privacy While Meeting Legal Obligations
 
@@ -784,7 +784,7 @@ foreach ($homepagePackages as $homepagePackage) {
 
 
 </p>
-          <a href="nominee-services.php" class="read-more">
+          <a href="nominee-services" class="read-more">
             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
           </a> 
         </div>
@@ -902,9 +902,9 @@ foreach ($homepagePackages as $homepagePackage) {
                             <div class="new-boxxes">
 
                                 <div class="dataa">
-                                    <h4><a href="company-registration.php#jjjj">Sole Proprietorship</a></h4>
+                                    <h4><a href="company-registration"#jjjj">Sole Proprietorship</a></h4>
                                     <p>Own Your Business, Maximize Your Profits with Tax Savings.</p>
-                                    <a href="company-registration.php#jjjj" class="laernnn">Learn More</a>
+                                    <a href="company-registration"#jjjj" class="laernnn">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -913,11 +913,11 @@ foreach ($homepagePackages as $homepagePackage) {
                             <div class="new-boxxes">
 
                                 <div class="dataa">
-                                    <h4><a href="accounting-and-taxation.php">Accounting & Bookkeeping</a></h4>
+                                    <h4><a href="accounting-and-taxation">Accounting & Bookkeeping</a></h4>
                                     <p>Accurate. Reliable. Compliant – Your Financial Partner in Georgia.
 
                                     </p>
-                                    <a href="accounting-and-taxation.php" class="laernnn">Learn More</a>
+                                    <a href="accounting-and-taxation" class="laernnn">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -929,9 +929,9 @@ foreach ($homepagePackages as $homepagePackage) {
                             <div class="new-boxxes">
 
                                 <div class="dataa">
-                                    <h4><a href="resident-permit.php">Resident Permit</a></h4>
+                                    <h4><a href="resident-permit">Resident Permit</a></h4>
                                     <p>Residency Simplified: Start Your New Chapter in Georgia.</p>
-                                    <a href="resident-permit.php" class="laernnn">Learn More</a>
+                                    <a href="resident-permit" class="laernnn">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -943,9 +943,9 @@ foreach ($homepagePackages as $homepagePackage) {
                             <div class="new-boxxes">
 
                                 <div class="dataa">
-                                    <h4><a href="bank-account-opening.php">Bank Account Opening</a></h4>
+                                    <h4><a href="bank-account-opening">Bank Account Opening</a></h4>
                                     <p>Effortless Banking Solutions for You and Your Business.</p>
-                                    <a href="bank-account-opening.php" class="laernnn">Learn More</a>
+                                    <a href="bank-account-opening" class="laernnn">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -957,9 +957,9 @@ foreach ($homepagePackages as $homepagePackage) {
                             <div class="new-boxxes">
 
                                 <div class="dataa">
-                                    <h4><a href="tax-residency.php">Tax Residency</a></h4>
+                                    <h4><a href="tax-residency">Tax Residency</a></h4>
                                     <p>Achieve Financial Freedom with Georgian Tax Residency.</p>
-                                    <a href="tax-residency.php" class="laernnn">Learn More</a>
+                                    <a href="tax-residency" class="laernnn">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -971,9 +971,9 @@ foreach ($homepagePackages as $homepagePackage) {
                             <div class="new-boxxes">
 
                                 <div class="dataa">
-                                    <h4><a href="nominee-services.php">Nominee Services</a></h4>
+                                    <h4><a href="nominee-services">Nominee Services</a></h4>
                                     <p>Preserve Your Privacy While Meeting Legal Obligations.</p>
-                                    <a href="nominee-services.php" class="laernnn">Learn More</a>
+                                    <a href="nominee-services" class="laernnn">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -1287,7 +1287,7 @@ foreach ($homepagePackages as $homepagePackage) {
                         <div class="col-md-3">
                             <div class="get">
                                 <div class="btnnn">
-                                    <a href="company-registration.php">Get Started</a>
+                                    <a href="company-registration">Get Started</a>
                                 </div>
                             </div>
                         </div>
@@ -1322,12 +1322,12 @@ foreach ($homepagePackages as $homepagePackage) {
                                     </div>
                                     <div class="inf-blog-content">
                                         <span class="inf-date">Oct 15, 2025</span>
-                                        <h5 class="inf-title"><a href="georgias-new-work-permit-regime.php">Georgia’s
+                                        <h5 class="inf-title"><a href="georgias-new-work-permit-regime">Georgia’s
                                                 New Work Permit Regime 2026</a></h5>
                                         <p class="inf-excerpt">Georgia has long been known for its open-door
                                             business
                                             policies...</p>
-                                        <a class="inf-read-more" href="georgias-new-work-permit-regime.php">Read
+                                        <a class="inf-read-more" href="georgias-new-work-permit-regime">Read
                                             More</a>
                                     </div>
                                 </article>
@@ -1341,13 +1341,13 @@ foreach ($homepagePackages as $homepagePackage) {
                                     <div class="inf-blog-content">
                                         <span class="inf-date">Oct 15, 2025</span>
                                         <h5 class="inf-title"><a
-                                                href="temporary-residence-permit-changes-202526.php">Residence
+                                                href="temporary-residence-permit-changes-202526">Residence
                                                 Permit
                                                 Changes 2025–26</a></h5>
                                         <p class="inf-excerpt">New Rules for Entrepreneurs, Investors, and IT
                                             Specialists...</p>
                                         <a class="inf-read-more"
-                                            href="temporary-residence-permit-changes-202526.php">Read More</a>
+                                            href="temporary-residence-permit-changes-202526">Read More</a>
                                     </div>
                                 </article>
                             </div>
@@ -1359,11 +1359,11 @@ foreach ($homepagePackages as $homepagePackage) {
                                     </div>
                                     <div class="inf-blog-content">
                                         <span class="inf-date">Aug 05, 2025</span>
-                                        <h5 class="inf-title"><a href="new-aml-compliance-rules-for-company.php">New
+                                        <h5 class="inf-title"><a href="new-aml-compliance-rules-for-company">New
                                                 AML
                                                 Compliance Rules 2025</a></h5>
                                         <p class="inf-excerpt">Updated rules for Company Formation in Georgia...</p>
-                                        <a class="inf-read-more" href="new-aml-compliance-rules-for-company.php">Read
+                                        <a class="inf-read-more" href="new-aml-compliance-rules-for-company">Read
                                             More</a>
                                     </div>
                                 </article>
@@ -1376,11 +1376,11 @@ foreach ($homepagePackages as $homepagePackage) {
                                     </div>
                                     <div class="inf-blog-content">
                                         <span class="inf-date">Aug 05, 2025</span>
-                                        <h5 class="inf-title"><a href="georgia-is-easy-until-it-isnt.php">Georgia is
+                                        <h5 class="inf-title"><a href="georgia-is-easy-until-it-isnt">Georgia is
                                                 Easy—Until It Isn’t</a></h5>
                                         <p class="inf-excerpt">A Lawyer’s View on What Can Go Wrong in Georgia...
                                         </p>
-                                        <a class="inf-read-more" href="georgia-is-easy-until-it-isnt.php">Read
+                                        <a class="inf-read-more" href="georgia-is-easy-until-it-isnt">Read
                                             More</a>
                                     </div>
                                 </article>
@@ -1394,13 +1394,13 @@ foreach ($homepagePackages as $homepagePackage) {
                                     <div class="inf-blog-content">
                                         <span class="inf-date">Aug 05, 2025</span>
                                         <h5 class="inf-title"><a
-                                                href="got-denied-a-residence-permit-in-georgia.php">Denied a
+                                                href="got-denied-a-residence-permit-in-georgia">Denied a
                                                 Residence
                                                 Permit?</a></h5>
                                         <p class="inf-excerpt">Here’s What You Need to Do Next if your permit is
                                             rejected...</p>
                                         <a class="inf-read-more"
-                                            href="got-denied-a-residence-permit-in-georgia.php">Read More</a>
+                                            href="got-denied-a-residence-permit-in-georgia">Read More</a>
                                     </div>
                                 </article>
                             </div>
@@ -1413,12 +1413,12 @@ foreach ($homepagePackages as $homepagePackage) {
                                     </div>
                                     <div class="inf-blog-content">
                                         <span class="inf-date">May 31, 2025</span>
-                                        <h5 class="inf-title"><a href="moving-to-georgia-with-your-family.php">Moving to
+                                        <h5 class="inf-title"><a href="moving-to-georgia-with-your-family">Moving to
                                                 Georgia with Your Family</a></h5>
                                         <p class="inf-excerpt">Thinking about moving to Georgia with your family?
                                             You're
                                             not alone...</p>
-                                        <a class="inf-read-more" href="moving-to-georgia-with-your-family.php">Read
+                                        <a class="inf-read-more" href="moving-to-georgia-with-your-family">Read
                                             More</a>
                                     </div>
                                 </article>
@@ -1433,13 +1433,13 @@ foreach ($homepagePackages as $homepagePackage) {
                                     <div class="inf-blog-content">
                                         <span class="inf-date">May 31, 2025</span>
                                         <h5 class="inf-title"><a
-                                                href="how-to-become-a-tax-resident-in-georgia-a-2025-guide.php">Become
+                                                href="how-to-become-a-tax-resident-in-georgia-a-2025-guide">Become
                                                 a
                                                 Tax Resident: 2025 Guide</a></h5>
                                         <p class="inf-excerpt">Georgia has rapidly emerged as an attractive
                                             crossroads...</p>
                                         <a class="inf-read-more"
-                                            href="how-to-become-a-tax-resident-in-georgia-a-2025-guide.php">Read
+                                            href="how-to-become-a-tax-resident-in-georgia-a-2025-guide">Read
                                             More</a>
                                     </div>
                                 </article>
@@ -1453,13 +1453,13 @@ foreach ($homepagePackages as $homepagePackage) {
                                     <div class="inf-blog-content">
                                         <span class="inf-date">Oct 14, 2024</span>
                                         <h5 class="inf-title"><a
-                                                href="compelling-reasons-to-register-your-business-in-georgia.php">5
+                                                href="compelling-reasons-to-register-your-business-in-georgia">5
                                                 Reasons to Register Your Business</a></h5>
                                         <p class="inf-excerpt">You might be surprised at how easy it is to register
                                             in
                                             Georgia...</p>
                                         <a class="inf-read-more"
-                                            href="compelling-reasons-to-register-your-business-in-georgia.php">Read
+                                            href="compelling-reasons-to-register-your-business-in-georgia">Read
                                             More</a>
                                     </div>
                                 </article>
@@ -1472,11 +1472,11 @@ foreach ($homepagePackages as $homepagePackage) {
                                     </div>
                                     <div class="inf-blog-content">
                                         <span class="inf-date">Oct 14, 2024</span>
-                                        <h5 class="inf-title"><a href="unlock-entrepreneurial-freedom.php">Unlock
+                                        <h5 class="inf-title"><a href="unlock-entrepreneurial-freedom">Unlock
                                                 Entrepreneurial Freedom</a></h5>
                                         <p class="inf-excerpt">Why Georgia's 1% Tax could be your Golden Ticket...
                                         </p>
-                                        <a class="inf-read-more" href="unlock-entrepreneurial-freedom.php">Read
+                                        <a class="inf-read-more" href="unlock-entrepreneurial-freedom">Read
                                             More</a>
                                     </div>
                                 </article>

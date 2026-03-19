@@ -357,11 +357,68 @@ function deleteHomepagePackage(int $id): bool
 
 function getListingItems(): array
 {
+    $connection = getModuleConnection();
+    $statusSelect = contactEnquiriesHasStatusColumn($connection)
+        ? "status"
+        : "'New' AS status";
+
     $rows = tryFetchRows(
-        getModuleConnection(),
-        "SELECT id, name, email, service, message, created_at FROM contact_enquiries ORDER BY id DESC",
+        $connection,
+        "SELECT id, name, email, service, message, {$statusSelect}, created_at FROM contact_enquiries ORDER BY id DESC",
     );
     return $rows !== [] ? $rows : getListingItemsFallback();
+}
+
+function getLeadStatusOptions(): array
+{
+    return ["New", "Contacted", "Qualified", "Closed"];
+}
+
+function normalizeLeadStatus(?string $status): string
+{
+    $status = trim((string) $status);
+    $validStatuses = getLeadStatusOptions();
+
+    if ($status === "" || !in_array($status, $validStatuses, true)) {
+        return "New";
+    }
+
+    return $status;
+}
+
+function contactEnquiriesHasStatusColumn(?\mysqli $connection = null): bool
+{
+    static $hasColumn = null;
+
+    if ($hasColumn !== null) {
+        return $hasColumn;
+    }
+
+    $connection = $connection ?? getModuleConnection();
+    if ($connection === null) {
+        $hasColumn = false;
+        return $hasColumn;
+    }
+
+    try {
+        $result = $connection->query("SHOW COLUMNS FROM contact_enquiries LIKE 'status'");
+        $hasColumn = $result !== false && $result->num_rows > 0;
+        if ($result !== false) {
+            $result->free();
+        }
+
+        if ($hasColumn === false) {
+            $connection->query(
+                "ALTER TABLE contact_enquiries ADD COLUMN status VARCHAR(50) NOT NULL DEFAULT 'New' AFTER message",
+            );
+            $hasColumn = true;
+        }
+    } catch (\mysqli_sql_exception $e) {
+        error_log("Lead status column lookup failed: {$e->getMessage()}");
+        $hasColumn = false;
+    }
+
+    return $hasColumn;
 }
 
 function getListingItemsFallback(): array
@@ -373,6 +430,7 @@ function getListingItemsFallback(): array
             "email" => "john@example.com",
             "service" => "Company Registration Packages",
             "message" => "Need help with company setup in Georgia.",
+            "status" => "New",
             "created_at" => "2026-03-19 10:00:00",
         ],
         [
@@ -381,6 +439,7 @@ function getListingItemsFallback(): array
             "email" => "jane@example.com",
             "service" => "Accounting & Taxation",
             "message" => "Looking for monthly accounting support.",
+            "status" => "Contacted",
             "created_at" => "2026-03-19 10:30:00",
         ],
         [
@@ -389,6 +448,7 @@ function getListingItemsFallback(): array
             "email" => "alex@example.com",
             "service" => "Resident Permit",
             "message" => "Please guide me on residence permit options.",
+            "status" => "Qualified",
             "created_at" => "2026-03-19 11:00:00",
         ],
     ];
@@ -401,9 +461,13 @@ function getListingItemById(int $id): ?array
         return null;
     }
 
+    $statusSelect = contactEnquiriesHasStatusColumn($connection)
+        ? "status"
+        : "'New' AS status";
+
     try {
         $stmt = $connection->prepare(
-            "SELECT id, name, email, service, message, created_at FROM contact_enquiries WHERE id = ? LIMIT 1",
+            "SELECT id, name, email, service, message, {$statusSelect}, created_at FROM contact_enquiries WHERE id = ? LIMIT 1",
         );
         if ($stmt === false) {
             return null;
@@ -432,35 +496,55 @@ function saveListingItem(array $data): ?int
     $email = $data["email"] ?? "";
     $service = $data["service"] ?? "";
     $message = $data["message"] ?? "";
+    $status = normalizeLeadStatus($data["status"] ?? "New");
+    $hasStatusColumn = contactEnquiriesHasStatusColumn($connection);
 
     try {
         if ($id) {
-            $stmt = $connection->prepare(
-                "UPDATE contact_enquiries SET name = ?, email = ?, service = ?, message = ? WHERE id = ?",
-            );
+            $query = $hasStatusColumn
+                ? "UPDATE contact_enquiries SET name = ?, email = ?, service = ?, message = ?, status = ? WHERE id = ?"
+                : "UPDATE contact_enquiries SET name = ?, email = ?, service = ?, message = ? WHERE id = ?";
+            $stmt = $connection->prepare($query);
             if ($stmt === false) {
                 return null;
             }
-            $stmt->bind_param(
-                "ssssi",
-                $name,
-                $email,
-                $service,
-                $message,
-                $id,
-            );
+            if ($hasStatusColumn) {
+                $stmt->bind_param(
+                    "sssssi",
+                    $name,
+                    $email,
+                    $service,
+                    $message,
+                    $status,
+                    $id,
+                );
+            } else {
+                $stmt->bind_param(
+                    "ssssi",
+                    $name,
+                    $email,
+                    $service,
+                    $message,
+                    $id,
+                );
+            }
             $stmt->execute();
             $stmt->close();
             return $id;
         }
 
-        $stmt = $connection->prepare(
-            "INSERT INTO contact_enquiries (name, email, service, message) VALUES (?, ?, ?, ?)",
-        );
+        $query = $hasStatusColumn
+            ? "INSERT INTO contact_enquiries (name, email, service, message, status) VALUES (?, ?, ?, ?, ?)"
+            : "INSERT INTO contact_enquiries (name, email, service, message) VALUES (?, ?, ?, ?)";
+        $stmt = $connection->prepare($query);
         if ($stmt === false) {
             return null;
         }
-        $stmt->bind_param("ssss", $name, $email, $service, $message);
+        if ($hasStatusColumn) {
+            $stmt->bind_param("sssss", $name, $email, $service, $message, $status);
+        } else {
+            $stmt->bind_param("ssss", $name, $email, $service, $message);
+        }
         $stmt->execute();
         $newId = $stmt->insert_id;
         $stmt->close();

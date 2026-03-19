@@ -17,13 +17,13 @@
             <h3 class="widget-title">Quick Links</h3>
             <div class="pbmit-footermenu-wrapper">
               <ul>
-                <li><a href="company-registration.php">Company Registration Packages</a></li>
-                <li><a href="bank-account-opening.php">Bank Account Opening</a></li>
-                <li><a href="resident-permit.php">Resident Permits</a></li>
-                <li><a href="tax-residency.php">Tax Residency</a></li>
-                <li><a href="accounting-and-taxation.php">Accounting & Taxation</a></li>
-                <li><a href="nominee-services.php">Nominee Services</a></li>
-                <!-- <li><a href="faq.php">FAQ</a></li> -->
+                <li><a href="company-registration">Company Registration Packages</a></li>
+                <li><a href="bank-account-opening">Bank Account Opening</a></li>
+                <li><a href="resident-permit">Resident Permits</a></li>
+                <li><a href="tax-residency">Tax Residency</a></li>
+                <li><a href="accounting-and-taxation">Accounting & Taxation</a></li>
+                <li><a href="nominee-services">Nominee Services</a></li>
+                <!-- <li><a href="faq">FAQ</a></li> -->
 
               </ul>
             </div>
@@ -34,14 +34,14 @@
             <h3 class="widget-title">Company Formation</h3>
             <div class="pbmit-footermenu-wrapper">
               <ul>
-                <li><a href="company-registration.php">Limited Liability Company </a></li>
-                <li><a href="company-registration.php">Limited Partnership</a></li>
-                <li><a href="company-registration.php">Sole Proprietorship</a></li>
-                <li><a href="company-registration.php">Joint Stock Company</a></li>
+                <li><a href="company-registration">Limited Liability Company </a></li>
+                <li><a href="company-registration">Limited Partnership</a></li>
+                <li><a href="company-registration">Sole Proprietorship</a></li>
+                <li><a href="company-registration">Joint Stock Company</a></li>
                 
-                <li><a href="company-registration.php">General Partnership </a></li>
+                <li><a href="company-registration">General Partnership </a></li>
 
-                <li><a href="company-registration.php">Branch Office</a></li>
+                <li><a href="company-registration">Branch Office</a></li>
               </ul>
             </div>
           </div>

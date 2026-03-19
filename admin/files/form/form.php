@@ -12,7 +12,9 @@ $formValues = [
     "email" => "",
     "service" => "",
     "message" => "",
+    "status" => "New",
 ];
+$statusOptions = getLeadStatusOptions();
 
 if (!empty($_GET["id"])) {
     $listingId = (int) $_GET["id"];
@@ -23,6 +25,7 @@ if (!empty($_GET["id"])) {
             "email" => $item["email"],
             "service" => $item["service"],
             "message" => $item["message"],
+            "status" => $item["status"] ?? "New",
         ];
     }
 }
@@ -34,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         "email" => trim($_POST["email"] ?? ""),
         "service" => trim($_POST["service"] ?? ""),
         "message" => trim($_POST["message"] ?? ""),
+        "status" => trim($_POST["status"] ?? "New"),
     ];
 
     foreach ($formValues as $key => $value) {
@@ -50,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             "email" => $formValues["email"],
             "service" => $formValues["service"],
             "message" => $formValues["message"],
+            "status" => $formValues["status"],
         ]);
         if ($savedId !== null) {
             header("Location: " . file_url("list/list.php") . "?saved=1");
@@ -153,6 +158,16 @@ include LAYOUT_PATH . "/head.php";
                                                 <textarea class="form-control" name="message" rows="5" placeholder="Enter message" required><?= htmlspecialchars(
                                                     $formValues["message"],
                                                 ) ?></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Lead Status</label>
+                                                <select class="form-control form-select" name="status" required>
+                                                    <?php foreach ($statusOptions as $statusOption): ?>
+                                                        <option value="<?= htmlspecialchars($statusOption) ?>" <?= $formValues["status"] === $statusOption ? "selected" : "" ?>>
+                                                            <?= htmlspecialchars($statusOption) ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                             <div class="mt-4 d-flex gap-2">
                                                 <button type="submit" class="btn btn-primary"><?= $listingId

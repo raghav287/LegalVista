@@ -45,7 +45,9 @@ if (!defined('APP_ROOT')) {
     if (!function_exists('file_url')) {
         function file_url(string $path): string
         {
-            return app_url_join(BASE_URL, 'files/' . ltrim($path, '/'));
+            $path = ltrim($path, '/');
+            $path = preg_replace('/\.php$/', '', $path);
+            return app_url_join(BASE_URL, 'files/' . $path);
         }
     }
 }

@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
     $mail->Body="<p><strong>Name</strong> : $name<br/><strong>Email</strong>: $email<br/><strong>Package Type</strong>: $package_type<br/><strong>Message</strong>: $message</p>";
     $mail->Subject="Company Registration LLP Inquiry Form Submitted By: ".$name1."";
     if($mail->Send()){
-        echo "<script>window.location='thanks.php'</script>";
+        echo "<script>window.location='thanks'</script>";
     }
  }
 }
@@ -63,7 +63,7 @@ if(isset($_POST['submit1'])){
     $mail->Body="<p><strong>Name</strong> : $name1<br/><strong>Email</strong>: $email1<br/><strong>Company Type</strong>: $company_type1<br/><strong>Message</strong>: $message1</p>";
     $mail->Subject="Company Registration Inquiry Form Submitted By: ".$name1."";
     if($mail->Send()){
-        echo "<script>window.location='thanks.php'</script>";
+        echo "<script>window.location='thanks'</script>";
     }
  }
 }
@@ -147,7 +147,7 @@ if(isset($_POST['submit1'])){
       </div>
       <div class="modal-body">
         <div class="popup-form">
-          <form method="post" id="contact-form" action="company-registration.php">
+          <form method="post" id="contact-form" action="company-registration">
             <div class="row"> 
             
             
@@ -198,7 +198,7 @@ if(isset($_POST['submit1'])){
       </div>
       <div class="modal-body">
         <div class="popup-form">
-          <form method="post" id="contact-form" action="company-registration.php">
+          <form method="post" id="contact-form" action="company-registration">
             <div class="row"> 
               <div class="col-md-12 col-lg-12">
                 <input type="text" name="name1" class="form-control" placeholder="Name" required>
