@@ -165,7 +165,9 @@
      /*-------------------------------------
     Scroll To Top
     -------------------------------------*/
-    $('body').append('<a href="#" class="scroll-to-top"><i class="pbmit-base-icon-angle-up"></i></a>');    
+    if ($('.scroll-to-top').length === 0) {
+        $('body').append('<a href="#" class="scroll-to-top"><i class="pbmit-base-icon-angle-up"></i></a>');
+    }
     var btn = $('.scroll-to-top');
     $(window).scroll(function() {
         if ($(window).scrollTop() > 300) {

@@ -109,3 +109,70 @@
   </div>
 </div>
 <!-- Search Box End Here --> 
+
+<a href="#" class="scroll-to-top" aria-label="Back to top">
+  <i class="pbmit-base-icon-angle-up" aria-hidden="true"></i>
+</a>
+
+<style>
+  body .scroll-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #c6a354;
+    color: #ffffff;
+    font-size: 24px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background 0.3s ease;
+    z-index: 99999;
+  }
+
+  body .scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  body .scroll-to-top:hover,
+  body .scroll-to-top:focus {
+    background: #1f2f45;
+    color: #ffffff;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const backToTopButton = document.querySelector(".scroll-to-top");
+    if (!backToTopButton) {
+      return;
+    }
+
+    const toggleBackToTop = function () {
+      if (window.scrollY > 250) {
+        backToTopButton.classList.add("show");
+      } else {
+        backToTopButton.classList.remove("show");
+      }
+    };
+
+    toggleBackToTop();
+    window.addEventListener("scroll", toggleBackToTop, { passive: true });
+
+    backToTopButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  });
+</script>
