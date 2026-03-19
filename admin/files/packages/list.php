@@ -27,10 +27,10 @@ include LAYOUT_PATH . "/head.php";
                         </div>
 
                         <?php if (isset($_GET["saved"]) && $_GET["saved"] === "1"): ?>
-                            <div class="alert alert-success">Package saved successfully.</div>
+                            <div class="alert alert-success js-flash-alert" data-flash-param="saved">Package saved successfully.</div>
                         <?php endif; ?>
                         <?php if (isset($_GET["deleted"])): ?>
-                            <div class="alert alert-<?= $_GET["deleted"] === "1" ? "success" : "danger" ?>">
+                            <div class="alert alert-<?= $_GET["deleted"] === "1" ? "success" : "danger" ?> js-flash-alert" data-flash-param="deleted">
                                 <?= $_GET["deleted"] === "1" ? "Package deleted successfully." : "Unable to delete package." ?>
                             </div>
                         <?php endif; ?>
@@ -82,5 +82,37 @@ include LAYOUT_PATH . "/head.php";
     </div>
 
     <?php include LAYOUT_PATH . "/scripts.php"; ?>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const flashAlerts = document.querySelectorAll(".js-flash-alert");
+            if (flashAlerts.length === 0) {
+                return;
+            }
+
+            const url = new URL(window.location.href);
+            let urlChanged = false;
+
+            flashAlerts.forEach(function (alertElement) {
+                const paramName = alertElement.getAttribute("data-flash-param");
+                if (paramName && url.searchParams.has(paramName)) {
+                    url.searchParams.delete(paramName);
+                    urlChanged = true;
+                }
+
+                window.setTimeout(function () {
+                    alertElement.style.transition = "opacity 0.4s ease";
+                    alertElement.style.opacity = "0";
+                    window.setTimeout(function () {
+                        alertElement.remove();
+                    }, 400);
+                }, 3000);
+            });
+
+            if (urlChanged) {
+                const cleanedUrl = url.pathname + (url.searchParams.toString() ? "?" + url.searchParams.toString() : "") + url.hash;
+                window.history.replaceState({}, document.title, cleanedUrl);
+            }
+        });
+    </script>
 </body>
 </html>

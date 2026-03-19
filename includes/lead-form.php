@@ -1,4 +1,4 @@
-<section>
+<section id="lead-form-section">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -47,6 +47,11 @@
 
                     </div>
 
+                    <?php if (isset($_GET["lead_submitted"]) && $_GET["lead_submitted"] === "1"): ?>
+                        <div class="alert alert-success js-lead-flash-alert mb-3" data-flash-param="lead_submitted">
+                            Your enquiry has been sent successfully.
+                        </div>
+                    <?php endif; ?>
 
                     <form method="post" action="/legalvista_Backup/backend/contact-form">
 
@@ -119,6 +124,37 @@
                             <div class="col-md-12 col-lg-12 message-status"></div>
                         </div>
                     </form>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const leadAlert = document.querySelector(".js-lead-flash-alert");
+                            if (!leadAlert) {
+                                return;
+                            }
+
+                            const url = new URL(window.location.href);
+                            const paramName = leadAlert.getAttribute("data-flash-param");
+
+                            if (paramName && url.searchParams.has(paramName)) {
+                                url.searchParams.delete(paramName);
+                                let cleanPath = url.pathname;
+                                if (cleanPath.endsWith("/index")) {
+                                    cleanPath = cleanPath.slice(0, -6) || "/";
+                                }
+
+                                const cleanedUrl = cleanPath + (url.searchParams.toString() ? "?" + url.searchParams.toString() : "") + url.hash;
+                                window.history.replaceState({}, document.title, cleanedUrl);
+                            }
+
+                            window.setTimeout(function () {
+                                leadAlert.style.transition = "opacity 0.4s ease";
+                                leadAlert.style.opacity = "0";
+                                window.setTimeout(function () {
+                                    leadAlert.remove();
+                                }, 400);
+                            }, 3000);
+                        });
+                    </script>
 
 
 

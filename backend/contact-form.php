@@ -60,6 +60,6 @@ if(isset($_POST['submit'])){
     $mail->Body = "Hi $name, we received your enquiry.";
     $mail->send();
 
-    header("Location: ../index");
+    header("Location: ../?lead_submitted=1#lead-form-section");
     exit();
 }

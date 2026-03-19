@@ -58,14 +58,14 @@ include LAYOUT_PATH . "/head.php";
                             isset($_GET["saved"]) &&
                             $_GET["saved"] === "1"
                         ): ?>
-                            <div class="alert alert-success">
+                            <div class="alert alert-success js-flash-alert" data-flash-param="saved">
                                 Enquiry saved successfully.
                             </div>
                         <?php endif; ?>
                         <?php if (isset($_GET["deleted"])): ?>
                             <div class="alert alert-<?= $_GET["deleted"] === "1"
                                 ? "success"
-                                : "danger" ?>">
+                                : "danger" ?> js-flash-alert" data-flash-param="deleted">
                                 <?= $_GET["deleted"] === "1"
                                     ? "Enquiry deleted successfully."
                                     : "Unable to delete the enquiry right now." ?>
@@ -225,6 +225,33 @@ include LAYOUT_PATH . "/head.php";
     <script src="<?= asset_url("js/table-data.js") ?>"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            const flashAlerts = document.querySelectorAll(".js-flash-alert");
+            if (flashAlerts.length > 0) {
+                const url = new URL(window.location.href);
+                let urlChanged = false;
+
+                flashAlerts.forEach(function (alertElement) {
+                    const paramName = alertElement.getAttribute("data-flash-param");
+                    if (paramName && url.searchParams.has(paramName)) {
+                        url.searchParams.delete(paramName);
+                        urlChanged = true;
+                    }
+
+                    window.setTimeout(function () {
+                        alertElement.style.transition = "opacity 0.4s ease";
+                        alertElement.style.opacity = "0";
+                        window.setTimeout(function () {
+                            alertElement.remove();
+                        }, 400);
+                    }, 3000);
+                });
+
+                if (urlChanged) {
+                    const cleanedUrl = url.pathname + (url.searchParams.toString() ? "?" + url.searchParams.toString() : "") + url.hash;
+                    window.history.replaceState({}, document.title, cleanedUrl);
+                }
+            }
+
             const filter = document.getElementById("status-filter");
             const rows = document.querySelectorAll("#responsive-datatable tbody tr");
 
