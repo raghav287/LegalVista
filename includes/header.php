@@ -49,6 +49,71 @@
 
   gtag('config', 'G-BN2JY9MYKB');
 </script>
+<style>
+  .site-header .site-header-menu {
+    position: relative;
+    z-index: 9999;
+    background: #ffffff;
+  }
+
+  .site-header .site-header-menu .container {
+    position: relative;
+  }
+
+  .site-header .site-header-menu.is-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: headerSlideDown 0.25s ease;
+  }
+
+  .site-header-menu-spacer {
+    display: none;
+    width: 100%;
+  }
+
+  @keyframes headerSlideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const headerMenu = document.querySelector(".site-header .site-header-menu");
+    if (!headerMenu) {
+      return;
+    }
+
+    const spacer = document.createElement("div");
+    spacer.className = "site-header-menu-spacer";
+    headerMenu.parentNode.insertBefore(spacer, headerMenu);
+
+    const headerMenuTop = headerMenu.offsetTop;
+
+    const syncFixedHeader = function () {
+      if (window.pageYOffset > headerMenuTop) {
+        spacer.style.display = "block";
+        spacer.style.height = headerMenu.offsetHeight + "px";
+        headerMenu.classList.add("is-fixed");
+      } else {
+        spacer.style.display = "none";
+        spacer.style.height = "0";
+        headerMenu.classList.remove("is-fixed");
+      }
+    };
+
+    syncFixedHeader();
+    window.addEventListener("scroll", syncFixedHeader, { passive: true });
+    window.addEventListener("resize", syncFixedHeader);
+  });
+</script>
 <header class="site-header header-style-1">
   <div class="pre-header">
     <div class="container">
@@ -71,7 +136,7 @@
 
             <div class="site-branding"> 
     <span class="site-title"> 
-        <a href="index"> 
+        <a href="./"> 
             <img class="logo-img" src="images/logo.png" alt="" /> 
         </a> 
     </span> 

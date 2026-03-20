@@ -37,6 +37,17 @@ CREATE TABLE `admin_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+
+CREATE TABLE contact_enquiries (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    service VARCHAR(150),
+    message TEXT,
+    status VARCHAR(50) NOT NULL DEFAULT 'New',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Dumping data for table `admin_users`
 --
 

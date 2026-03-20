@@ -140,6 +140,36 @@ foreach ($homepagePackages as $homepagePackage) {
         margin-bottom: 50px;
     }
 
+    .inf-slider-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 32px;
+    }
+
+    .inf-slider-button {
+        width: 52px;
+        height: 52px;
+        border: 1px solid #c5a66d;
+        border-radius: 999px;
+        background: #fff;
+        color: #022d58;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        line-height: 1;
+        transition: all 0.3s ease;
+    }
+
+    .inf-slider-button:hover,
+    .inf-slider-button:focus {
+        background: #c5a66d;
+        color: #fff;
+        outline: none;
+    }
+
     .inf-testimonial-content {
         max-width: 900px;
         margin: 0 auto;
@@ -231,6 +261,19 @@ foreach ($homepagePackages as $homepagePackage) {
         background: #fff;
     }
 
+    .inf-blog-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 48px;
+    }
+
+    .inf-blog-header .pbmit-heading-subheading {
+        margin-bottom: 0 !important;
+        text-align: left;
+    }
+
     .inf-blog-item {
         position: relative;
         height: 480px;
@@ -316,6 +359,21 @@ foreach ($homepagePackages as $homepagePackage) {
         border-bottom: 1px solid #c5a66d;
         padding-bottom: 3px;
     }
+
+    .page-wrapper {
+        overflow: visible;
+    }
+
+    @media (max-width: 991px) {
+        .inf-blog-header {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .inf-blog-header .pbmit-heading-subheading {
+            text-align: center;
+        }
+    }
     </style>
 </head>
 
@@ -356,7 +414,9 @@ foreach ($homepagePackages as $homepagePackage) {
 
                                         <h6>With Our Expert Guidance Today</h6>
 
-                                        <h2>Packages Starting As Low As <?= htmlspecialchars($startingPackagePrice !== null ? rtrim(rtrim(number_format($startingPackagePrice, 2, '.', ''), '0'), '.') : '499') ?> Euros</h2>
+                                        <h2>Packages Starting As Low As
+                                            <?= htmlspecialchars($startingPackagePrice !== null ? rtrim(rtrim(number_format($startingPackagePrice, 2, '.', ''), '0'), '.') : '499') ?>
+                                            Euros</h2>
 
                                         <h5>No Hidden Costs or Last Minute Surprises</h5>
 
@@ -418,7 +478,7 @@ foreach ($homepagePackages as $homepagePackage) {
                     <div class="pbmit-ptables-w wpb_content_element">
                         <div class="row">
                             <?php foreach ($homepagePackages as $package): ?>
-                                <?php
+                            <?php
                                 $services = preg_split('/\r\n|\r|\n/', (string) ($package['services_text'] ?? '')) ?: [];
                                 $isFeatured = !empty($package['is_featured']);
                                 $buttonUrl = trim((string) ($package['button_url'] ?? 'company-registration.php'));
@@ -426,41 +486,46 @@ foreach ($homepagePackages as $homepagePackage) {
                                     ? 'pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md jklllllllll'
                                     : 'pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md';
                                 ?>
-                                <div class="pbmit-ptable-column-w col-md-12 col-lg-3 <?= $isFeatured ? 'pbmit-ptablebox-featured-col' : '' ?>">
-                                    <div class="pbmit-ptable-column-inner">
-                                        <?php if ($isFeatured && trim((string) ($package['badge_text'] ?? '')) !== ''): ?>
-                                            <div class="absoult">
-                                                <h6><?= htmlspecialchars($package['badge_text']) ?> <i class="fa fa-star" aria-hidden="true"></i></h6>
-                                            </div>
-                                        <?php endif; ?>
-                                        <div class="pbmit-ptablebox pbmit-ptablebox-style-1">
-                                            <div class="pbmit-ptable-main">
-                                                <h3 class="pbmit-ptable-heading"><?= htmlspecialchars($package['package_name']) ?></h3>
-                                                <div class="pbmit-sep"></div>
-                                            </div>
-                                            <div class="pbmit-ptablebox-colum pbmit-ptablebox-featurebox min-heightt">
-                                                <h6 class="servicessss">Services</h6>
-                                                <ul class="list-style-two jklllll<?= $isFeatured ? ' active' : '' ?>">
-                                                    <?php foreach ($services as $serviceLine): ?>
-                                                        <?php $serviceLine = trim($serviceLine); ?>
-                                                        <?php if ($serviceLine === '') { continue; } ?>
-                                                        <li><?= htmlspecialchars($serviceLine) ?></li>
-                                                    <?php endforeach; ?>
-                                                </ul>
-                                            </div>
+                            <div
+                                class="pbmit-ptable-column-w col-md-12 col-lg-3 <?= $isFeatured ? 'pbmit-ptablebox-featured-col' : '' ?>">
+                                <div class="pbmit-ptable-column-inner">
+                                    <?php if ($isFeatured && trim((string) ($package['badge_text'] ?? '')) !== ''): ?>
+                                    <div class="absoult">
+                                        <h6><?= htmlspecialchars($package['badge_text']) ?> <i class="fa fa-star"
+                                                aria-hidden="true"></i></h6>
+                                    </div>
+                                    <?php endif; ?>
+                                    <div class="pbmit-ptablebox pbmit-ptablebox-style-1">
+                                        <div class="pbmit-ptable-main">
+                                            <h3 class="pbmit-ptable-heading">
+                                                <?= htmlspecialchars($package['package_name']) ?></h3>
+                                            <div class="pbmit-sep"></div>
+                                        </div>
+                                        <div class="pbmit-ptablebox-colum pbmit-ptablebox-featurebox min-heightt">
+                                            <h6 class="servicessss">Services</h6>
+                                            <ul class="list-style-two jklllll<?= $isFeatured ? ' active' : '' ?>">
+                                                <?php foreach ($services as $serviceLine): ?>
+                                                <?php $serviceLine = trim($serviceLine); ?>
+                                                <?php if ($serviceLine === '') { continue; } ?>
+                                                <li><?= htmlspecialchars($serviceLine) ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
 
-                                            <h6 class="servicessss pr-555">Price</h6>
+                                        <h6 class="servicessss pr-555">Price</h6>
 
-                                            <div class="pbmit-ptable-price-w">
-                                                <div class="pbmit-ptable-price kkk">€<?= htmlspecialchars((string) $package['price_eur']) ?></div>
-                                            </div>
+                                        <div class="pbmit-ptable-price-w">
+                                            <div class="pbmit-ptable-price kkk">
+                                                €<?= htmlspecialchars((string) $package['price_eur']) ?></div>
+                                        </div>
 
-                                            <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline">
-                                                <a class="<?= $buttonClass ?>" href="<?= htmlspecialchars($buttonUrl) ?>" title="">Select Package</a>
-                                            </div>
+                                        <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline">
+                                            <a class="<?= $buttonClass ?>" href="<?= htmlspecialchars($buttonUrl) ?>"
+                                                title="">Select Package</a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -902,9 +967,9 @@ foreach ($homepagePackages as $homepagePackage) {
                             <div class="new-boxxes">
 
                                 <div class="dataa">
-                                    <h4><a href="company-registration"#jjjj">Sole Proprietorship</a></h4>
+                                    <h4><a href="company-registration" #jjjj">Sole Proprietorship</a></h4>
                                     <p>Own Your Business, Maximize Your Profits with Tax Savings.</p>
-                                    <a href="company-registration"#jjjj" class="laernnn">Learn More</a>
+                                    <a href="company-registration" #jjjj" class="laernnn">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -1185,11 +1250,11 @@ foreach ($homepagePackages as $homepagePackage) {
                                 <div class="inf-testimonial-content">
                                     <div class="inf-quote-container">
                                         <p class="inf-testimonial-text">
-                                            I was worried about setting up a company in Georgia, but Legal Vista
+                                            "I was worried about setting up a company in Georgia, but Legal Vista
                                             made
                                             the process so easy. They explained everything clearly and handled all
                                             the
-                                            paperwork.
+                                            paperwork."
                                         </p>
 
                                     </div>
@@ -1200,6 +1265,7 @@ foreach ($homepagePackages as $homepagePackage) {
                                         <h3 class="inf-author-name">Marco G</h3>
                                         <p class="inf-author-location">Italy</p>
                                     </div>
+
                                 </div>
                             </div>
 
@@ -1244,6 +1310,11 @@ foreach ($homepagePackages as $homepagePackage) {
 
                         </div>
                     </div>
+
+                    <div class="inf-slider-controls inf-testimonial-controls">
+                        <button type="button" class="inf-slider-button inf-testimonial-prev" aria-label="Previous testimonial">&#8592;</button>
+                        <button type="button" class="inf-slider-button inf-testimonial-next" aria-label="Next testimonial">&#8594;</button>
+                    </div>
                 </div>
             </section>
 
@@ -1256,13 +1327,9 @@ foreach ($homepagePackages as $homepagePackage) {
             const swiper = new Swiper('.inf-swiper-container', {
                 loop: true,
                 speed: 1000,
-                autoplay: {
-                    delay: 4000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
+                navigation: {
+                    prevEl: '.inf-testimonial-prev',
+                    nextEl: '.inf-testimonial-next',
                 },
                 effect: 'slide',
             });
@@ -1306,10 +1373,17 @@ foreach ($homepagePackages as $homepagePackage) {
 
             <section class="inf-blog-section section-md">
                 <div class="container">
-                    <div class="pbmit-heading-subheading text-center mb-5">
-                        <h4 class="pbmit-subtitle">Latest Articles</h4>
-                        <h2 class="pbmit-title" style="color: #022d58;">Georgia Legal Insights: Essential Updates
-                        </h2>
+                    <div class="inf-blog-header">
+                        <div class="pbmit-heading-subheading text-center mb-5">
+                            <h4 class="pbmit-subtitle">Latest Articles</h4>
+                            <h2 class="pbmit-title" style="color: #022d58;">Georgia Legal Insights: Essential Updates
+                            </h2>
+                        </div>
+
+                        <div class="inf-slider-controls inf-blog-controls">
+                            <button type="button" class="inf-slider-button inf-blog-prev" aria-label="Previous article">&#8592;</button>
+                            <button type="button" class="inf-slider-button inf-blog-next" aria-label="Next article">&#8594;</button>
+                        </div>
                     </div>
 
                     <div class="swiper-container inf-main-swiper">
@@ -1346,8 +1420,8 @@ foreach ($homepagePackages as $homepagePackage) {
                                                 Changes 2025–26</a></h5>
                                         <p class="inf-excerpt">New Rules for Entrepreneurs, Investors, and IT
                                             Specialists...</p>
-                                        <a class="inf-read-more"
-                                            href="temporary-residence-permit-changes-202526">Read More</a>
+                                        <a class="inf-read-more" href="temporary-residence-permit-changes-202526">Read
+                                            More</a>
                                     </div>
                                 </article>
                             </div>
@@ -1393,14 +1467,14 @@ foreach ($homepagePackages as $homepagePackage) {
                                     </div>
                                     <div class="inf-blog-content">
                                         <span class="inf-date">Aug 05, 2025</span>
-                                        <h5 class="inf-title"><a
-                                                href="got-denied-a-residence-permit-in-georgia">Denied a
+                                        <h5 class="inf-title"><a href="got-denied-a-residence-permit-in-georgia">Denied
+                                                a
                                                 Residence
                                                 Permit?</a></h5>
                                         <p class="inf-excerpt">Here’s What You Need to Do Next if your permit is
                                             rejected...</p>
-                                        <a class="inf-read-more"
-                                            href="got-denied-a-residence-permit-in-georgia">Read More</a>
+                                        <a class="inf-read-more" href="got-denied-a-residence-permit-in-georgia">Read
+                                            More</a>
                                     </div>
                                 </article>
                             </div>
@@ -1482,7 +1556,6 @@ foreach ($homepagePackages as $homepagePackage) {
                                 </article>
                             </div>
                         </div>
-                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </section>
@@ -1503,11 +1576,10 @@ foreach ($homepagePackages as $homepagePackage) {
         document.addEventListener('DOMContentLoaded', function() {
             var blogSwiper = new Swiper('.inf-main-swiper', {
                 loop: true,
-                speed: 1000, // Speed of the transition between slides
-                autoplay: {
-                    delay: 3000, // Time between slides (3 seconds)
-                    disableOnInteraction: false, // Keeps autoplay running after user clicks
-                    pauseOnMouseEnter: true, // STOP moving when mouse hovers
+                speed: 1000,
+                navigation: {
+                    prevEl: '.inf-blog-prev',
+                    nextEl: '.inf-blog-next'
                 },
                 slidesPerView: 1,
                 spaceBetween: 30,
@@ -1518,9 +1590,7 @@ foreach ($homepagePackages as $homepagePackage) {
                     1024: {
                         slidesPerView: 3
                     }
-                },
-                // Optional: Smooth continuous flow (Marquee style)
-                // To use this, set speed to 5000 and delay to 0
+                }
             });
         });
         </script>
