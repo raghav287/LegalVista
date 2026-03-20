@@ -1,9 +1,9 @@
 <?php
 
 $host = "127.0.0.1";
-$user = "root";
-$pass = "";
-$db = "legalvista";
+$user = "u586615155_legal_vista";
+$pass = "K1>hDKTvi";
+$db = "u586615155_legal_vista";
 $port = 3306;
 
 function getSashDBConnection()

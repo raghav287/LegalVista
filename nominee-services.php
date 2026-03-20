@@ -331,6 +331,8 @@ if(isset($_POST['submit'])){
 <!-- About Us End --> 
 
 
+            <?php $leadFormCompact = true; include("includes/lead-form.php"); ?>
+
             <!-- Footer -->
             <?php include("includes/footer.php"); ?>
             <!-- End  Footer-->

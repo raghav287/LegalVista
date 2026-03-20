@@ -65,8 +65,13 @@ if(isset($_POST['submit1'])){
     if($mail->Send()){
         echo "<script>window.location='thanks'</script>";
     }
- }
+	 }
 }
+
+require_once __DIR__ . '/admin/bootstrap.php';
+require_once APP_ROOT . '/app/module-data.php';
+
+$homepagePackages = getHomepagePackages();
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -165,10 +170,11 @@ if(isset($_POST['submit1'])){
             
             <select name="package_type" id="package_type" class="form-control package_type" required>
             <option value="">Select Package Type</option>
-            <option value="Bronze">Bronze</option>
-            <option value="Silver">Silver</option>
-            <option value="Gold">Gold</option>
-            <option value="Platinum">Platinum</option>
+            <?php foreach ($homepagePackages as $package): ?>
+            <option value="<?= htmlspecialchars((string) $package['package_name']) ?>">
+            <?= htmlspecialchars((string) $package['package_name']) ?>
+            </option>
+            <?php endforeach; ?>
             </select>
             </div>
             </div>
@@ -303,199 +309,52 @@ if(isset($_POST['submit1'])){
 
 <div class="pbmit-ptables-w wpb_content_element">
   <div class="row">
-    <div class="pbmit-ptable-column-w col-md-12 col-lg-3 ">
-      <div class="pbmit-ptable-column-inner  ">
-        <div class="pbmit-ptablebox pbmit-ptablebox-style-1">
-          <div class="pbmit-ptable-main">
-            <h3 class="pbmit-ptable-heading">Bronze</h3>
-            <div class="pbmit-sep"></div>
-          
-          </div>
-          <div class="pbmit-ptablebox-colum pbmit-ptablebox-featurebox min-heightt">
-
-
-            
-
-         <h6 class="servicessss">Services</h6>
-
-
-
-
-            <ul class="list-style-two jklllll">
-              <li>Limited Liability Company (LLC)
-Registration in 24 Hours</li>
-              <li>Certificate of Incorporation</li>
-              <li>Legal Address for 1 year</li>
-              <li>All Govt. Fees & Charges</li>
-            </ul>
-          </div>
-
-
-                <h6 class="servicessss pr-555">Price</h6>
-
-
-
-
-
-
-
-
-
-            <div class="pbmit-ptable-price-w">
-              <div class="pbmit-ptable-price kkk">€499</div>
-              <!-- <div class="pbmit-ptable-cur-symbol-after">€</div> -->
-              <!-- <div class="pbmit-ptable-frequency">EUR</div> -->
-            </div>
-
-
-          <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline"> <a href="javascript:void(0)" class="pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md open-modal-btn1" data-id="Bronze">Select  Package</a> </div>
-        </div>
-      </div>
-    </div>
-    <div class="pbmit-ptable-column-w col-md-12 col-lg-3  pbmit-ptablebox-featured-col">
-      <div class="pbmit-ptable-column-inner ">
+    <?php foreach ($homepagePackages as $package): ?>
+    <?php
+      $services = preg_split('/\r\n|\r|\n/', (string) ($package['services_text'] ?? '')) ?: [];
+      $isFeatured = !empty($package['is_featured']);
+      $packageName = trim((string) ($package['package_name'] ?? ''));
+      $badgeText = trim((string) ($package['badge_text'] ?? ''));
+      $buttonClass = $isFeatured
+        ? 'pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md jklllllllll open-modal-btn1'
+        : 'pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md open-modal-btn1';
+    ?>
+    <div class="pbmit-ptable-column-w col-md-12 col-lg-3 <?= $isFeatured ? 'pbmit-ptablebox-featured-col' : '' ?>">
+      <div class="pbmit-ptable-column-inner">
+        <?php if ($isFeatured && $badgeText !== ''): ?>
         <div class="absoult">
-          <h6>  Most Popular <i class="fa fa-star" aria-hidden="true"></i> </h6>
+          <h6><?= htmlspecialchars($badgeText) ?> <i class="fa fa-star" aria-hidden="true"></i></h6>
         </div>
+        <?php endif; ?>
         <div class="pbmit-ptablebox pbmit-ptablebox-style-1">
           <div class="pbmit-ptable-main">
-            <h3 class="pbmit-ptable-heading">Silver</h3>
+            <h3 class="pbmit-ptable-heading"><?= htmlspecialchars($packageName) ?></h3>
             <div class="pbmit-sep"></div>
-          
           </div>
           <div class="pbmit-ptablebox-colum pbmit-ptablebox-featurebox min-heightt">
-
-                     <h6 class="servicessss">Services</h6>
-            <ul class="list-style-two jklllll active">
-              <li>Limited Liability Company (LLC)
-Registration in 24 Hours
-</li>
-              <li>Certificate of Incorporation</li>
-              <li>Legal Address for 1 year</li>
-              <li>All Govt. Fees & Charges</li>
-              <li>Registration of Company with
-Georgian Revenue Service
-</li>
+            <h6 class="servicessss">Services</h6>
+            <ul class="list-style-two jklllll<?= $isFeatured ? ' active' : '' ?>">
+              <?php foreach ($services as $serviceLine): ?>
+              <?php $serviceLine = trim($serviceLine); ?>
+              <?php if ($serviceLine === '') { continue; } ?>
+              <li><?= htmlspecialchars($serviceLine) ?></li>
+              <?php endforeach; ?>
             </ul>
           </div>
 
+          <h6 class="servicessss pr-555">Price</h6>
 
+          <div class="pbmit-ptable-price-w">
+            <div class="pbmit-ptable-price kkk">€<?= htmlspecialchars((string) $package['price_eur']) ?></div>
+          </div>
 
-    <h6 class="servicessss pr-555">Price</h6>
-
-
-
-
-            <div class="pbmit-ptable-price-w">
-              <div class="pbmit-ptable-price kkk">€799</div>
-              <!-- <div class="pbmit-ptable-cur-symbol-after">€</div> -->
-              <!-- <div class="pbmit-ptable-frequency">EUR</div> -->
-            </div>
-
-          <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline"> <a href="javascript:void(0)" class="pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md jklllllllll open-modal-btn1"  data-id="Silver" >Select Package</a> </div>
+          <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline">
+            <a href="javascript:void(0)" class="<?= $buttonClass ?>" data-id="<?= htmlspecialchars($packageName) ?>">Select Package</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="pbmit-ptable-column-w col-md-12 col-lg-3 ">
-      <div class="pbmit-ptable-column-inner ">
-        <div class="pbmit-ptablebox pbmit-ptablebox-style-1">
-          <div class="pbmit-ptable-main">
-            <h3 class="pbmit-ptable-heading">Gold</h3>
-            <div class="pbmit-sep"></div>
-        
-          </div>
-          <div class="pbmit-ptablebox-colum pbmit-ptablebox-featurebox min-heightt">
-
-                     <h6 class="servicessss">Services</h6>
-            <ul class="list-style-two jklllll">
-              <li>Limited Liability Company (LLC)
-Registration in 24 Hours
-</li>
-              <li>Certificate of Incorporation</li>
-              <li>Legal Address for 1 year</li>
-              <li>All Govt. Fees & Charges</li>
-              <li>Registration of Company with
-Georgian Revenue Service
-</li>
-              <li>VAT Registration</li>
-              <li>Corporate Bank Account</li>
-            </ul>
-          </div>
-
-
-
-
-
-
-        <h6 class="servicessss pr-555">Price</h6>
-
-
-
-              <div class="pbmit-ptable-price-w">
-              <div class="pbmit-ptable-price kkk">€1,199</div>
-           <!--    <div class="pbmit-ptable-cur-symbol-after">€</div>
-              <div class="pbmit-ptable-frequency">EUR</div> -->
-            </div>
-
-
-          <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline"> <a href="javascript:void(0)" class="pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md open-modal-btn1" data-id="Gold">Select Package</a> </div>
-        </div>
-      </div>
-    </div>
-    <div class="pbmit-ptable-column-w col-md-12 col-lg-3 ">
-      <div class="pbmit-ptable-column-inner ">
-        <div class="pbmit-ptablebox pbmit-ptablebox-style-1">
-          <div class="pbmit-ptable-main">
-            <!--<div class="pbmit-ptable-icon">
-              <div class="pbmit-sbox-icon-wrapper"><i class=""></i></div>
-            </div>-->
-            <h3 class="pbmit-ptable-heading">Platinum</h3>
-            <div class="pbmit-sep"></div>
-         
-          </div>
-          <div class="pbmit-ptablebox-colum pbmit-ptablebox-featurebox min-heightt">
-
-
-
-
-
-
-                     <h6 class="servicessss">Services</h6>
-
-
-            <ul class="list-style-two jklllll">
-              <li>Limited Liability Company (LLC)
-Registration in 24 Hours</li>
-              <li>Certificate of Incorporation</li>
-              <li>Legal Address for 1 year</li>
-              <li>All Govt. Fees & Charges</li>
-              <li>Registration of Company with
-Georgian Revenue Service</li>
-              <li>VAT Registration</li>
-              <li>Corporate Bank Account</li>
-              <li>Monthly Tax Filing for 1 year</li>
-            </ul>
-          </div>
-
-          
-                     <h6 class="servicessss pr-555">Price</h6>
-
-
-
-
-
-             <div class="pbmit-ptable-price-w">
-
-              <div class="pbmit-ptable-price kkk">€1,599</div>
-       <!--        <div class="pbmit-ptable-cur-symbol-after">€</div>
-              <div class="pbmit-ptable-frequency">EUR</div> -->
-            </div>
-
-
-          <div class="pbmit-vc_btn3-container pbmit-vc_btn3-inline"> <a href="javascript:void(0)" class="pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md open-modal-btn1" data-id="Platinum">Select Package</a> </div>
-        </div>
-      </div>
-    </div>
+    <?php endforeach; ?>
   </div>
 </div>
 
@@ -1415,6 +1274,7 @@ Georgian Revenue Service</li>
 </section>
 <!-- About Us End --> 
 
+            <?php $leadFormCompact = true; include("includes/lead-form.php"); ?>
 
             <!-- Footer -->
             <?php include("includes/footer.php"); ?>

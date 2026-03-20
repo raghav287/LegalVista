@@ -262,16 +262,16 @@ foreach ($homepagePackages as $homepagePackage) {
     }
 
     .inf-blog-header {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 24px;
         margin-bottom: 48px;
     }
 
     .inf-blog-header .pbmit-heading-subheading {
         margin-bottom: 0 !important;
-        text-align: left;
+        text-align: center;
+    }
+
+    .inf-blog-controls {
+        margin-top: 32px;
     }
 
     .inf-blog-item {
@@ -366,8 +366,7 @@ foreach ($homepagePackages as $homepagePackage) {
 
     @media (max-width: 991px) {
         .inf-blog-header {
-            flex-direction: column;
-            align-items: center;
+            margin-bottom: 32px;
         }
 
         .inf-blog-header .pbmit-heading-subheading {
@@ -1379,11 +1378,6 @@ foreach ($homepagePackages as $homepagePackage) {
                             <h2 class="pbmit-title" style="color: #022d58;">Georgia Legal Insights: Essential Updates
                             </h2>
                         </div>
-
-                        <div class="inf-slider-controls inf-blog-controls">
-                            <button type="button" class="inf-slider-button inf-blog-prev" aria-label="Previous article">&#8592;</button>
-                            <button type="button" class="inf-slider-button inf-blog-next" aria-label="Next article">&#8594;</button>
-                        </div>
                     </div>
 
                     <div class="swiper-container inf-main-swiper">
@@ -1556,6 +1550,11 @@ foreach ($homepagePackages as $homepagePackage) {
                                 </article>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="inf-slider-controls inf-blog-controls">
+                        <button type="button" class="inf-slider-button inf-blog-prev" aria-label="Previous article">&#8592;</button>
+                        <button type="button" class="inf-slider-button inf-blog-next" aria-label="Next article">&#8594;</button>
                     </div>
                 </div>
             </section>

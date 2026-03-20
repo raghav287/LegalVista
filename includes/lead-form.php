@@ -1,4 +1,5 @@
-<section id="lead-form-section">
+<?php $leadFormSectionClass = !empty($leadFormCompact) ? ' lead-form-section--compact' : ''; ?>
+<section id="lead-form-section" class="<?= $leadFormSectionClass ?>">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
