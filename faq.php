@@ -76,7 +76,7 @@
                             <div class="pbmit-tbar">
                                 <div class="pbmit-tbar-inner container">
                                     <h1 class="pbmit-tbar-title">FAQ</h1>
-                                          <h6 style="color: white; text-align: center; font-weight: 300; font-size: 17px;">Frequently Asked Questions</h6>
+                                    <p class="pbmit-tbar-desc">Frequently Asked Questions</p>
                                 </div>
                             </div>
                         </div>

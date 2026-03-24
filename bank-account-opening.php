@@ -167,8 +167,7 @@ if(isset($_POST['submit'])){
                             <div class="pbmit-tbar">
                                 <div class="pbmit-tbar-inner container">
                                     <h1 class="pbmit-tbar-title">Bank Account Opening</h1>
-
-     <h6 style="color: white; text-align: center; font-weight: 300; font-size: 17px;"> Effortless Banking Solutions for You and Your Business</h6>
+                                    <p class="pbmit-tbar-desc">Effortless Banking Solutions for You and Your Business</p>
 
                                 </div>
                             </div>

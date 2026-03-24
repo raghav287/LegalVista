@@ -166,7 +166,7 @@ if(isset($_POST['submit'])){
                             <div class="pbmit-tbar">
                                 <div class="pbmit-tbar-inner container">
                                     <h1 class="pbmit-tbar-title">Nominee Services</h1>
-                                          <h6 style="color: white; text-align: center; font-weight: 300; font-size: 17px;"> Preserve Your Privacy While Meeting Legal Obligations</h6>
+                                    <p class="pbmit-tbar-desc">Preserve Your Privacy While Meeting Legal Obligations</p>
                                 </div>
                             </div>
                         </div>

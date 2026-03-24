@@ -150,7 +150,7 @@ if(isset($_POST['submit'])){
                             <div class="pbmit-tbar">
                                 <div class="pbmit-tbar-inner container">
                                     <h1 class="pbmit-tbar-title">Accounting & Taxation</h1>
-                                          <h6 style="color: white; text-align: center; font-weight: 300; font-size: 17px;"> Accurate. Reliable. Compliant – Your Financial Partner in Georgia</h6>
+                                    <p class="pbmit-tbar-desc">Accurate. Reliable. Compliant – Your Financial Partner in Georgia</p>
                                 </div>
                             </div>
                         </div>

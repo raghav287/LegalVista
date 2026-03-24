@@ -168,7 +168,7 @@ if(isset($_POST['submit'])){
                             <div class="pbmit-tbar">
                                 <div class="pbmit-tbar-inner container">
                                     <h1 class="pbmit-tbar-title">Resident Permit</h1>
-                                          <h6 style="color: white; text-align: center; font-weight: 300; font-size: 17px;"> Residency Simplified: Start Your New Chapter in Georgia</h6>
+                                    <p class="pbmit-tbar-desc">Residency Simplified: Start Your New Chapter in Georgia</p>
                                 </div>
                             </div>
                         </div>
