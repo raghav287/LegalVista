@@ -212,6 +212,11 @@ function legalVistaRenderArticleStyles(): string
     color: #c6a354;
   }
 
+  /* Allow sticky sidebar to work by preventing clipping on the wrapper */
+  .page-wrapper {
+    overflow: visible;
+  }
+
   .article-hero {
     position: relative;
     padding: 118px 0 112px;

@@ -2346,25 +2346,29 @@ ul.contactus- li a:hover {
     margin-bottom: 8px;
 }
 
-.cp-widget-button {display:inline-block;position:fixed;bottom:23%;right:1%;z-index:999999}
 
-.cp-widget-button__inner {animation:bounce 1s infinite alternate;-webkit-animation:bounce 1s infinite alternate}
+.cp-widget-button {display:inline-block;position:fixed;bottom:13%;right:1%;z-index:999999}
+
+/* Stop bouncing animation on WhatsApp button */
+.cp-widget-button__inner {animation:none;-webkit-animation:none}
 
 .cp-widget-button__inner {height:64px;width:64px;line-height:64px;border-radius:50%;text-align:center;cursor:pointer}
 
-.cp-widget-button__inner img {margin:0 auto}@keyframes bounce {from {transform:translateY(0)}to {transform:translateY(-15px);}}@-webkit-keyframes bounce {from {transform:translateY(0)}to {transform:translateY(-15px)}}
+.cp-widget-button__inner img {margin:0 auto}
 
 
 
 
 
-.cp-widget-button1 {display:inline-block;position:fixed;bottom:12%;right:1%;z-index:999999}
 
-.cp-widget-button__inner1 {animation:bounce 1s infinite alternate;-webkit-animation:bounce 1s infinite alternate}
+/* Hide the phone button entirely */
+.cp-widget-button1 {display:none}
+
+.cp-widget-button__inner1 {animation:none;-webkit-animation:none}
 
 .cp-widget-button__inner1 {height:64px;width:64px;line-height:64px;border-radius:50%;text-align:center;cursor:pointer}
 
-.cp-widget-button__inner1 img {margin:0 auto}@keyframes bounce {from {transform:translateY(0)}to {transform:translateY(-15px);}}@-webkit-keyframes bounce {from {transform:translateY(0)}to {transform:translateY(-15px)}}
+.cp-widget-button__inner1 img {margin:0 auto}
 
 
 

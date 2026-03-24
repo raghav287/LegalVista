@@ -177,7 +177,8 @@ INDEX:
     display: none;
 }
 .page-wrapper {
-    overflow: hidden;
+    /* Allow sticky sidebars and in-page anchors without clipping */
+    overflow: visible;
 }
 body {
     counter-reset:item pbmitbox1 pbmitbox2 pbmitbox3 pbmit-rev-counter;
@@ -1005,5 +1006,4 @@ ul.top-contact li  {
     color: white;
 
 }
-
 

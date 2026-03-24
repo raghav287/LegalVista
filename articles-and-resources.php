@@ -288,6 +288,9 @@ function buildArticlesUrl(array $params = []): string
 
         .articles-sidebar {
             padding-top: 4px;
+            position: sticky;
+            top: 120px;
+            align-self: start;
         }
 
         .articles-widget + .articles-widget {
