@@ -68,34 +68,520 @@
             <?php include("includes/header.php"); ?>
             <!-- End  Footer-->
 
-            <!-- Title Bar -->
-            <div class="pbmit-title-bar-wrapper">
-                <div class="container">
-                    <div class="pbmit-title-bar-content">
-                        <div class="pbmit-title-bar-content-inner">
-                            <div class="pbmit-tbar">
-                                <div class="pbmit-tbar-inner container">
-                                    <h1 class="pbmit-tbar-title">Moving to Georgia with Your Family: What You Need to Know
-</h1>
-                                          <h6 style="color: white; text-align: center; font-weight: 300; font-size: 17px;">Low-Tax Moving to Georgia with Your Family: What You Need to Know
-</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Title Bar End-->
+            <?php
+            function legalVistaGetArticlesData(): array
+{
+    return [
+        'georgias-new-work-permit-regime' => [
+            'slug' => 'georgias-new-work-permit-regime',
+            'title' => 'Georgia’s New Work Permit Regime from March 2026: What Digital Nomads & Entrepreneurs Must Know',
+            'image' => 'images/georgias-new-work-permit-regime.jpg',
+            'date' => '2026-03-12',
+            'categories' => ['New Law Changes', 'Resident Permit'],
+            'excerpt' => 'Georgia has long been known for its open-door business policies and pro-investment approach.',
+        ],
+        'temporary-residence-permit-changes-202526' => [
+            'slug' => 'temporary-residence-permit-changes-202526',
+            'title' => 'Temporary Residence Permit Changes 2025–26: New Rules for Entrepreneurs, Investors, and IT Specialists in Georgia',
+            'image' => 'images/temporary-residence-permit-changes-202526.jpg',
+            'date' => '2026-02-18',
+            'categories' => ['New Law Changes', 'Resident Permit'],
+            'excerpt' => 'New rules for entrepreneurs, investors, and IT specialists are reshaping the residence permit landscape.',
+        ],
+        'got-denied-a-residence-permit-in-georgia' => [
+            'slug' => 'got-denied-a-residence-permit-in-georgia',
+            'title' => 'Got Denied a Residence Permit in Georgia? Here’s What You Need to Do Next',
+            'image' => 'images/got-denied-a-residence-permit-in-georgia.jpg',
+            'date' => '2026-01-30',
+            'categories' => ['Resident Permit', 'Guides'],
+            'excerpt' => 'A practical guide to understanding common rejection reasons and the next legal steps to take.',
+        ],
+        'how-to-become-a-tax-resident-in-georgia-a-2025-guide' => [
+            'slug' => 'how-to-become-a-tax-resident-in-georgia-a-2025-guide',
+            'title' => 'How to Become a Tax Resident in Georgia: A 2025 Guide',
+            'image' => 'images/how-to-become-a-tax-resident-in-georgia-a-2025-guide.jpg',
+            'date' => '2025-12-11',
+            'categories' => ['Tax Residency', 'Taxes', 'Guides'],
+            'excerpt' => 'A detailed guide to the tax residency rules, HNWI options, and key tax benefits in Georgia.',
+        ],
+        'moving-to-georgia-with-your-family' => [
+            'slug' => 'moving-to-georgia-with-your-family',
+            'title' => 'Moving to Georgia with Your Family: What You Need to Know',
+            'image' => 'images/low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia.jpg',
+            'date' => '2025-10-14',
+            'categories' => ['Resident Permit', 'Guides'],
+            'excerpt' => 'A family-focused overview of residency, schools, healthcare, and settling into life in Georgia.',
+        ],
+        'new-aml-compliance-rules-for-company' => [
+            'slug' => 'new-aml-compliance-rules-for-company',
+            'title' => 'New AML Compliance Rules for Company Formation in Georgia (2025 Update)',
+            'image' => 'images/new-aml-compliance-rules-for-company.jpg',
+            'date' => '2025-09-03',
+            'categories' => ['Company Formation', 'New Law Changes'],
+            'excerpt' => 'An overview of the latest AML compliance rules affecting company formation in Georgia.',
+        ],
+        'georgia-is-easy-until-it-isnt' => [
+            'slug' => 'georgia-is-easy-until-it-isnt',
+            'title' => 'Georgia is Easy Until It Isn’t: A Lawyer’s View on What Can Go Wrong',
+            'image' => 'images/georgia-is-easy-until-it-isnt.jpg',
+            'date' => '2025-07-21',
+            'categories' => ['Company Formation', 'Guides'],
+            'excerpt' => 'A lawyer’s perspective on the practical mistakes and legal risks businesses should avoid.',
+        ],
+        'low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia' => [
+            'slug' => 'low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia',
+            'title' => 'Low-Tax Jurisdiction: Why Entrepreneurs Are Moving to Georgia',
+            'image' => 'images/low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia.jpg',
+            'date' => '2025-05-06',
+            'categories' => ['Tax Residency', 'Taxes'],
+            'excerpt' => 'Why Georgia continues to attract entrepreneurs looking for low-tax and business-friendly options.',
+        ],
+        'ultimate-guide-to-georgias-tax-haven-for-digital-nomads' => [
+            'slug' => 'ultimate-guide-to-georgias-tax-haven-for-digital-nomads',
+            'title' => "The Ultimate Guide to Georgia's Tax Haven for Digital Nomads",
+            'image' => 'images/ultimate-guide-to-georgias-tax-haven-for-digital-nomads1.jpg',
+            'date' => '2025-03-19',
+            'categories' => ['Tax Residency', 'Taxes', 'Guides'],
+            'excerpt' => 'An in-depth look at why digital nomads are increasingly using Georgia as a tax-efficient base.',
+        ],
+        'unlock-entrepreneurial-freedom' => [
+            'slug' => 'unlock-entrepreneurial-freedom',
+            'title' => 'Unlock Entrepreneurial Freedom',
+            'image' => 'images/nlock-entrepreneurial.jpg',
+            'date' => '2024-11-28',
+            'categories' => ['Company Formation', 'Guides'],
+            'excerpt' => 'Why Georgia’s low-tax structure can create more freedom for entrepreneurs and remote founders.',
+        ],
+        'compelling-reasons-to-register-your-business-in-georgia' => [
+            'slug' => 'compelling-reasons-to-register-your-business-in-georgia',
+            'title' => '5 Compelling Reasons to Register Your Business in Georgia',
+            'image' => 'images/your-business-in-georgia.jpg',
+            'date' => '2024-09-12',
+            'categories' => ['Company Formation', 'Guides'],
+            'excerpt' => 'Five practical reasons why Georgia is an appealing jurisdiction for company registration.',
+        ],
+    ];
+}
 
-<!-- About Us Start -->
+function legalVistaGetArticleMeta(string $slug): array
+{
+    $articles = legalVistaGetArticlesData();
+    return $articles[$slug] ?? [
+        'slug' => $slug,
+        'title' => '',
+        'image' => '',
+        'date' => date('Y-m-d'),
+        'categories' => ['News'],
+        'excerpt' => '',
+    ];
+}
 
-<section class="about-us-section">
+function legalVistaGetCategoryCounts(): array
+{
+    $counts = [
+        'Company Formation' => 0,
+        'New Law Changes' => 0,
+        'Tax Residency' => 0,
+        'Resident Permit' => 0,
+        'Taxes' => 0,
+        'Guides' => 0,
+    ];
+
+    foreach (legalVistaGetArticlesData() as $article) {
+        foreach ($article['categories'] as $category) {
+            if (isset($counts[$category])) {
+                $counts[$category]++;
+            }
+        }
+    }
+
+    return $counts;
+}
+
+function legalVistaRenderArticleStyles(): string
+{
+    static $rendered = false;
+    if ($rendered) {
+        return '';
+    }
+    $rendered = true;
+
+    return <<<'HTML'
+<style>
+  .navigation > li > a[href="articles-and-resources"] {
+    color: #c6a354;
+  }
+
+  .article-hero {
+    position: relative;
+    padding: 118px 0 112px;
+    background:
+      linear-gradient(0deg, rgba(17, 44, 84, 0.88), rgba(17, 44, 84, 0.88)),
+      url("images/titlebar-img.jpg") center center / cover no-repeat;
+  }
+
+  .article-hero-content {
+    text-align: center;
+    color: #fff;
+  }
+
+  .article-hero-content h1 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.1;
+  }
+
+  .article-hero-content p {
+    margin: 18px 0 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 18px;
+  }
+
+  .article-detail-section {
+    padding: 86px 0 100px;
+    background: #fff;
+  }
+
+  .article-detail-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .article-detail-meta {
+    margin-bottom: 14px;
+    color: #c6a354;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .article-detail-title {
+    margin: 0;
+    color: #111111;
+    font-size: clamp(34px, 3.5vw, 52px);
+    line-height: 1.12;
+  }
+
+  .article-detail-date {
+    margin-top: 16px;
+    margin-bottom: 38px;
+    color: #111111;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .article-detail-content img.ringhtimg,
+  .article-detail-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 0 32px;
+    border-radius: 16px;
+    float: none;
+  }
+
+  .article-detail-content p,
+  .article-detail-content li,
+  .article-detail-content ol,
+  .article-detail-content ul {
+    color: #274667;
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  .article-detail-content h2,
+  .article-detail-content h3,
+  .article-detail-content h4 {
+    margin: 34px 0 12px;
+    color: #163760;
+  }
+
+  .article-detail-content ul,
+  .article-detail-content ol {
+    padding-left: 22px;
+  }
+
+  .article-detail-sidebar h3 {
+    margin: 0 0 20px;
+    color: #163760;
+    font-size: 24px;
+  }
+
+  .article-detail-sidebar {
+    position: sticky;
+    top: 120px;
+    align-self: start;
+  }
+
+
+  .article-sidebar-widget + .article-sidebar-widget {
+    margin-top: 34px;
+  }
+
+  .article-search-form {
+    position: relative;
+  }
+
+  .article-search-form input {
+    width: 100%;
+    height: 58px;
+    padding: 0 56px 0 16px;
+    border: 1px solid #d9dfe6;
+    border-radius: 10px;
+  }
+
+  .article-search-form button {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #7b8591;
+    transform: translateY(-50%);
+  }
+
+  .article-category-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .article-category-list a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: #163760;
+    font-size: 16px;
+  }
+
+  .article-post-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 44px;
+    padding-top: 26px;
+    border-top: 1px solid #e5e9ef;
+  }
+
+  .article-post-nav a {
+    min-height: 48px;
+    padding: 0 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #dfe5ec;
+    border-radius: 8px;
+    color: #163760;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    justify-self: start;
+    width: auto;
+  }
+
+  .article-post-nav .article-post-nav-next {
+    justify-self: end;
+  }
+
+  .article-related {
+    margin-top: 64px;
+    padding-top: 36px;
+    border-top: 1px solid #e5e9ef;
+  }
+
+  .article-related h3 {
+    margin: 0 0 28px;
+    color: #163760;
+    font-size: 32px;
+  }
+
+  .article-related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    max-width: 820px;
+  }
+
+  .article-related-card-image {
+    display: block;
+    overflow: hidden;
+    border-radius: 14px;
+    margin-bottom: 16px;
+  }
+
+  .article-related-card-image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .article-related-card-meta {
+    color: #c6a354;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .article-related-card h4 {
+    margin: 0;
+    color: #111111;
+    font-size: 30px;
+    line-height: 1.18;
+  }
+
+  .article-related-card h4 a {
+    color: inherit;
+  }
+
+  .article-related-card-date {
+    margin-top: 14px;
+    color: #111111;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 991px) {
+    .article-hero {
+      padding: 92px 0 88px;
+    }
+
+    .article-detail-layout {
+      grid-template-columns: 1fr;
+      gap: 42px;
+    }
+
+    .article-post-nav,
+    .article-related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .article-post-nav .article-post-nav-next {
+      justify-self: start;
+    }
+  }
+</style>
+HTML;
+}
+
+function legalVistaRenderArticleHero(array $article): string
+{
+    return legalVistaRenderArticleStyles() . '
+<section class="article-hero">
   <div class="container">
+    <div class="article-hero-content">
+      <h1>Articles &amp; Resources</h1>
+      <p>Explore Insights &amp; Discover Knowledge</p>
+    </div>
+  </div>
+</section>';
+}
 
+function legalVistaRenderArticleOpen(array $article): string
+{
+    return '
+<section class="article-detail-section">
+  <div class="container">
+    <div class="article-detail-layout">
+      <article class="article-detail-main">
+        <div class="article-detail-meta">' . htmlspecialchars(implode(', ', $article['categories']), ENT_QUOTES, 'UTF-8') . '</div>
+        <h1 class="article-detail-title">' . htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8') . '</h1>
+        <div class="article-detail-date">' . strtoupper(date('F j, Y', strtotime($article['date']))) . '</div>
+        <div class="article-detail-content">';
+}
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="about-page aboutttinfo ">
+function legalVistaRenderArticleClose(array $article): string
+{
+    $articles = array_values(legalVistaGetArticlesData());
+    $counts = legalVistaGetCategoryCounts();
+    $currentIndex = 0;
+
+    foreach ($articles as $index => $item) {
+        if ($item['slug'] === $article['slug']) {
+            $currentIndex = $index;
+            break;
+        }
+    }
+
+    $prev = $articles[($currentIndex - 1 + count($articles)) % count($articles)];
+    $next = $articles[($currentIndex + 1) % count($articles)];
+
+    $related = [];
+    foreach ($articles as $item) {
+        if ($item['slug'] === $article['slug']) {
+            continue;
+        }
+        if (array_intersect($article['categories'], $item['categories'])) {
+            $related[] = $item;
+        }
+        if (count($related) === 2) {
+            break;
+        }
+    }
+
+    return '
+        </div>
+      </article>
+      <aside class="article-detail-sidebar">
+        <div class="article-sidebar-widget">
+          <h3>Search</h3>
+          <form class="article-search-form" method="get" action="articles-and-resources">
+            <input type="search" name="search" placeholder="Search..." aria-label="Search articles" />
+            <button type="submit" aria-label="Search articles"><i class="pbmit-base-icon-search"></i></button>
+          </form>
+        </div>
+        <div class="article-sidebar-widget">
+          <h3>Categories</h3>
+          <div class="article-category-list">
+            <a href="articles-and-resources?category=Company+Formation"><span>Company Formation</span><span>(' . ($counts['Company Formation'] ?? 0) . ')</span></a>
+            <a href="articles-and-resources?category=New+Law+Changes"><span>New Law Changes</span><span>(' . ($counts['New Law Changes'] ?? 0) . ')</span></a>
+            <a href="articles-and-resources?category=Tax+Residency"><span>Tax Residency</span><span>(' . ($counts['Tax Residency'] ?? 0) . ')</span></a>
+            <a href="articles-and-resources?category=Resident+Permit"><span>Resident Permit</span><span>(' . ($counts['Resident Permit'] ?? 0) . ')</span></a>
+            <a href="articles-and-resources?category=Taxes"><span>Taxes</span><span>(' . ($counts['Taxes'] ?? 0) . ')</span></a>
+            <a href="articles-and-resources?category=Guides"><span>Guides</span><span>(' . ($counts['Guides'] ?? 0) . ')</span></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="article-post-nav">
+      <a href="' . htmlspecialchars($prev['slug'], ENT_QUOTES, 'UTF-8') . '"><span aria-hidden="true">&lsaquo;</span> Previous</a>
+      <a class="article-post-nav-next" href="' . htmlspecialchars($next['slug'], ENT_QUOTES, 'UTF-8') . '">Next <span aria-hidden="true">&rsaquo;</span></a>
+    </div>
+    <div class="article-related">
+      <h3>Related posts</h3>
+      <div class="article-related-grid">' .
+        implode('', array_map(static function (array $item): string {
+            return '
+        <article class="article-related-card">
+          <a class="article-related-card-image" href="' . htmlspecialchars($item['slug'], ENT_QUOTES, 'UTF-8') . '">
+            <img src="' . htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8') . '" />
+          </a>
+          <div class="article-related-card-meta">' . htmlspecialchars(implode(', ', $item['categories']), ENT_QUOTES, 'UTF-8') . '</div>
+          <h4><a href="' . htmlspecialchars($item['slug'], ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8') . '</a></h4>
+          <div class="article-related-card-date">' . strtoupper(date('F j, Y', strtotime($item['date']))) . '</div>
+        </article>';
+        }, $related)) . '
+      </div>
+    </div>
+  </div>
+</section>';
+}
+
+            $articleMeta = legalVistaGetArticleMeta('moving-to-georgia-with-your-family');
+            echo legalVistaRenderArticleHero($articleMeta);
+            echo legalVistaRenderArticleOpen($articleMeta);
+            ?>
 <img src="images/low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia.jpg"  width="500px" class="ringhtimg">  
          
 
@@ -316,18 +802,7 @@ it’s easy to see why living in Georgia as a foreigner has become so appealing.
 
 
 
-      </div>
-    </div>
-
-
-
-
-
- 
- 
-</div>
-</section>
-<!-- About Us End --> 
+            <?php echo legalVistaRenderArticleClose($articleMeta); ?>
 
 
             <!-- Footer -->

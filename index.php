@@ -274,6 +274,19 @@ foreach ($homepagePackages as $homepagePackage) {
         margin-top: 32px;
     }
 
+    .inf-main-swiper {
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .inf-main-swiper .swiper-wrapper {
+        align-items: stretch;
+    }
+
+    .inf-main-swiper .swiper-slide {
+        height: auto;
+    }
+
     .inf-blog-item {
         position: relative;
         height: 480px;
@@ -1581,13 +1594,20 @@ foreach ($homepagePackages as $homepagePackage) {
                     nextEl: '.inf-blog-next'
                 },
                 slidesPerView: 1,
+                slidesPerGroup: 1,
                 spaceBetween: 30,
                 breakpoints: {
+                    576: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 1
+                    },
                     768: {
-                        slidesPerView: 2
+                        slidesPerView: 2,
+                        slidesPerGroup: 1
                     },
                     1024: {
-                        slidesPerView: 3
+                        slidesPerView: 3,
+                        slidesPerGroup: 1
                     }
                 }
             });
