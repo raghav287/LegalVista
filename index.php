@@ -979,7 +979,8 @@ foreach ($homepagePackages as $homepagePackage) {
                             <div class="new-boxxes">
 
                                 <div class="dataa">
-                                    <h4><a href="individual-entrepreneur" #jjjj">Sole Proprietorship</a></h4>
+                                    <h4><a href="individual-entrepreneur" #jjjj">Individual Entrepreneur
+                                        </a></h4>
                                     <p>Own Your Business, Maximize Your Profits with Tax Savings.</p>
                                     <a href="individual-entrepreneur" #jjjj" class="laernnn">Learn More</a>
                                 </div>
