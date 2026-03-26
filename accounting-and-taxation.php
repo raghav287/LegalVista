@@ -83,32 +83,41 @@ if(isset($_POST['submit'])){
             <!-- Footer -->
             <?php include("includes/header.php"); ?>
             
-            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Submit Your Inquiry</h1>
+            <style>
+            .enquiry-modal .modal-content{border-radius:18px;}
+            .enquiry-modal .form-control{background:#f7f8fb;border:1px solid #dfe3ec;border-radius:12px;padding:12px 14px;color:#1a2433;}
+            .enquiry-modal .form-control:focus{border-color:#3ea6ff;box-shadow:0 0 0 3px rgba(62,166,255,0.15);background:#fff;}
+            .enquiry-modal .lead-submit-btn{background:linear-gradient(135deg,#f4c167 0%,#f0a73e 100%);color:#1f1407;border:none;border-radius:12px;letter-spacing:.8px;transition:transform .15s ease,box-shadow .2s ease;}
+            .enquiry-modal .lead-submit-btn:hover{transform:translateY(-1px);box-shadow:0 14px 24px rgba(240,167,62,0.28);}
+            .letter-sp-1{letter-spacing:.12rem;}
+            </style>
+            
+            <div class="modal fade enquiry-modal" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-4 shadow-lg border-0">
+      <div class="modal-header border-0 pb-0">
+        <div>
+            <p class="text-uppercase text-muted fw-semibold mb-1 small letter-sp-1">Let’s talk</p>
+            <h1 class="modal-title fs-4 fw-bold mb-0" id="exampleModalLabel">Submit your inquiry</h1>
+        </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body pt-1">
+        <p class="text-muted small mb-3 d-flex align-items-center gap-2"><i class="fa fa-bolt text-warning"></i> Average response time: under 1 hour</p>
         <div class="popup-form">
-          <form method="post" id="contact-form" action="accounting-and-taxation">
-            <div class="row"> 
+          <form method="post" id="contact-form" action="/legal-vista/backend/contact-form">
+            <div class="row g-3"> 
               
-              <!-- Name -->
-              <div class="col-md-12 col-lg-12">
-                <input type="text" name="name" class="form-control" placeholder="Name" required>
+              <div class="col-md-12 col-lg-6">
+                <input type="text" name="name" class="form-control form-control-lg" placeholder="Full name *" required>
               </div>
               
-              <!-- Email -->
-              <div class="col-md-12 col-lg-12">
-                <input type="email" name="email" class="form-control" placeholder="Email" required>
+              <div class="col-md-12 col-lg-6">
+                <input type="email" name="email" class="form-control form-control-lg" placeholder="Work email *" required>
               </div>
               
-        <!-- Package Type Dropdown -->
 <div class="col-md-12 col-lg-12">
-
-  <select name="package_type" id="package_type" class="form-control" required>
+  <select name="package_type" id="package_type" class="form-control form-control-lg" required>
     <option value="">Select Package Type</option>
     <option value="Starter">Starter</option>
     <option value="Professional">Professional</option>
@@ -117,21 +126,14 @@ if(isset($_POST['submit'])){
   </select>
 </div>
 
-              
-         
-           
-              
-              <!-- Message / Brief Description -->
               <div class="col-md-12">
-                <textarea name="message" cols="40" rows="4" class="form-control" placeholder="Please describe your requirements or questions here." required></textarea>
+                <textarea name="message" cols="40" rows="4" class="form-control form-control-lg" placeholder="Please describe your requirements or questions here." required></textarea>
               </div>
               
-              <!-- Submit Button -->
               <div class="col-md-12 col-lg-12">
-                <button type="submit" name="submit" class="pbmit-btn pbmit-btn-global pbmit-btn-shape-round w-100 jkl"> <i class="form-btn-loader fa fa-circle-o-notch fa-spin fa-fw margin-bottom d-none"></i> SEND MESSAGE </button>
+                <button type="submit" name="submit" class="btn lead-submit-btn w-100 py-3 fw-bold text-uppercase"> <i class="form-btn-loader fa fa-circle-o-notch fa-spin fa-fw margin-bottom d-none"></i> Send message </button>
               </div>
               
-              <!-- Status Message -->
               <div class="col-md-12 col-lg-12 message-status"></div>
             </div>
           </form>

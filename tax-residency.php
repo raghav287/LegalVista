@@ -38,183 +38,244 @@ if(isset($_POST['submit'])){
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>Legal Vista Ltd -  Tax Residency Company in Tbilisi, Georgia</title>
-<meta name="description" content="Legal Vista Ltd, a premier law firm founded in 2017, offers bespoke legal services to expatriates looking to set up base in Georgia. We offer a gamut of company start up services to kick start your business and assist in its growth. Limited Liability Company in Tbilisi, Georgia"/>
-<meta name="keywords" content=  "Legal Vista Ltd, Limited Liability Company, Limited Liability Company in Tbilisi, Limited Liability Company in Georgia, Accounting & Taxation, Accounting & Taxation Company in Tbilisi, Accounting & Taxation Company in Georgia, Resident Permit, Resident Permit Company in Tbilisi, Resident Permit Company in Georgia , Bank Account Opening, Bank Account Opening Company in Tbilisi, Bank Account Opening Company in Georgia , Tax Residency, Tax Residency Company in Tbilisi, Tax Residency Company in Georgia, Nominee Services, Nominee Services Company in Tbilisi, Nominee Services Company in Georgia "/> 
-<meta name="robots" content="all"/>
-<meta name= "resource-type" content="document"/>
-<meta name= "page-topic" content="Taxation Services"/>
-<meta name= "clientbase" content="Global"/>
-<meta name= "distribution" content="World Wide Web"/>
-<meta name= "audience" content="all"/>
-<link rel="canonical" href="https://legal-vista.com/" />
-<meta name="rating" content="general"/>
-<meta id="googlebot" name="googlebot" content="index, follow">
-<meta name= "expires" content="never"/>
-<meta name="bingbot" content=" index, follow " />
-<meta name="revisit-after" content="Daily"/>
-<meta name="author" content="Legal Vista Ltd">
-<meta name="HandheldFriendly" content="True" />
-<meta name="YahooSeeker" content="Index,Follow" />
-<meta name="geo.region" content="GA" />
-<meta name="State" content="Tbilisi" />
-<meta name="City" content="Tbilisi" />
-<meta name="subject" content="Rated #1 Legal Vista Ltd - Limited Liability Company in Tbilisi, Georgia"/>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Legal Vista Ltd - Tax Residency Company in Tbilisi, Georgia</title>
+    <meta name="description"
+        content="Legal Vista Ltd, a premier law firm founded in 2017, offers bespoke legal services to expatriates looking to set up base in Georgia. We offer a gamut of company start up services to kick start your business and assist in its growth. Limited Liability Company in Tbilisi, Georgia" />
+    <meta name="keywords"
+        content="Legal Vista Ltd, Limited Liability Company, Limited Liability Company in Tbilisi, Limited Liability Company in Georgia, Accounting & Taxation, Accounting & Taxation Company in Tbilisi, Accounting & Taxation Company in Georgia, Resident Permit, Resident Permit Company in Tbilisi, Resident Permit Company in Georgia , Bank Account Opening, Bank Account Opening Company in Tbilisi, Bank Account Opening Company in Georgia , Tax Residency, Tax Residency Company in Tbilisi, Tax Residency Company in Georgia, Nominee Services, Nominee Services Company in Tbilisi, Nominee Services Company in Georgia " />
+    <meta name="robots" content="all" />
+    <meta name="resource-type" content="document" />
+    <meta name="page-topic" content="Taxation Services" />
+    <meta name="clientbase" content="Global" />
+    <meta name="distribution" content="World Wide Web" />
+    <meta name="audience" content="all" />
+    <link rel="canonical" href="https://legal-vista.com/" />
+    <meta name="rating" content="general" />
+    <meta id="googlebot" name="googlebot" content="index, follow">
+    <meta name="expires" content="never" />
+    <meta name="bingbot" content=" index, follow " />
+    <meta name="revisit-after" content="Daily" />
+    <meta name="author" content="Legal Vista Ltd">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="YahooSeeker" content="Index,Follow" />
+    <meta name="geo.region" content="GA" />
+    <meta name="State" content="Tbilisi" />
+    <meta name="City" content="Tbilisi" />
+    <meta name="subject" content="Rated #1 Legal Vista Ltd - Limited Liability Company in Tbilisi, Georgia" />
 
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/fevicon.png" />
-        <!-- CSS
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/fevicon.png" />
+    <!-- CSS
          ============================================ -->
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css" />
-        <!-- Fontawesome -->
-        <link rel="stylesheet" href="css/fontawesome.css" />
-        <!-- Flaticon -->
-        <link rel="stylesheet" href="css/flaticon.css" />
-        <!-- Base Icons -->
-        <link rel="stylesheet" href="css/pbminfotech-base-icons.css" />
-        <!-- Swiper -->
-        <link rel="stylesheet" href="css/swiper.min.css" />
-        <!-- Magnific -->
-        <link rel="stylesheet" href="css/magnific-popup.css" />
-        <!-- Shortcode CSS -->
-        <link rel="stylesheet" href="css/shortcode.css" />
-        <!-- Themify Icons -->
-        <link rel="stylesheet" href="css/themify-icons.css" />
-        <!-- root CSS -->
-        <link rel="stylesheet" href="css/demo-4.css" />
-        <!-- Base CSS -->
-        <link rel="stylesheet" href="css/base.css" />
-        <!-- AOS -->
-        <link rel="stylesheet" href="css/aos.css" />
-        <!-- Style CSS -->
-        <link rel="stylesheet" href="css/style.css" />
-        <!-- Responsive CSS -->
-        <link rel="stylesheet" href="css/responsive.css" />
-        <!-- REVOLUTION STYLE SHEETS -->
-        <link rel="stylesheet" type="text/css" href="revolution/rs6.css" />
-    </head>
-    <body>
-        <!-- page wrapper -->
-        <div class="page-wrapper">
-            <!-- Footer -->
-            <?php include("includes/header.php"); ?>
-            <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabe4" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Submit Your Inquiry</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="popup-form">
-          <form method="post" id="contact-form" action="tax-residency">
-            <div class="row"> 
-              
-              <!-- Name -->
-              <div class="col-md-12 col-lg-12">
-                <input type="text" name="name" class="form-control" placeholder="Name" required>
-              </div>
-              
-              <!-- Email -->
-              <div class="col-md-12 col-lg-12">
-                <input type="email" name="email" class="form-control" placeholder="Email" required>
-              </div>
-              
-<div class="col-md-12 col-lg-12">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="css/fontawesome.css" />
+    <!-- Flaticon -->
+    <link rel="stylesheet" href="css/flaticon.css" />
+    <!-- Base Icons -->
+    <link rel="stylesheet" href="css/pbminfotech-base-icons.css" />
+    <!-- Swiper -->
+    <link rel="stylesheet" href="css/swiper.min.css" />
+    <!-- Magnific -->
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <!-- Shortcode CSS -->
+    <link rel="stylesheet" href="css/shortcode.css" />
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="css/themify-icons.css" />
+    <!-- root CSS -->
+    <link rel="stylesheet" href="css/demo-4.css" />
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="css/base.css" />
+    <!-- AOS -->
+    <link rel="stylesheet" href="css/aos.css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!-- REVOLUTION STYLE SHEETS -->
+    <link rel="stylesheet" type="text/css" href="revolution/rs6.css" />
+</head>
 
-  <select name="service" id="service" class="form-control">
-    
-    <option value="Tax Residency">Tax Residency</option>
-  
-  </select>
-</div>
+<body>
+    <!-- page wrapper -->
+    <div class="page-wrapper">
+        <!-- Footer -->
+        <?php include("includes/header.php"); ?>
 
-         
-              
-              <!-- Message / Brief Description -->
-              <div class="col-md-12">
-                <textarea name="message" cols="40" rows="4" class="form-control" placeholder="Please describe your requirements or questions here." required></textarea>
-              </div>
-              
-              <!-- Submit Button -->
-              <div class="col-md-12 col-lg-12">
-                <button type="submit" name="submit" class="pbmit-btn pbmit-btn-global pbmit-btn-shape-round w-100 jkl"> <i class="form-btn-loader fa fa-circle-o-notch fa-spin fa-fw margin-bottom d-none"></i> SEND MESSAGE </button>
-              </div>
-              
-              <!-- Status Message -->
-              <div class="col-md-12 col-lg-12 message-status"></div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-            <!-- End  Footer-->
+        <style>
+        .enquiry-modal .modal-content {
+            border-radius: 18px;
+        }
 
-            <!-- Title Bar -->
-            <div class="pbmit-title-bar-wrapper">
-                <div class="container">
-                    <div class="pbmit-title-bar-content">
-                        <div class="pbmit-title-bar-content-inner">
-                            <div class="pbmit-tbar">
-                                <div class="pbmit-tbar-inner container">
-                                    <h1 class="pbmit-tbar-title">Tax Residency</h1>
-                                    <p class="pbmit-tbar-desc">Achieve Financial Freedom with Georgian Tax Residency</p>
-                                   
+        .enquiry-modal .form-control {
+            background: #f7f8fb;
+            border: 1px solid #dfe3ec;
+            border-radius: 12px;
+            padding: 12px 14px;
+            color: #1a2433;
+        }
+
+        .enquiry-modal .form-control:focus {
+            border-color: #3ea6ff;
+            box-shadow: 0 0 0 3px rgba(62, 166, 255, 0.15);
+            background: #fff;
+        }
+
+        .enquiry-modal .lead-submit-btn {
+            background: linear-gradient(135deg, #f4c167 0%, #f0a73e 100%);
+            color: #1f1407;
+            border: none;
+            border-radius: 12px;
+            letter-spacing: .8px;
+            transition: transform .15s ease, box-shadow .2s ease;
+        }
+
+        .enquiry-modal .lead-submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 24px rgba(240, 167, 62, 0.28);
+        }
+
+        .letter-sp-1 {
+            letter-spacing: .12rem;
+        }
+        </style>
+
+        <div class="modal fade enquiry-modal" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabe4"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-4 shadow-lg border-0">
+                    <div class="modal-header border-0 pb-0">
+                        <div>
+                            <p class="text-uppercase text-muted fw-semibold mb-1 small letter-sp-1">Let’s talk</p>
+                            <h1 class="modal-title fs-4 fw-bold mb-0" id="exampleModalLabel">Submit your inquiry</h1>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-1">
+                        <p class="text-muted small mb-3 d-flex align-items-center gap-2">
+                            <i class="fa fa-bolt text-warning"></i> Average response time: under 1 hour
+                        </p>
+                        <form method="post" id="contact-form" action="/legal-vista/backend/contact-form">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <input type="text" name="name" class="form-control form-control-lg"
+                                        placeholder="Full name *" required>
                                 </div>
+                                <div class="col-12 col-md-6">
+                                    <input type="email" name="email" class="form-control form-control-lg"
+                                        placeholder="Work email *" required>
+                                </div>
+                                <div class="col-12">
+                                    <select name="service" id="service" class="form-control form-control-lg" required>
+                                        <option value="">Select service *</option>
+                                        <option value="Resident Permit" selected>Resident Permit</option>
+                                        <option value="Company Registration Packages">Company Registration Packages
+                                        </option>
+                                        <option value="Bank Account Opening">Bank Account Opening</option>
+                                        <option value="Tax Residency">Tax Residency</option>
+                                        <option value="Nominee Services">Nominee Services</option>
+                                        <option value="Accounting & Taxation">Accounting & Taxation</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" cols="40" rows="4" class="form-control form-control-lg"
+                                        placeholder="Please describe your requirements or questions here."
+                                        required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" name="submit"
+                                        class="btn lead-submit-btn w-100 py-3 fw-bold text-uppercase">
+                                        <i
+                                            class="form-btn-loader fa fa-circle-o-notch fa-spin fa-fw margin-bottom d-none"></i>
+                                        Send message
+                                    </button>
+                                </div>
+                                <div class="col-12 message-status"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End  Footer-->
+
+        <!-- Title Bar -->
+        <div class="pbmit-title-bar-wrapper">
+            <div class="container">
+                <div class="pbmit-title-bar-content">
+                    <div class="pbmit-title-bar-content-inner">
+                        <div class="pbmit-tbar">
+                            <div class="pbmit-tbar-inner container">
+                                <h1 class="pbmit-tbar-title">Tax Residency</h1>
+                                <p class="pbmit-tbar-desc">Achieve Financial Freedom with Georgian Tax Residency</p>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Title Bar End-->
+        </div>
+        <!-- Title Bar End-->
 
-<!-- About Us Start -->
+        <!-- About Us Start -->
 
-<section class="about-us-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="about-page aboutttinfo ">
+        <section class="about-us-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="about-page aboutttinfo ">
 
-<img src="images/tax-residency.png" class="ringhtimg">  
-   <h1>Tax Residency in Georgia</h1>
-<p>The High Net Worth Georgian Tax Residency program offers a unique opportunity for individuals with an income exceeding 200,000 GEL (approx. 80,000 USD) or personal assets over 3 million GEL (approx. 1,200,000 USD) to secure tax residency in Georgia without the need to physically reside in the country.</p>
-
-
-
-        <h4>Benefits of the Program</h4>
-
-       <ul class="listtttt">
-  <li><strong>No Physical Presence Requirement</strong> Bypass the  traditional 183-day physical presence requirement and take advantage of  Georgia’s favorable tax regime, including a flat 20% personal income tax rate.</li>
-  <li><strong>Significant Tax Savings</strong> Relocating your  business and personal tax residency to Georgia can substantially reduce your  current tax liabilities, allowing you to optimize your financial strategy.</li>
-</ul>
+                            <img src="images/tax-residency.png" class="ringhtimg">
+                            <h1>Tax Residency in Georgia</h1>
+                            <p>The High Net Worth Georgian Tax Residency program offers a unique opportunity for
+                                individuals with an income exceeding 200,000 GEL (approx. 80,000 USD) or personal assets
+                                over 3 million GEL (approx. 1,200,000 USD) to secure tax residency in Georgia without
+                                the need to physically reside in the country.</p>
 
 
 
-<h4>Who Can Benefit from the High Net Worth Program ?</h4>
+                            <h4>Benefits of the Program</h4>
+
+                            <ul class="listtttt">
+                                <li><strong>No Physical Presence Requirement</strong> Bypass the traditional 183-day
+                                    physical presence requirement and take advantage of Georgia’s favorable tax regime,
+                                    including a flat 20% personal income tax rate.</li>
+                                <li><strong>Significant Tax Savings</strong> Relocating your business and personal tax
+                                    residency to Georgia can substantially reduce your current tax liabilities, allowing
+                                    you to optimize your financial strategy.</li>
+                            </ul>
+
+
+
+                            <h4>Who Can Benefit from the High Net Worth Program ?</h4>
 
 
 
 
-      <ul class="listtttt">
-  <li><strong>Remote Professionals</strong> Ideal for remote  professionals who travel frequently and do not spend enough time in any single  country to establish tax residency, yet wish to avoid taxation in their home  country.</li>
-  <li><strong>Global Individuals</strong> Perfect for  individuals who lack tax residency in any country and have arrived in Georgia  late in the tax year, needing Georgian tax residency to prevent taxation  elsewhere.</li>
-</ul>
+                            <ul class="listtttt">
+                                <li><strong>Remote Professionals</strong> Ideal for remote professionals who travel
+                                    frequently and do not spend enough time in any single country to establish tax
+                                    residency, yet wish to avoid taxation in their home country.</li>
+                                <li><strong>Global Individuals</strong> Perfect for individuals who lack tax residency
+                                    in any country and have arrived in Georgia late in the tax year, needing Georgian
+                                    tax residency to prevent taxation elsewhere.</li>
+                            </ul>
 
 
 
-                        <div class="boxxxx-shadood mb-5">
-<h4>Who Is Eligible for Georgian Tax Residency Via the High Net Worth Program?</h4>
-<p>The High Net Worth Program for Georgian tax residency is designed for individuals (natural persons) with significant property. The eligibility rules are as follows:</p>
-<!-- <h6>Eligible Applicants</h6>
+                            <div class="boxxxx-shadood mb-5">
+                                <h4>Who Is Eligible for Georgian Tax Residency Via the High Net Worth Program?</h4>
+                                <p>The High Net Worth Program for Georgian tax residency is designed for individuals
+                                    (natural persons) with significant property. The eligibility rules are as follows:
+                                </p>
+                                <!-- <h6>Eligible Applicants</h6>
 
 
 
@@ -226,117 +287,123 @@ if(isset($_POST['submit'])){
 
 
 
-<p><strong> Asset Requirements -</strong> To qualify, individuals must meet one of the following criteria:</p>
-        <ul class="listtttt">
-  <li>Own property valued at over 3  million GEL</li>
-  <li>Have an annual income exceeding  200,000 GEL for the last three consecutive years (the years immediately  preceding the application year)</li>
+                                <p><strong> Asset Requirements -</strong> To qualify, individuals must meet one of the
+                                    following criteria:</p>
+                                <ul class="listtttt">
+                                    <li>Own property valued at over 3 million GEL</li>
+                                    <li>Have an annual income exceeding 200,000 GEL for the last three consecutive years
+                                        (the years immediately preceding the application year)</li>
 
 
 
-  <li>Present proof of owning assets in  Georgia valued at 500,000 USD or more, as mandated by the Order of the Ministry  of Finance published in March 2023.</li>
-</ul>
+                                    <li>Present proof of owning assets in Georgia valued at 500,000 USD or more, as
+                                        mandated by the Order of the Ministry of Finance published in March 2023.</li>
+                                </ul>
 
-<p><strong>Other  Conditions</strong> Applicants must also:</p>
+                                <p><strong>Other Conditions</strong> Applicants must also:</p>
 
-  <ul class="listtttt">
-  <li>Possess a legal residence permit  or a Georgian resident ID card</li>
-  <li>Certify receiving an income of  25,000 GEL or more from a Georgian source in the tax year before the  application year</li>
-</ul>
+                                <ul class="listtttt">
+                                    <li>Possess a legal residence permit or a Georgian resident ID card</li>
+                                    <li>Certify receiving an income of 25,000 GEL or more from a Georgian source in the
+                                        tax year before the application year</li>
+                                </ul>
 
-</div>
-
-
-
-
-
-
-
-
-
-<h6>What is Included in the Package:</h6>
-
-
-  <ul class="listtttt mb-4">
-  <li>Preparation of documents by  experts.</li>
-  <li>Final Assessment of documents by  our top Immigration Lawyer.</li>
-  <li>Personalized support with  application filing.</li>
- 
-  <li>Complete guidance and assistance  during the entire process.</li>
-  <li>Government fees is not included in the Package</li>
-</ul>
-
-
-    
-
-
-
-    <div class="package">
-                          <div class="row cnt">
-                            <div class="col-md-10">
-                              <h5>Package Fee - EUR 1699</h5>
                             </div>
-                            <div class="col-lg-2">
-                              <div class="btnnnnnn">
-                                <p><a href=""   data-bs-toggle="modal" data-bs-target="#exampleModal4"  class="price-button">ENQUIRE</a></p>
-                              </div>
+
+
+
+
+
+
+
+
+
+                            <h6>What is Included in the Package:</h6>
+
+
+                            <ul class="listtttt mb-4">
+                                <li>Preparation of documents by experts.</li>
+                                <li>Final Assessment of documents by our top Immigration Lawyer.</li>
+                                <li>Personalized support with application filing.</li>
+
+                                <li>Complete guidance and assistance during the entire process.</li>
+                                <li>Government fees is not included in the Package</li>
+                            </ul>
+
+
+
+
+
+
+                            <div class="package">
+                                <div class="row cnt">
+                                    <div class="col-md-10">
+                                        <h5>Package Fee - EUR 1699</h5>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="btnnnnnn">
+                                            <p><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal4"
+                                                    class="price-button">ENQUIRE</a></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
+
+
+
+
+
+
+
+
+
+
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Us End -->
 
 
+        <?php $leadFormCompact = true; include("includes/lead-form.php"); ?>
 
+        <!-- Footer -->
+        <?php include("includes/footer.php"); ?>
+        <!-- End  Footer-->
 
-
-
-
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-<!-- About Us End --> 
-
-
-            <?php $leadFormCompact = true; include("includes/lead-form.php"); ?>
-
-            <!-- Footer -->
-            <?php include("includes/footer.php"); ?>
-            <!-- End  Footer-->
-
-            <!-- JS
+        <!-- JS
          ============================================ -->
-            <!-- jQuery JS -->
-            <script src="js/jquery.min.js"></script>
-            <!-- Popper JS -->
-            <script src="js/popper.min.js"></script>
-            <!-- Bootstrap JS -->
-            <script src="js/bootstrap.min.js"></script>
-            <!-- jquery Waypoints JS -->
-            <script src="js/jquery.waypoints.min.js"></script>
-            <!-- jquery Appear JS -->
-            <script src="js/jquery.appear.js"></script>
-            <!-- Numinate JS -->
-            <script src="js/numinate.min.js"></script>
-            <!-- Swiper JS -->
-            <script src="js/swiper.min.js"></script>
-            <!-- Magnific JS -->
-            <script src="js/jquery.magnific-popup.min.js"></script>
-            <!-- Circle Progress JS -->
-            <script src="js/circle-progress.js"></script>
-            <!-- AOS -->
-            <script src="js/aos.js"></script>
-            <!-- Isotope JS -->
-            <script src="js/isotope.pkgd.min.js"></script>
-            <!-- Scripts JS -->
-            <script src="js/scripts.js"></script>
-            <!-- Revolution JS -->
+        <!-- jQuery JS -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="js/popper.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- jquery Waypoints JS -->
+        <script src="js/jquery.waypoints.min.js"></script>
+        <!-- jquery Appear JS -->
+        <script src="js/jquery.appear.js"></script>
+        <!-- Numinate JS -->
+        <script src="js/numinate.min.js"></script>
+        <!-- Swiper JS -->
+        <script src="js/swiper.min.js"></script>
+        <!-- Magnific JS -->
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <!-- Circle Progress JS -->
+        <script src="js/circle-progress.js"></script>
+        <!-- AOS -->
+        <script src="js/aos.js"></script>
+        <!-- Isotope JS -->
+        <script src="js/isotope.pkgd.min.js"></script>
+        <!-- Scripts JS -->
+        <script src="js/scripts.js"></script>
+        <!-- Revolution JS -->
 
-            <script src="revolution/rslider.js"></script>
-            <script src="revolution/rbtools.min.js"></script>
-            <script src="revolution/rs6.min.js"></script>
-        </div>
-    </body>
+        <script src="revolution/rslider.js"></script>
+        <script src="revolution/rbtools.min.js"></script>
+        <script src="revolution/rs6.min.js"></script>
+    </div>
+</body>
+
 </html>

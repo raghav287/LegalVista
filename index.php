@@ -979,9 +979,9 @@ foreach ($homepagePackages as $homepagePackage) {
                             <div class="new-boxxes">
 
                                 <div class="dataa">
-                                    <h4><a href="company-registration" #jjjj">Sole Proprietorship</a></h4>
+                                    <h4><a href="individual-entrepreneur" #jjjj">Sole Proprietorship</a></h4>
                                     <p>Own Your Business, Maximize Your Profits with Tax Savings.</p>
-                                    <a href="company-registration" #jjjj" class="laernnn">Learn More</a>
+                                    <a href="individual-entrepreneur" #jjjj" class="laernnn">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -1324,8 +1324,10 @@ foreach ($homepagePackages as $homepagePackage) {
                     </div>
 
                     <div class="inf-slider-controls inf-testimonial-controls">
-                        <button type="button" class="inf-slider-button inf-testimonial-prev" aria-label="Previous testimonial">&#8592;</button>
-                        <button type="button" class="inf-slider-button inf-testimonial-next" aria-label="Next testimonial">&#8594;</button>
+                        <button type="button" class="inf-slider-button inf-testimonial-prev"
+                            aria-label="Previous testimonial">&#8592;</button>
+                        <button type="button" class="inf-slider-button inf-testimonial-next"
+                            aria-label="Next testimonial">&#8594;</button>
                     </div>
                 </div>
             </section>
@@ -1566,8 +1568,10 @@ foreach ($homepagePackages as $homepagePackage) {
                     </div>
 
                     <div class="inf-slider-controls inf-blog-controls">
-                        <button type="button" class="inf-slider-button inf-blog-prev" aria-label="Previous article">&#8592;</button>
-                        <button type="button" class="inf-slider-button inf-blog-next" aria-label="Next article">&#8594;</button>
+                        <button type="button" class="inf-slider-button inf-blog-prev"
+                            aria-label="Previous article">&#8592;</button>
+                        <button type="button" class="inf-slider-button inf-blog-next"
+                            aria-label="Next article">&#8594;</button>
                     </div>
                 </div>
             </section>

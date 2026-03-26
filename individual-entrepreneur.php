@@ -328,12 +328,108 @@ if(isset($_POST['submit'])){
             width: 100%;
         }
     }
+
+    /* Enquiry modal tweaks */
+    .enquiry-modal .modal-content {
+        border-radius: 18px;
+    }
+
+    .enquiry-modal .form-control {
+        background: #f7f8fb;
+        border: 1px solid #dfe3ec;
+        border-radius: 12px;
+        padding: 12px 14px;
+        color: #1a2433;
+    }
+
+    .enquiry-modal .form-control:focus {
+        border-color: #3ea6ff;
+        box-shadow: 0 0 0 3px rgba(62, 166, 255, 0.15);
+        background: #fff;
+    }
+
+    .enquiry-modal .lead-submit-btn {
+        background: linear-gradient(135deg, #f4c167 0%, #f0a73e 100%);
+        color: #1f1407;
+        border: none;
+        border-radius: 12px;
+        letter-spacing: .8px;
+        transition: transform .15s ease, box-shadow .2s ease;
+    }
+
+    .enquiry-modal .lead-submit-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 24px rgba(240, 167, 62, 0.28);
+    }
+
+    .letter-sp-1 {
+        letter-spacing: .12rem;
+    }
     </style>
 </head>
 
 <body>
     <div class="page-wrapper">
         <?php include("includes/header.php"); ?>
+        <div class="modal fade enquiry-modal" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabe4"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-4 shadow-lg border-0">
+                    <div class="modal-header border-0 pb-0">
+                        <div>
+                            <p class="text-uppercase text-muted fw-semibold mb-1 small letter-sp-1">Let’s talk</p>
+                            <h1 class="modal-title fs-4 fw-bold mb-0" id="exampleModalLabel">Submit your inquiry</h1>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-1">
+                        <p class="text-muted small mb-3 d-flex align-items-center gap-2">
+                            <i class="fa fa-bolt text-warning"></i> Average response time: under 1 hour
+                        </p>
+                        <form method="post" id="contact-form" action="/legal-vista/backend/contact-form">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <input type="text" name="name" class="form-control form-control-lg"
+                                        placeholder="Full name *" required>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <input type="email" name="email" class="form-control form-control-lg"
+                                        placeholder="Work email *" required>
+                                </div>
+                                <div class="col-12">
+                                    <select name="service" id="service" class="form-control form-control-lg" required>
+                                        <option value="">Select service *</option>
+                                        <option value="Individual Entrepreneur" selected>Individual Entrepreneur
+                                        </option>
+                                        <option value="Company Registration Packages">Company Registration Packages
+                                        </option>
+                                        <option value="Bank Account Opening">Bank Account Opening</option>
+                                        <option value="Tax Residency">Tax Residency</option>
+                                        <option value="Nominee Services">Nominee Services</option>
+                                        <option value="Accounting & Taxation">Accounting & Taxation</option>
+                                        <option value="Resident Permit">Resident Permit</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" cols="40" rows="4" class="form-control form-control-lg"
+                                        placeholder="Please describe your requirements or questions here."
+                                        required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" name="submit"
+                                        class="btn lead-submit-btn w-100 py-3 fw-bold text-uppercase">
+                                        <i
+                                            class="form-btn-loader fa fa-circle-o-notch fa-spin fa-fw margin-bottom d-none"></i>
+                                        Send message
+                                    </button>
+                                </div>
+                                <div class="col-12 message-status"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- 
         <section class="ie-hero d-flex align-items-center text-center">
             <div class="container">
