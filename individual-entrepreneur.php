@@ -260,7 +260,7 @@ if(isset($_POST['submit'])){
 
     .package .cnt {
         position: relative;
-        background: linear-gradient(120deg, #06234a, #0b356a);
+
         color: #ffffff;
         border-radius: 16px;
         box-shadow: 0 14px 32px rgba(6, 23, 51, 0.22);
@@ -302,24 +302,25 @@ if(isset($_POST['submit'])){
 
     .package .price-button {
         display: inline-block;
-        padding: 12px 28px;
+        padding: 14px 56px;
         border-radius: 999px;
-        background: linear-gradient(135deg, #2569e6, #0f3d7a);
-        color: #ffc94f;
+        background: linear-gradient(95deg, #0c46c3 0%, #0c2b63 100%);
+        color: #ffb400;
         font-weight: 800;
-        letter-spacing: 0.9px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
         text-decoration: none;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-        transition: all 0.2s ease;
+        border: none;
+        box-shadow: 0 10px 24px rgba(8, 28, 66, 0.35);
+        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
     }
 
     .package .price-button:hover,
     .package .price-button:focus {
-        background: linear-gradient(135deg, #2f7bff, #15519e);
-        color: #ffe6a1;
-        transform: translateY(-1px);
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.26), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+        background: linear-gradient(95deg, #0f59e0 0%, #103677 100%);
+        color: #ffc94f;
+        transform: translateY(-2px);
+        box-shadow: 0 14px 28px rgba(8, 28, 66, 0.45);
     }
 
     @media (max-width: 991px) {

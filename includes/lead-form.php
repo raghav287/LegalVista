@@ -91,6 +91,9 @@
                                     <option value="Tax Residency"
                                         <?php if(isset($_POST['service']) && $_POST['service']=="Tax Residency"){ echo "selected='selected'";} ?>>
                                         Tax Residency</option>
+                                    <option value="Individual Entrepreneur"
+                                        <?php if(isset($_POST['service']) && $_POST['service']=="Individual Entrepreneur"){ echo "selected='selected'";} ?>>
+                                        Individual Entrepreneur</option>
                                     <option value="Nominee Services"
                                         <?php if(isset($_POST['service']) && $_POST['service']=="Nominee Services"){ echo "selected='selected'";} ?>>
                                         Nominee Services</option>
