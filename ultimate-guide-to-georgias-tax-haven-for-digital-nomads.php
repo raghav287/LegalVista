@@ -366,6 +366,22 @@ function legalVistaRenderArticleStyles(): string
     gap: 10px;
     color: #163760;
     font-size: 16px;
+    text-decoration: none;
+    transition: color .15s ease;
+  }
+
+  .article-category-list a:hover,
+  .article-category-list a:focus {
+    color: #c6a354 !important;
+  }
+
+  .article-category-list a span {
+    color: inherit;
+  }
+
+  .article-category-list a:hover span,
+  .article-category-list a:focus span {
+    color: #c6a354 !important;
   }
 
   .article-post-nav {
@@ -391,10 +407,17 @@ function legalVistaRenderArticleStyles(): string
     text-transform: uppercase;
     justify-self: start;
     width: auto;
+    transition: color .15s ease, border-color .15s ease;
   }
 
   .article-post-nav .article-post-nav-next {
     justify-self: end;
+  }
+
+  .article-post-nav a:hover,
+  .article-post-nav a:focus {
+    color: #c6a354 !important;
+    border-color: #c6a354;
   }
 
   .article-related {

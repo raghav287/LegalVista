@@ -3,7 +3,7 @@ DirectoryIndex index.php
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /legal-vista/
+RewriteBase /legalvista_backup/
 
 # Keep existing files and directories working as-is.
 RewriteCond %{REQUEST_FILENAME} -f [OR]
