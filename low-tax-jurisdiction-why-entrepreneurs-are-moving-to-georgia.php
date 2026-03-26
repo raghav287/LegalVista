@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . '/includes/article-bootstrap.php';
+if (lv_render_article_if_exists('low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia')) {
+    return;
+}
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>

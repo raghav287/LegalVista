@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . '/includes/article-bootstrap.php';
+if (lv_render_article_if_exists('temporary-residence-permit-changes-202526')) {
+    return;
+}
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>

@@ -1,9 +1,14 @@
 <?php
-$host = "localhost";
-$dbname = "u586615155_legal_vista";
-$username = "u586615155_legal_vista";
-$password = "K1>hDKTvi";
+// $host = "localhost";
+// $dbname = "u586615155_legal_vista";
+// $username = "u586615155_legal_vista";
+// $password = "K1>hDKTvi";
 
+
+$host = "localhost";
+$dbname = "legalvista";
+$username = "root";
+$password = "";
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
 

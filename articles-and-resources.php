@@ -1,83 +1,5 @@
 <?php
-$allArticles = [
-    [
-        'slug' => 'georgias-new-work-permit-regime',
-        'title' => 'Georgia’s New Work Permit Regime from March 2026: What Digital Nomads & Entrepreneurs Must Know',
-        'image' => 'images/georgias-new-work-permit-regime.jpg',
-        'date' => '2026-03-12',
-        'categories' => ['New Law Changes', 'Resident Permit'],
-    ],
-    [
-        'slug' => 'temporary-residence-permit-changes-202526',
-        'title' => 'Temporary Residence Permit Changes 2025–26: New Rules for Entrepreneurs, Investors, and IT Specialists in Georgia',
-        'image' => 'images/temporary-residence-permit-changes-202526.jpg',
-        'date' => '2026-02-18',
-        'categories' => ['New Law Changes', 'Resident Permit'],
-    ],
-    [
-        'slug' => 'got-denied-a-residence-permit-in-georgia',
-        'title' => 'Got Denied a Residence Permit in Georgia? Here’s What You Need to Do Next',
-        'image' => 'images/got-denied-a-residence-permit-in-georgia.jpg',
-        'date' => '2026-01-30',
-        'categories' => ['Resident Permit', 'Guides'],
-    ],
-    [
-        'slug' => 'how-to-become-a-tax-resident-in-georgia-a-2025-guide',
-        'title' => 'How to Become a Tax Resident in Georgia: A 2025 Guide',
-        'image' => 'images/how-to-become-a-tax-resident-in-georgia-a-2025-guide.jpg',
-        'date' => '2025-12-11',
-        'categories' => ['Tax Residency', 'Taxes', 'Guides'],
-    ],
-    [
-        'slug' => 'moving-to-georgia-with-your-family',
-        'title' => 'Moving to Georgia with Your Family: What You Need to Know',
-        'image' => 'images/low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia.jpg',
-        'date' => '2025-10-14',
-        'categories' => ['Resident Permit', 'Guides'],
-    ],
-    [
-        'slug' => 'new-aml-compliance-rules-for-company',
-        'title' => 'New AML Compliance Rules for Company Formation in Georgia (2025 Update)',
-        'image' => 'images/new-aml-compliance-rules-for-company.jpg',
-        'date' => '2025-09-03',
-        'categories' => ['Company Formation', 'New Law Changes'],
-    ],
-    [
-        'slug' => 'georgia-is-easy-until-it-isnt',
-        'title' => 'Georgia is Easy Until It Isn’t: A Lawyer’s View on What Can Go Wrong',
-        'image' => 'images/georgia-is-easy-until-it-isnt.jpg',
-        'date' => '2025-07-21',
-        'categories' => ['Company Formation', 'Guides'],
-    ],
-    [
-        'slug' => 'low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia',
-        'title' => 'Low-Tax Jurisdiction: Why Entrepreneurs Are Moving to Georgia',
-        'image' => 'images/low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia.jpg',
-        'date' => '2025-05-06',
-        'categories' => ['Tax Residency', 'Taxes'],
-    ],
-    [
-        'slug' => 'ultimate-guide-to-georgias-tax-haven-for-digital-nomads',
-        'title' => 'The Ultimate Guide to Georgia\'s Tax Haven for Digital Nomads',
-        'image' => 'images/ultimate-guide-to-georgias-tax-haven-for-digital-nomads1.jpg',
-        'date' => '2025-03-19',
-        'categories' => ['Tax Residency', 'Taxes', 'Guides'],
-    ],
-    [
-        'slug' => 'unlock-entrepreneurial-freedom',
-        'title' => 'Unlock Entrepreneurial Freedom',
-        'image' => 'images/nlock-entrepreneurial.jpg',
-        'date' => '2024-11-28',
-        'categories' => ['Company Formation', 'Guides'],
-    ],
-    [
-        'slug' => 'compelling-reasons-to-register-your-business-in-georgia',
-        'title' => '5 Compelling Reasons to Register Your Business in Georgia',
-        'image' => 'images/your-business-in-georgia.jpg',
-        'date' => '2024-09-12',
-        'categories' => ['Company Formation', 'Guides'],
-    ],
-];
+require_once __DIR__ . '/includes/article-repository.php';
 
 $categoryOrder = [
     'Company Formation',
@@ -95,44 +17,34 @@ if (!in_array($selectedCategory, $categoryOrder, true)) {
     $selectedCategory = '';
 }
 
-$filteredArticles = array_values(array_filter(
-    $allArticles,
-    static function (array $article) use ($searchQuery, $selectedCategory): bool {
-        $matchesSearch = true;
-        $matchesCategory = true;
-
-        if ($searchQuery !== '') {
-            $haystack = $article['title'] . ' ' . implode(' ', $article['categories']);
-            $matchesSearch = stripos($haystack, $searchQuery) !== false;
-        }
-
-        if ($selectedCategory !== '') {
-            $matchesCategory = in_array($selectedCategory, $article['categories'], true);
-        }
-
-        return $matchesSearch && $matchesCategory;
-    }
-));
-
-$perPage = 6; // Show more articles per page (increased from 3)
-$totalArticles = count($filteredArticles);
-$totalPages = max(1, (int) ceil($totalArticles / $perPage));
+$perPage = 6;
 $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-$currentPage = max(1, min($currentPage, $totalPages));
-$offset = ($currentPage - 1) * $perPage;
-$pageArticles = array_slice($filteredArticles, $offset, $perPage);
+$currentPage = max(1, $currentPage);
 
-$categoryCounts = [];
-foreach ($categoryOrder as $categoryName) {
-    $categoryCounts[$categoryName] = 0;
+$baseFilters = [
+    'status' => 'published',
+];
+
+if ($searchQuery !== '') {
+    $baseFilters['search'] = $searchQuery;
+}
+if ($selectedCategory !== '') {
+    $baseFilters['category'] = $selectedCategory;
 }
 
-foreach ($allArticles as $article) {
-    foreach ($article['categories'] as $articleCategory) {
-        if (isset($categoryCounts[$articleCategory])) {
-            $categoryCounts[$articleCategory]++;
-        }
-    }
+$totalArticles = lv_count_articles($baseFilters, true);
+$totalPages = max(1, (int) ceil($totalArticles / $perPage));
+$currentPage = min($currentPage, $totalPages);
+$offset = ($currentPage - 1) * $perPage;
+
+$pageArticles = lv_get_articles(array_merge($baseFilters, [
+    'limit' => $perPage,
+    'offset' => $offset,
+]), true);
+
+$categoryCounts = lv_get_category_counts(['status' => 'published'], true);
+foreach ($categoryOrder as $categoryName) {
+    $categoryCounts[$categoryName] = $categoryCounts[$categoryName] ?? 0;
 }
 
 function buildArticlesUrl(array $params = []): string
@@ -527,18 +439,26 @@ function buildArticlesUrl(array $params = []): string
                         <?php if ($pageArticles): ?>
                             <div class="articles-list">
                                 <?php foreach ($pageArticles as $article): ?>
+                                    <?php
+                                        $articleCategories = $article['categories'] ?? [];
+                                        $articleImage = $article['featured_image'] ?? ($article['image'] ?? '');
+                                        $articleDateValue = $article['publish_date'] ?? ($article['date'] ?? '');
+                                        $articleDateText = $articleDateValue ? strtoupper(date('F j, Y', strtotime($articleDateValue))) : '';
+                                    ?>
                                     <article class="article-card">
                                         <a class="article-card-image" href="<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>">
-                                            <img src="<?php echo htmlspecialchars($article['image'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?>" />
+                                            <img src="<?php echo htmlspecialchars($articleImage, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?>" />
                                         </a>
                                         <div class="article-card-content">
-                                            <div class="article-card-meta"><?php echo htmlspecialchars(implode(', ', $article['categories']), ENT_QUOTES, 'UTF-8'); ?></div>
+                                            <div class="article-card-meta"><?php echo htmlspecialchars(implode(', ', $articleCategories), ENT_QUOTES, 'UTF-8'); ?></div>
                                             <h2 class="article-card-title">
                                                 <a href="<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>">
                                                     <?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?>
                                                 </a>
                                             </h2>
-                                            <div class="article-card-date"><?php echo strtoupper(date('F j, Y', strtotime($article['date']))); ?></div>
+                                            <?php if ($articleDateText !== ''): ?>
+                                                <div class="article-card-date"><?php echo $articleDateText; ?></div>
+                                            <?php endif; ?>
                                         </div>
                                     </article>
                                 <?php endforeach; ?>

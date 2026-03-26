@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . '/includes/article-bootstrap.php';
+if (lv_render_article_if_exists('how-to-become-a-tax-resident-in-georgia-a-2025-guide')) {
+    return;
+}
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
