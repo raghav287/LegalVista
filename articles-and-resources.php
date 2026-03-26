@@ -178,7 +178,7 @@ function buildArticlesUrl(array $params = []): string
             position: relative;
             padding: 118px 0 112px;
             background:
-                linear-gradient(0deg, rgba(17, 44, 84, 0.88), rgba(17, 44, 84, 0.88)),
+                linear-gradient(0deg, rgba(12, 32, 70, 0.92), rgba(12, 32, 70, 0.92)),
                 url("images/titlebar-img.jpg") center center / cover no-repeat;
             overflow: hidden;
         }

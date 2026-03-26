@@ -101,6 +101,23 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="css/responsive.css" />
     <!-- REVOLUTION STYLE SHEETS -->
     <link rel="stylesheet" type="text/css" href="revolution/rs6.css" />
+    <style>
+    .pbmit-title-bar-wrapper {
+        position: relative;
+        padding: 118px 0 112px;
+        background: linear-gradient(0deg, rgba(12, 32, 70, 0.92), rgba(12, 32, 70, 0.92)),
+            url("images/titlebar-img.jpg") center center / cover no-repeat;
+        color: #fff;
+    }
+
+    .pbmit-title-bar-wrapper h1 {
+        color: #fff;
+        margin: 0;
+        font-size: clamp(42px, 5vw, 64px);
+        line-height: 1.08;
+        font-weight: 700;
+    }
+    </style>
 </head>
 
 <body>
