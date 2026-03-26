@@ -36,7 +36,7 @@
               <ul>
                 <li><a href="company-registration">Limited Liability Company </a></li>
                 <li><a href="company-registration">Limited Partnership</a></li>
-                <li><a href="company-registration">Sole Proprietorship</a></li>
+                <li><a href="individual-entrepreneur">Sole Proprietorship</a></li>
                 <li><a href="company-registration">Joint Stock Company</a></li>
                 
                 <li><a href="company-registration">General Partnership </a></li>

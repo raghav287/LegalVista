@@ -166,7 +166,7 @@
                            <li class="dropdown"> <a href="company-registration">Company Registration</a>
                         <ul>
                           <li><a href="company-registration">Limited Liability Company</a></li>
-                          <li><a href="company-registration">Individual Entrepreneur/ Sole proprietor</a></li>
+                          <li><a href="individual-entrepreneur">Individual Entrepreneur/ Sole proprietor</a></li>
                           <li><a href="company-registration">Limited Liability Partnership</a></li>
                           <li><a href="company-registration">Joint Stock Company </a></li>
                           <li><a href="company-registration">General Partnership</a></li>

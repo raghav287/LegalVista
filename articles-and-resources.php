@@ -114,7 +114,7 @@ $filteredArticles = array_values(array_filter(
     }
 ));
 
-$perPage = 3;
+$perPage = 6; // Show more articles per page (increased from 3)
 $totalArticles = count($filteredArticles);
 $totalPages = max(1, (int) ceil($totalArticles / $perPage));
 $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
