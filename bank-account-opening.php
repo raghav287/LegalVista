@@ -179,7 +179,7 @@ if(isset($_POST['submit'])){
                         <p class="text-muted small mb-3 d-flex align-items-center gap-2">
                             <i class="fa fa-bolt text-warning"></i> Average response time: under 1 hour
                         </p>
-                        <form method="post" id="contact-form" action="/legal-vista/backend/contact-form">
+                        <form method="post" id="contact-form" action="backend/contact-form.php">
                             <div class="row g-3">
                                 <div class="col-12 col-md-6">
                                     <input type="text" name="name" class="form-control form-control-lg"
@@ -192,10 +192,9 @@ if(isset($_POST['submit'])){
                                 <div class="col-12">
                                     <select name="service" id="service" class="form-control form-control-lg" required>
                                         <option value="">Select service *</option>
-                                        <option value="Resident Permit" selected>Resident Permit</option>
-                                        <option value="Company Registration Packages">Company Registration Packages
-                                        </option>
-                                        <option value="Bank Account Opening">Bank Account Opening</option>
+                                        <option value="Bank Account Opening" selected>Bank Account Opening</option>
+                                        <option value="Company Registration Packages">Company Registration Packages</option>
+                                        <option value="Resident Permit">Resident Permit</option>
                                         <option value="Tax Residency">Tax Residency</option>
                                         <option value="Nominee Services">Nominee Services</option>
                                         <option value="Accounting & Taxation">Accounting & Taxation</option>
@@ -387,7 +386,7 @@ if(isset($_POST['submit'])){
 
                                 <div class="col-lg-2">
                                     <div class="btnnnnnn">
-                                        <p><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal4"
+                                        <p><a href="" data-service="Bank Account Opening" data-bs-toggle="modal" data-bs-target="#exampleModal4"
                                                 class="price-button">ENQUIRE</a></p>
                                     </div>
                                 </div>
@@ -451,12 +450,24 @@ if(isset($_POST['submit'])){
     <!-- Isotope JS -->
     <script src="js/isotope.pkgd.min.js"></script>
     <!-- Scripts JS -->
-    <script src="js/scripts.js"></script>
-    <!-- Revolution JS -->
+        <script src="js/scripts.js"></script>
+        <!-- Revolution JS -->
 
-    <script src="revolution/rslider.js"></script>
-    <script src="revolution/rbtools.min.js"></script>
-    <script src="revolution/rs6.min.js"></script>
+        <script src="revolution/rslider.js"></script>
+        <script src="revolution/rbtools.min.js"></script>
+        <script src="revolution/rs6.min.js"></script>
+
+        <script>
+        $(document).ready(function() {
+            $('.price-button[data-bs-target="#exampleModal4"]').on('click', function(e) {
+                e.preventDefault();
+                var service = $(this).data('service') || 'Bank Account Opening';
+                $('#service').val(service);
+                var modal = new bootstrap.Modal(document.getElementById('exampleModal4'));
+                modal.show();
+            });
+        });
+        </script>
     </div>
 </body>
 

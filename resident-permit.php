@@ -173,7 +173,7 @@ if(isset($_POST['submit'])){
                         <p class="text-muted small mb-3 d-flex align-items-center gap-2">
                             <i class="fa fa-bolt text-warning"></i> Average response time: under 1 hour
                         </p>
-                        <form method="post" id="contact-form" action="/legal-vista/backend/contact-form">
+                        <form method="post" id="contact-form" action="backend/contact-form.php">
                             <div class="row g-3">
                                 <div class="col-12 col-md-6">
                                     <input type="text" name="name" class="form-control form-control-lg" placeholder="Full name *" required>
@@ -306,7 +306,7 @@ if(isset($_POST['submit'])){
                             </div>
                             <div class="col-lg-2">
                               <div class="btnnnnnn">
-                                <p><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal4" class="price-button">ENQUIRE</a></p>
+                                <p><a href="" data-service="Resident Permit" data-bs-toggle="modal" data-bs-target="#exampleModal4" class="price-button">ENQUIRE</a></p>
                               </div>
                             </div>
                           </div>
@@ -434,7 +434,7 @@ if(isset($_POST['submit'])){
                                         </div>
                                         <div class="col-lg-2">
                                             <div class="btnnnnnn">
-                                                <p><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal4" class="price-button">ENQUIRE</a></p>
+                                                <p><a href="" data-service="Resident Permit" data-bs-toggle="modal" data-bs-target="#exampleModal4" class="price-button">ENQUIRE</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -498,6 +498,19 @@ if(isset($_POST['submit'])){
         <script src="revolution/rslider.js"></script>
         <script src="revolution/rbtools.min.js"></script>
         <script src="revolution/rs6.min.js"></script>
+
+        <script>
+        $(document).ready(function() {
+            $('.price-button[data-bs-target="#exampleModal4"]').on('click', function(e) {
+                e.preventDefault();
+                var service = $(this).data('service') || 'Resident Permit';
+                // set select value and open modal
+                $('#service').val(service);
+                var modal = new bootstrap.Modal(document.getElementById('exampleModal4'));
+                modal.show();
+            });
+        });
+        </script>
     </div>
 </body>
 

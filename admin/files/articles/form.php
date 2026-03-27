@@ -59,6 +59,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($formValues['title'] === '') {
         $errors[] = 'Title is required.';
+    } elseif (mb_strlen($formValues['title']) > 75) {
+        $errors[] = 'Title must be 75 characters or fewer.';
+    }
+
+    if ($formValues['excerpt'] === '') {
+        $errors[] = 'Excerpt is required.';
+    } elseif (mb_strlen($formValues['excerpt']) > 45) {
+        $errors[] = 'Excerpt must be 45 characters or fewer.';
+    }
+
+    if (trim(strip_tags($formValues['body_html'])) === '') {
+        $errors[] = 'Body is required.';
     }
 
     if (!empty($_FILES['featured_image']) && $_FILES['featured_image']['error'] !== UPLOAD_ERR_NO_FILE) {
@@ -118,15 +130,15 @@ include LAYOUT_PATH . '/head.php';
                                     </div>
                                 <?php endif; ?>
 
-                                <form method="post" action="<?= htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') ?>" enctype="multipart/form-data">
+                                <form method="post" action="<?= htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') ?>" enctype="multipart/form-data" id="article-form">
                                     <input type="hidden" name="id" value="<?= htmlspecialchars((string) ($articleId ?? ''), ENT_QUOTES, 'UTF-8') ?>">
                                     <input type="hidden" name="existing_image" value="<?= htmlspecialchars($formValues['featured_image'], ENT_QUOTES, 'UTF-8') ?>">
 
                                     <div class="row">
                                         <div class="col-xl-8">
                                             <div class="form-group">
-                                                <label class="form-label">Title</label>
-                                                <input type="text" class="form-control" name="title" value="<?= htmlspecialchars($formValues['title'], ENT_QUOTES, 'UTF-8') ?>" required>
+                                                <label class="form-label">Title <small class="text-muted">(max 75 chars)</small></label>
+                                                <input type="text" class="form-control" name="title" maxlength="75" value="<?= htmlspecialchars($formValues['title'], ENT_QUOTES, 'UTF-8') ?>" required>
                                             </div>
 
                                             <div class="form-group mt-3">
@@ -136,13 +148,13 @@ include LAYOUT_PATH . '/head.php';
                                             </div>
 
                                             <div class="form-group mt-3">
-                                                <label class="form-label">Excerpt</label>
-                                                <textarea class="form-control" name="excerpt" rows="3" placeholder="Short summary for listings and meta."><?= htmlspecialchars($formValues['excerpt'], ENT_QUOTES, 'UTF-8') ?></textarea>
+                                                <label class="form-label">Excerpt <small class="text-muted">(max 45 chars)</small></label>
+                                                <textarea class="form-control" name="excerpt" rows="2" maxlength="45" placeholder="Short summary for listings and meta." required><?= htmlspecialchars($formValues['excerpt'], ENT_QUOTES, 'UTF-8') ?></textarea>
                                             </div>
 
                                             <div class="form-group mt-3">
                                                 <label class="form-label">Body (HTML allowed)</label>
-                                                <textarea class="form-control" name="body_html" rows="14" placeholder="Write or paste article content here."><?= htmlspecialchars($formValues['body_html'], ENT_QUOTES, 'UTF-8') ?></textarea>
+                                                <textarea class="form-control" name="body_html" rows="14" placeholder="Write or paste article content here." required><?= htmlspecialchars($formValues['body_html'], ENT_QUOTES, 'UTF-8') ?></textarea>
                                             </div>
                                         </div>
 
@@ -208,6 +220,29 @@ include LAYOUT_PATH . '/head.php';
         <?php include LAYOUT_PATH . '/footer.php'; ?>
     </div>
 
-    <?php include LAYOUT_PATH . '/scripts.php'; ?>
+        <?php include LAYOUT_PATH . '/scripts.php'; ?>
+    <script>
+    document.getElementById('article-form').addEventListener('submit', function(e) {
+        const title = this.title.value.trim();
+        const body = this.body_html.value.trim();
+        const excerpt = this.excerpt.value.trim();
+        let msg = '';
+        if (!title) {
+            msg = 'Title is required.';
+        } else if (title.length > 75) {
+            msg = 'Title must be 75 characters or fewer.';
+        } else if (!excerpt) {
+            msg = 'Excerpt is required.';
+        } else if (excerpt.length > 45) {
+            msg = 'Excerpt must be 45 characters or fewer.';
+        } else if (!body || body.replace(/<[^>]*>/g,'').trim() === '') {
+            msg = 'Body is required.';
+        }
+        if (msg) {
+            e.preventDefault();
+            alert(msg);
+        }
+    });
+    </script>
 </body>
 </html>

@@ -180,6 +180,12 @@ function buildArticlesUrl(array $params = []): string
             font-size: 22px;
             line-height: 1.25;
             font-weight: 700;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .article-card-title a {

@@ -5,7 +5,11 @@ requireAdminLogin();
 require_once dirname(__DIR__, 3) . '/includes/article-repository.php';
 
 $pageTitle = 'Articles';
-$articles = lv_get_articles([], false);
+$page     = max(1, (int)($_GET['page'] ?? 1));
+$perPage  = 8;
+$offset   = ($page - 1) * $perPage;
+$total    = lv_count_articles([], false);
+$articles = lv_get_articles(['limit' => $perPage, 'offset' => $offset], false);
 $hasArticles = !empty($articles);
 
 include LAYOUT_PATH . '/head.php';
@@ -36,7 +40,7 @@ include LAYOUT_PATH . '/head.php';
                             </div>
                         <?php endif; ?>
 
-                        <div class="card">
+                            <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">All Articles</h3>
                                 <a href="<?= file_url('articles/form.php') ?>" class="btn btn-primary btn-sm">Add Article</a>
@@ -87,6 +91,24 @@ include LAYOUT_PATH . '/head.php';
                                             </tbody>
                                         </table>
                                     </div>
+                                    <?php
+                                        $totalPages = (int)ceil($total / $perPage);
+                                        if ($totalPages > 1):
+                                    ?>
+                                    <nav aria-label="Article pagination" class="mt-3">
+                                        <ul class="pagination mb-0">
+                                            <?php
+                                            $queryBase = $_GET;
+                                            for ($p = 1; $p <= $totalPages; $p++):
+                                                $queryBase['page'] = $p;
+                                                $url = htmlspecialchars(file_url('articles/list.php') . '?' . http_build_query($queryBase), ENT_QUOTES, 'UTF-8');
+                                                $active = $p === $page ? 'active' : '';
+                                            ?>
+                                                <li class="page-item <?= $active ?>"><a class="page-link" href="<?= $url ?>"><?= $p ?></a></li>
+                                            <?php endfor; ?>
+                                        </ul>
+                                    </nav>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             </div>
                         </div>

@@ -10,10 +10,19 @@ require '../phpmailer/src/SMTP.php';
 
 if(isset($_POST['submit'])){
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $service = $_POST['service'];
-    $message = $_POST['message'];
+    $name = $_POST['name'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $service = $_POST['service'] ?? '';
+    $packageType = $_POST['package_type'] ?? '';
+    $message = $_POST['message'] ?? '';
+
+    // Fallback: some forms send package_type instead of service
+    if ($service === '' && $packageType !== '') {
+        $service = 'Package: ' . $packageType;
+    }
+    if ($service === '') {
+        $service = 'General Enquiry';
+    }
 
     $hasStatusColumn = false;
     try {
@@ -50,7 +59,7 @@ if(isset($_POST['submit'])){
 
     $mail->isHTML(true);
     $mail->Subject = "New Enquiry";
-    $mail->Body = "Name: $name <br>Email: $email <br>Service: $service <br>Message: $message";
+    $mail->Body = "Name: $name <br>Email: $email <br>Service: $service <br>Package Type: $packageType <br>Message: $message";
     $mail->send();
 
     // CUSTOMER

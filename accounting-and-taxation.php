@@ -122,7 +122,7 @@ if(isset($_POST['submit'])){
       <div class="modal-body pt-1">
         <p class="text-muted small mb-3 d-flex align-items-center gap-2"><i class="fa fa-bolt text-warning"></i> Average response time: under 1 hour</p>
         <div class="popup-form">
-          <form method="post" id="contact-form" action="/legal-vista/backend/contact-form">
+          <form method="post" id="contact-form" action="backend/contact-form.php">
             <div class="row g-3"> 
               
               <div class="col-md-12 col-lg-6">

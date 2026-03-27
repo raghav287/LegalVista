@@ -101,6 +101,14 @@ function lv_render_article_page(array $article): void
         grid-template-columns: minmax(0, 1fr) 320px;
         gap: 56px;
         align-items: start;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .article-detail-main {
+        max-width: 900px;
+        width: 100%;
+        margin: 0 auto;
     }
 
     .article-detail-meta {
@@ -117,6 +125,8 @@ function lv_render_article_page(array $article): void
         color: #111111;
         font-size: clamp(34px, 3.5vw, 52px);
         line-height: 1.12;
+        word-break: break-word;
+        overflow-wrap: anywhere;
     }
 
     .article-detail-date {
@@ -152,6 +162,21 @@ function lv_render_article_page(array $article): void
         color: #274667;
         font-size: 16px;
         line-height: 1.9;
+        text-align: left;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+    }
+
+    .article-detail-content {
+        max-width: 880px;
+        margin: 0 auto;
+        padding-left: 12px;
+        padding-right: 12px;
+        text-align: left;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        hyphens: auto;
     }
 
     .article-detail-content h2,
@@ -268,6 +293,12 @@ function lv_render_article_page(array $article): void
         color: #111111;
         font-size: 22px;
         line-height: 1.25;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .article-related-card h4 a {

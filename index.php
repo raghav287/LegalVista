@@ -43,6 +43,7 @@ if(isset($_POST['submit'])){
 
 require_once __DIR__ . '/admin/bootstrap.php';
 require_once APP_ROOT . '/app/module-data.php';
+require_once __DIR__ . '/includes/article-repository.php';
 
 $homepagePackages = getHomepagePackages();
 $startingPackagePrice = null;
@@ -55,6 +56,38 @@ foreach ($homepagePackages as $homepagePackage) {
     if ($startingPackagePrice === null || $numericPrice < $startingPackagePrice) {
         $startingPackagePrice = $numericPrice;
     }
+}
+
+$homepageArticlesRaw = lv_get_articles([
+    'status' => 'published',
+    'limit' => 8,
+], true);
+
+$homepageArticles = [];
+foreach ($homepageArticlesRaw as $article) {
+    if (empty($article['slug'])) {
+        continue;
+    }
+
+    $imagePath = $article['featured_image'] ?? ($article['image'] ?? 'images/titlebar-img.jpg');
+    $dateValue = $article['publish_date'] ?? ($article['date'] ?? null);
+    $dateText = $dateValue ? date('M d, Y', strtotime($dateValue)) : '';
+
+    $excerptSource = trim((string) ($article['excerpt'] ?? ''));
+    if ($excerptSource === '' && !empty($article['body_html'])) {
+        $excerptSource = trim(strip_tags((string) $article['body_html']));
+    }
+    if ($excerptSource !== '' && strlen($excerptSource) > 120) {
+        $excerptSource = substr($excerptSource, 0, 117) . '...';
+    }
+
+    $homepageArticles[] = [
+        'slug' => $article['slug'],
+        'title' => $article['title'] ?? '',
+        'image' => $imagePath,
+        'date_text' => $dateText,
+        'excerpt' => $excerptSource,
+    ];
 }
 ?>
 <!DOCTYPE html>
@@ -345,6 +378,12 @@ foreach ($homepagePackages as $homepagePackage) {
         line-height: 1.4;
         margin-bottom: 15px;
         font-weight: 700;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .inf-title a {
@@ -1398,173 +1437,38 @@ foreach ($homepagePackages as $homepagePackage) {
 
                     <div class="swiper-container inf-main-swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <article class="inf-blog-item">
-                                    <div class="inf-image-holder">
-                                        <img src="images/georgias-new-work-permit-regime.jpg" alt="">
-                                        <div class="inf-image-overlay"></div>
+                            <?php if ($homepageArticles): ?>
+                                <?php foreach ($homepageArticles as $article): ?>
+                                    <div class="swiper-slide">
+                                        <article class="inf-blog-item">
+                                            <div class="inf-image-holder">
+                                                <img src="<?php echo htmlspecialchars($article['image'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                                                <div class="inf-image-overlay"></div>
+                                            </div>
+                                            <div class="inf-blog-content">
+                                                <?php if (!empty($article['date_text'])): ?>
+                                                    <span class="inf-date"><?php echo htmlspecialchars($article['date_text'], ENT_QUOTES, 'UTF-8'); ?></span>
+                                                <?php endif; ?>
+                                                <h5 class="inf-title"><a href="article.php?slug=<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?></a></h5>
+                                                <?php if (!empty($article['excerpt'])): ?>
+                                                    <p class="inf-excerpt"><?php echo htmlspecialchars($article['excerpt'], ENT_QUOTES, 'UTF-8'); ?></p>
+                                                <?php endif; ?>
+                                                <a class="inf-read-more" href="article.php?slug=<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>">Read
+                                                    More</a>
+                                            </div>
+                                        </article>
                                     </div>
-                                    <div class="inf-blog-content">
-                                        <span class="inf-date">Oct 15, 2025</span>
-                                        <h5 class="inf-title"><a href="georgias-new-work-permit-regime">Georgia’s
-                                                New Work Permit Regime 2026</a></h5>
-                                        <p class="inf-excerpt">Georgia has long been known for its open-door
-                                            business
-                                            policies...</p>
-                                        <a class="inf-read-more" href="georgias-new-work-permit-regime">Read
-                                            More</a>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="swiper-slide">
-                                <article class="inf-blog-item">
-                                    <div class="inf-image-holder">
-                                        <img src="images/temporary-residence-permit-changes-202526.jpg" alt="">
-                                        <div class="inf-image-overlay"></div>
-                                    </div>
-                                    <div class="inf-blog-content">
-                                        <span class="inf-date">Oct 15, 2025</span>
-                                        <h5 class="inf-title"><a
-                                                href="temporary-residence-permit-changes-202526">Residence
-                                                Permit
-                                                Changes 2025–26</a></h5>
-                                        <p class="inf-excerpt">New Rules for Entrepreneurs, Investors, and IT
-                                            Specialists...</p>
-                                        <a class="inf-read-more" href="temporary-residence-permit-changes-202526">Read
-                                            More</a>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="swiper-slide">
-                                <article class="inf-blog-item">
-                                    <div class="inf-image-holder">
-                                        <img src="images/new-aml-compliance-rules-for-company.jpg" alt="">
-                                        <div class="inf-image-overlay"></div>
-                                    </div>
-                                    <div class="inf-blog-content">
-                                        <span class="inf-date">Aug 05, 2025</span>
-                                        <h5 class="inf-title"><a href="new-aml-compliance-rules-for-company">New
-                                                AML
-                                                Compliance Rules 2025</a></h5>
-                                        <p class="inf-excerpt">Updated rules for Company Formation in Georgia...</p>
-                                        <a class="inf-read-more" href="new-aml-compliance-rules-for-company">Read
-                                            More</a>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="swiper-slide">
-                                <article class="inf-blog-item">
-                                    <div class="inf-image-holder">
-                                        <img src="images/georgia-is-easy-until-it-isnt.jpg" alt="">
-                                        <div class="inf-image-overlay"></div>
-                                    </div>
-                                    <div class="inf-blog-content">
-                                        <span class="inf-date">Aug 05, 2025</span>
-                                        <h5 class="inf-title"><a href="georgia-is-easy-until-it-isnt">Georgia is
-                                                Easy—Until It Isn’t</a></h5>
-                                        <p class="inf-excerpt">A Lawyer’s View on What Can Go Wrong in Georgia...
-                                        </p>
-                                        <a class="inf-read-more" href="georgia-is-easy-until-it-isnt">Read
-                                            More</a>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="swiper-slide">
-                                <article class="inf-blog-item">
-                                    <div class="inf-image-holder">
-                                        <img src="images/got-denied-a-residence-permit-in-georgia.jpg" alt="">
-                                        <div class="inf-image-overlay"></div>
-                                    </div>
-                                    <div class="inf-blog-content">
-                                        <span class="inf-date">Aug 05, 2025</span>
-                                        <h5 class="inf-title"><a href="got-denied-a-residence-permit-in-georgia">Denied
-                                                a
-                                                Residence
-                                                Permit?</a></h5>
-                                        <p class="inf-excerpt">Here’s What You Need to Do Next if your permit is
-                                            rejected...</p>
-                                        <a class="inf-read-more" href="got-denied-a-residence-permit-in-georgia">Read
-                                            More</a>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="swiper-slide">
-                                <article class="inf-blog-item">
-                                    <div class="inf-image-holder">
-                                        <img src="images/low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia.jpg"
-                                            alt="">
-                                        <div class="inf-image-overlay"></div>
-                                    </div>
-                                    <div class="inf-blog-content">
-                                        <span class="inf-date">May 31, 2025</span>
-                                        <h5 class="inf-title"><a href="moving-to-georgia-with-your-family">Moving to
-                                                Georgia with Your Family</a></h5>
-                                        <p class="inf-excerpt">Thinking about moving to Georgia with your family?
-                                            You're
-                                            not alone...</p>
-                                        <a class="inf-read-more" href="moving-to-georgia-with-your-family">Read
-                                            More</a>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="swiper-slide">
-                                <article class="inf-blog-item">
-                                    <div class="inf-image-holder">
-                                        <img src="images/how-to-become-a-tax-resident-in-georgia-a-2025-guide.jpg"
-                                            alt="">
-                                        <div class="inf-image-overlay"></div>
-                                    </div>
-                                    <div class="inf-blog-content">
-                                        <span class="inf-date">May 31, 2025</span>
-                                        <h5 class="inf-title"><a
-                                                href="how-to-become-a-tax-resident-in-georgia-a-2025-guide">Become
-                                                a
-                                                Tax Resident: 2025 Guide</a></h5>
-                                        <p class="inf-excerpt">Georgia has rapidly emerged as an attractive
-                                            crossroads...</p>
-                                        <a class="inf-read-more"
-                                            href="how-to-become-a-tax-resident-in-georgia-a-2025-guide">Read
-                                            More</a>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="swiper-slide">
-                                <article class="inf-blog-item">
-                                    <div class="inf-image-holder">
-                                        <img src="images/the-side-hustle-series111.jpg" alt="">
-                                        <div class="inf-image-overlay"></div>
-                                    </div>
-                                    <div class="inf-blog-content">
-                                        <span class="inf-date">Oct 14, 2024</span>
-                                        <h5 class="inf-title"><a
-                                                href="compelling-reasons-to-register-your-business-in-georgia">5
-                                                Reasons to Register Your Business</a></h5>
-                                        <p class="inf-excerpt">You might be surprised at how easy it is to register
-                                            in
-                                            Georgia...</p>
-                                        <a class="inf-read-more"
-                                            href="compelling-reasons-to-register-your-business-in-georgia">Read
-                                            More</a>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="swiper-slide">
-                                <article class="inf-blog-item">
-                                    <div class="inf-image-holder">
-                                        <img src="images/unlock-entrepreneurial-freedom1111.jpg" alt="">
-                                        <div class="inf-image-overlay"></div>
-                                    </div>
-                                    <div class="inf-blog-content">
-                                        <span class="inf-date">Oct 14, 2024</span>
-                                        <h5 class="inf-title"><a href="unlock-entrepreneurial-freedom">Unlock
-                                                Entrepreneurial Freedom</a></h5>
-                                        <p class="inf-excerpt">Why Georgia's 1% Tax could be your Golden Ticket...
-                                        </p>
-                                        <a class="inf-read-more" href="unlock-entrepreneurial-freedom">Read
-                                            More</a>
-                                    </div>
-                                </article>
-                            </div>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <div class="swiper-slide">
+                                    <article class="inf-blog-item">
+                                        <div class="inf-blog-content">
+                                            <h5 class="inf-title">Articles coming soon</h5>
+                                            <p class="inf-excerpt">Check back shortly for our latest legal insights.</p>
+                                        </div>
+                                    </article>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
 

@@ -403,7 +403,7 @@ if(isset($_POST['submit'])){
                         <p class="text-muted small mb-3 d-flex align-items-center gap-2">
                             <i class="fa fa-bolt text-warning"></i> Average response time: under 1 hour
                         </p>
-                        <form method="post" id="contact-form" action="/legal-vista/backend/contact-form">
+                        <form method="post" id="contact-form" action="backend/contact-form.php">
                             <div class="row g-3">
                                 <div class="col-12 col-md-6">
                                     <input type="text" name="name" class="form-control form-control-lg"
