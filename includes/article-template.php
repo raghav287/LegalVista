@@ -411,11 +411,11 @@ function lv_render_article_page(array $article): void
                 <?php if ($prevLink && $nextLink): ?>
                 <hr class="article-nav-divider" />
                 <div class="article-post-nav">
-                    <a href="<?= htmlspecialchars($prevLink['slug'] ?? '#', ENT_QUOTES, 'UTF-8') ?>">
+                    <a href="article.php?slug=<?= htmlspecialchars($prevLink['slug'] ?? '#', ENT_QUOTES, 'UTF-8') ?>">
                         <span aria-hidden="true">&lsaquo;</span> Previous
                     </a>
                     <a class="article-post-nav-next"
-                        href="<?= htmlspecialchars($nextLink['slug'] ?? '#', ENT_QUOTES, 'UTF-8') ?>">
+                        href="article.php?slug=<?= htmlspecialchars($nextLink['slug'] ?? '#', ENT_QUOTES, 'UTF-8') ?>">
                         Next <span aria-hidden="true">&rsaquo;</span>
                     </a>
                 </div>
@@ -428,7 +428,7 @@ function lv_render_article_page(array $article): void
                         <?php foreach ($relatedArticles as $related): ?>
                         <article class="article-related-card">
                             <a class="article-related-card-image"
-                                href="<?= htmlspecialchars($related['slug'], ENT_QUOTES, 'UTF-8') ?>">
+                                href="article.php?slug=<?= htmlspecialchars($related['slug'], ENT_QUOTES, 'UTF-8') ?>">
                                 <img src="<?= htmlspecialchars($related['image'] ?? $related['featured_image'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
                                     alt="<?= htmlspecialchars($related['title'], ENT_QUOTES, 'UTF-8') ?>" />
                             </a>
@@ -436,7 +436,7 @@ function lv_render_article_page(array $article): void
                                 <?= htmlspecialchars(implode(', ', $related['categories'] ?? []), ENT_QUOTES, 'UTF-8') ?>
                             </div>
                             <h4><a
-                                    href="<?= htmlspecialchars($related['slug'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($related['title'], ENT_QUOTES, 'UTF-8') ?></a>
+                                    href="article.php?slug=<?= htmlspecialchars($related['slug'], ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($related['title'], ENT_QUOTES, 'UTF-8') ?></a>
                             </h4>
                             <?php $relatedDate = lv_article_display_date($related); ?>
                             <?php if ($relatedDate !== ''): ?><div class="article-related-card-date"><?= $relatedDate ?>

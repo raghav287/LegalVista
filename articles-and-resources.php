@@ -446,13 +446,13 @@ function buildArticlesUrl(array $params = []): string
                                         $articleDateText = $articleDateValue ? strtoupper(date('F j, Y', strtotime($articleDateValue))) : '';
                                     ?>
                                     <article class="article-card">
-                                        <a class="article-card-image" href="<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>">
+                                        <a class="article-card-image" href="<?php echo htmlspecialchars('article.php?slug=' . $article['slug'], ENT_QUOTES, 'UTF-8'); ?>">
                                             <img src="<?php echo htmlspecialchars($articleImage, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?>" />
                                         </a>
                                         <div class="article-card-content">
                                             <div class="article-card-meta"><?php echo htmlspecialchars(implode(', ', $articleCategories), ENT_QUOTES, 'UTF-8'); ?></div>
                                             <h2 class="article-card-title">
-                                                <a href="<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>">
+                                                <a href="<?php echo htmlspecialchars('article.php?slug=' . $article['slug'], ENT_QUOTES, 'UTF-8'); ?>">
                                                     <?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?>
                                                 </a>
                                             </h2>
