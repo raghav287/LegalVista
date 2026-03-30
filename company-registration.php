@@ -10,11 +10,11 @@ $homepagePackages = getHomepagePackages();
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Legal Vista Ltd - Limited Liability Company in Tbilisi, Georgia</title>
+    <title>Company Registration in Georgia | Legal Vista</title>
     <meta name="description"
-        content="Legal Vista Ltd, a premier law firm founded in 2017, offers bespoke legal services to expatriates looking to set up base in Georgia. We offer a gamut of company start up services to kick start your business and assist in its growth. Limited Liability Company in Tbilisi, Georgia" />
+        content="Set up an LLC or Individual Entrepreneur in Georgia with Legal Vista. Fast incorporation, compliant articles, registered address, and bilingual legal support for founders relocating to Tbilisi." />
     <meta name="keywords"
-        content="Legal Vista Ltd, Limited Liability Company, Limited Liability Company in Tbilisi, Limited Liability Company in Georgia, Accounting & Taxation, Accounting & Taxation Company in Tbilisi, Accounting & Taxation Company in Georgia, Resident Permit, Resident Permit Company in Tbilisi, Resident Permit Company in Georgia , Bank Account Opening, Bank Account Opening Company in Tbilisi, Bank Account Opening Company in Georgia , Tax Residency, Tax Residency Company in Tbilisi, Tax Residency Company in Georgia, Nominee Services, Nominee Services Company in Tbilisi, Nominee Services Company in Georgia " />
+        content="company registration Georgia, form an LLC Georgia, incorporate in Tbilisi, Georgian company setup, business registration Georgia, legal vista company formation" />
     <meta name="robots" content="all" />
     <meta name="resource-type" content="document" />
     <meta name="page-topic" content="Taxation Services" />
@@ -943,7 +943,7 @@ $homepagePackages = getHomepagePackages();
                                                             <div class="row cnt">
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/government-filing-fee1.png" />
+                                                                            src="images/government-filing-fee1.png" alt="Government filing fee included" />
                                                                         <h4>Government Filing Fee</h4>
                                                                         <p>Included in the price of this package. No
                                                                             surprises or hidden costs.</p>
@@ -951,7 +951,7 @@ $homepagePackages = getHomepagePackages();
                                                                 </div>
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/unlimited-247-support1.png" />
+                                                                            src="images/unlimited-247-support1.png" alt="Unlimited 24/7 support" />
                                                                         <h4>Unlimited 24/7 Support</h4>
                                                                         <p>We're available for you 24/7; just call,
                                                                             email or send a message on Whatsapp.</p>
@@ -959,7 +959,7 @@ $homepagePackages = getHomepagePackages();
                                                                 </div>
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/free-legal-consultation.png" />
+                                                                            src="images/free-legal-consultation.png" alt="Free legal consultation" />
                                                                         <h4>Free Legal Consultation</h4>
                                                                         <p>Also included 3 hours of Free Online Legal
                                                                             Consultation with our Lawyers.</p>
@@ -1120,7 +1120,7 @@ $homepagePackages = getHomepagePackages();
                                                             <div class="row cnt">
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/government-filing-fee1.png" />
+                                                                            src="images/government-filing-fee1.png" alt="Government filing fee included" />
                                                                         <h4>Government Filing Fee</h4>
                                                                         <p>Included in the price of this package. No
                                                                             surprises or hidden costs.</p>
@@ -1128,7 +1128,7 @@ $homepagePackages = getHomepagePackages();
                                                                 </div>
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/unlimited-247-support1.png" />
+                                                                            src="images/unlimited-247-support1.png" alt="Unlimited 24/7 support" />
                                                                         <h4>Unlimited 24/7 Support</h4>
                                                                         <p>We're available for you 24/7; just call,
                                                                             email or send a message on Whatsapp.</p>
@@ -1136,7 +1136,7 @@ $homepagePackages = getHomepagePackages();
                                                                 </div>
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/free-legal-consultation.png" />
+                                                                            src="images/free-legal-consultation.png" alt="Free legal consultation" />
                                                                         <h4>Free Legal Consultation</h4>
                                                                         <p>Also included 3 hours of Free Online Legal
                                                                             Consultation with our Lawyers.</p>
@@ -1312,7 +1312,7 @@ $homepagePackages = getHomepagePackages();
                                                             <div class="row cnt">
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/government-filing-fee1.png" />
+                                                                            src="images/government-filing-fee1.png" alt="Government filing fee included" />
                                                                         <h4>Government Filing Fee</h4>
                                                                         <p>Included in the price of this package. No
                                                                             surprises or hidden costs.</p>
@@ -1320,7 +1320,7 @@ $homepagePackages = getHomepagePackages();
                                                                 </div>
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/unlimited-247-support1.png" />
+                                                                            src="images/unlimited-247-support1.png" alt="Unlimited 24/7 support" />
                                                                         <h4>Unlimited 24/7 Support</h4>
                                                                         <p>We're available for you 24/7; just call,
                                                                             email or send a message on Whatsapp.</p>
@@ -1328,7 +1328,7 @@ $homepagePackages = getHomepagePackages();
                                                                 </div>
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/free-legal-consultation.png" />
+                                                                            src="images/free-legal-consultation.png" alt="Free legal consultation" />
                                                                         <h4>Free Legal Consultation</h4>
                                                                         <p>Also included 3 hours of Free Online Legal
                                                                             Consultation with our Lawyers.</p>
@@ -1543,7 +1543,7 @@ $homepagePackages = getHomepagePackages();
                                                         <div class="row cnt">
                                                             <div class="col-lg-4">
                                                                 <div class="included-package text-center"> <img
-                                                                        src="images/government-filing-fee1.png" />
+                                                                        src="images/government-filing-fee1.png" alt="Government filing fee included" />
                                                                     <h4>Government Filing Fee</h4>
                                                                     <p>Included in the price of this package. No
                                                                         surprises or hidden costs.</p>
@@ -1551,7 +1551,7 @@ $homepagePackages = getHomepagePackages();
                                                             </div>
                                                             <div class="col-lg-4">
                                                                 <div class="included-package text-center"> <img
-                                                                        src="images/unlimited-247-support1.png" />
+                                                                        src="images/unlimited-247-support1.png" alt="Unlimited 24/7 support" />
                                                                     <h4>Unlimited 24/7 Support</h4>
                                                                     <p>We're available for you 24/7; just call, email or
                                                                         send a message on Whatsapp.</p>
@@ -1559,7 +1559,7 @@ $homepagePackages = getHomepagePackages();
                                                             </div>
                                                             <div class="col-lg-4">
                                                                 <div class="included-package text-center"> <img
-                                                                        src="images/free-legal-consultation.png" />
+                                                                        src="images/free-legal-consultation.png" alt="Free legal consultation" />
                                                                     <h4>Free Legal Consultation</h4>
                                                                     <p>Also included 3 hours of Free Online Legal
                                                                         Consultation with our Lawyers.</p>
@@ -1709,7 +1709,7 @@ $homepagePackages = getHomepagePackages();
                                                             <div class="row cnt">
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/government-filing-fee1.png" />
+                                                                            src="images/government-filing-fee1.png" alt="Government filing fee included" />
                                                                         <h4>Government Filing Fee</h4>
                                                                         <p>Included in the price of this package. No
                                                                             surprises or hidden costs.</p>
@@ -1717,7 +1717,7 @@ $homepagePackages = getHomepagePackages();
                                                                 </div>
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/unlimited-247-support1.png" />
+                                                                            src="images/unlimited-247-support1.png" alt="Unlimited 24/7 support" />
                                                                         <h4>Unlimited 24/7 Support</h4>
                                                                         <p>We're available for you 24/7; just call,
                                                                             email or send a message on Whatsapp.</p>
@@ -1725,7 +1725,7 @@ $homepagePackages = getHomepagePackages();
                                                                 </div>
                                                                 <div class="col-lg-4">
                                                                     <div class="included-package text-center"> <img
-                                                                            src="images/free-legal-consultation.png" />
+                                                                            src="images/free-legal-consultation.png" alt="Free legal consultation" />
                                                                         <h4>Free Legal Consultation</h4>
                                                                         <p>Also included 3 hours of Free Online Legal
                                                                             Consultation with our Lawyers.</p>

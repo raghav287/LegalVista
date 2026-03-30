@@ -620,7 +620,7 @@ function legalVistaRenderArticleClose(array $article): string
     <div class="row">
       <div class="col-md-12">
         <div class="about-page aboutttinfo ">
-<img src="images/your-business-in-georgia.jpg" class="ringhtimg">  
+<img src="images/your-business-in-georgia.jpg" class="ringhtimg" alt="Register your business in Georgia guide">  
         
 <p>Thinking about registering a business in Georgia? You might be surprised at how easy it
 is. Georgia offers a straightforward registration process that&#39;s perfect for entrepreneurs
@@ -725,7 +725,7 @@ benefits through tax optimization and enhanced market access opportunities. The
 country&#39;s business-friendly policies and strategic location make it an attractive
 destination for entrepreneurs seeking to establish and grow their businesses effectively.</p>
 
-<img src="images/corporate-bank-account-in-georgia.jpg" class="lefttimg1">
+<img src="images/corporate-bank-account-in-georgia.jpg" class="lefttimg1" alt="Corporate bank account options in Georgia">
 <h4>Corporate Banking Services in Georgia</h4>
 
 

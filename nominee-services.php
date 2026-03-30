@@ -42,11 +42,11 @@ if(isset($_POST['submit'])){
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Legal Vista Ltd - Nominee Services Company in Tbilisi, Georgia</title>
+    <title>Nominee Director & Shareholder Services in Georgia | Legal Vista</title>
     <meta name="description"
-        content="Legal Vista Ltd, a premier law firm founded in 2017, offers bespoke legal services to expatriates looking to set up base in Georgia. We offer a gamut of company start up services to kick start your business and assist in its growth. Limited Liability Company in Tbilisi, Georgia" />
+        content="Preserve privacy while meeting Georgian disclosure rules. Legal Vista provides trusted nominee director and shareholder services, bank account support, and POA-based governance to keep ultimate control with you." />
     <meta name="keywords"
-        content="Legal Vista Ltd, Limited Liability Company, Limited Liability Company in Tbilisi, Limited Liability Company in Georgia, Accounting & Taxation, Accounting & Taxation Company in Tbilisi, Accounting & Taxation Company in Georgia, Resident Permit, Resident Permit Company in Tbilisi, Resident Permit Company in Georgia , Bank Account Opening, Bank Account Opening Company in Tbilisi, Bank Account Opening Company in Georgia , Tax Residency, Tax Residency Company in Tbilisi, Tax Residency Company in Georgia, Nominee Services, Nominee Services Company in Tbilisi, Nominee Services Company in Georgia " />
+        content="nominee director Georgia, nominee shareholder Georgia, confidentiality Georgian company, beneficial owner privacy, POA governance Georgia, Legal Vista nominees" />
     <meta name="robots" content="all" />
     <meta name="resource-type" content="document" />
     <meta name="page-topic" content="Taxation Services" />
@@ -259,7 +259,7 @@ if(isset($_POST['submit'])){
                     <div class="col-md-12">
                         <div class="about-page aboutttinfo ">
 
-                            <img src="images/nominee-services.jpg" class="ringhtimg">
+                            <img src="images/nominee-services.jpg" class="ringhtimg" alt="Nominee director services in Georgia">
 
                             <p>At <strong>Legal Vista LLC</strong>, we understand the importance of privacy for business
                                 directors and shareholders. Georgian law requires all legal entities to disclose the

@@ -611,7 +611,7 @@ function legalVistaRenderArticleClose(array $article): string
             echo legalVistaRenderArticleHero($articleMeta);
             echo legalVistaRenderArticleOpen($articleMeta);
             ?>
-<img src="images/new-aml-compliance-rules-for-company.jpg"  width="500px" class="ringhtimg">  
+<img src="images/new-aml-compliance-rules-for-company.jpg"  width=\"500px\" class=\"ringhtimg\" alt=\"New AML compliance rules for companies in Georgia\">  
          
 
 

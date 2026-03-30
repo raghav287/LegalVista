@@ -42,11 +42,11 @@ if(isset($_POST['submit'])){
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Legal Vista Ltd - Tax Residency Company in Tbilisi, Georgia</title>
+    <title>Tax Residency in Georgia | Legal Vista</title>
     <meta name="description"
-        content="Legal Vista Ltd, a premier law firm founded in 2017, offers bespoke legal services to expatriates looking to set up base in Georgia. We offer a gamut of company start up services to kick start your business and assist in its growth. Limited Liability Company in Tbilisi, Georgia" />
+        content="Secure Georgian tax residency or High Net Worth Individual status with Legal Vista. We evaluate eligibility, structure presence and income, and manage filings to optimise your global tax position." />
     <meta name="keywords"
-        content="Legal Vista Ltd, Limited Liability Company, Limited Liability Company in Tbilisi, Limited Liability Company in Georgia, Accounting & Taxation, Accounting & Taxation Company in Tbilisi, Accounting & Taxation Company in Georgia, Resident Permit, Resident Permit Company in Tbilisi, Resident Permit Company in Georgia , Bank Account Opening, Bank Account Opening Company in Tbilisi, Bank Account Opening Company in Georgia , Tax Residency, Tax Residency Company in Tbilisi, Tax Residency Company in Georgia, Nominee Services, Nominee Services Company in Tbilisi, Nominee Services Company in Georgia " />
+        content="Georgia tax residency, Georgian HNWI status, tax resident certificate Georgia, Georgian tax planning, relocate for tax Georgia, Legal Vista tax" />
     <meta name="robots" content="all" />
     <meta name="resource-type" content="document" />
     <meta name="page-topic" content="Taxation Services" />
@@ -248,7 +248,7 @@ if(isset($_POST['submit'])){
                     <div class="col-md-12">
                         <div class="about-page aboutttinfo ">
 
-                            <img src="images/tax-residency.png" class="ringhtimg">
+                            <img src="images/tax-residency.png" class="ringhtimg" alt="Tax residency consultation in Georgia">
                             <h1>Tax Residency in Georgia</h1>
                             <p>The High Net Worth Georgian Tax Residency program offers a unique opportunity for
                                 individuals with an income exceeding 200,000 GEL (approx. 80,000 USD) or personal assets

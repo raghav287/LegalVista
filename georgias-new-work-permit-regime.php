@@ -615,7 +615,7 @@ function legalVistaRenderArticleClose(array $article): string
             echo legalVistaRenderArticleHero($articleMeta);
             echo legalVistaRenderArticleOpen($articleMeta);
             ?>
-        <img src="images/georgias-new-work-permit-regime.jpg" width="500px" class="ringhtimg">
+        <img src="images/georgias-new-work-permit-regime.jpg" width="500px" class="ringhtimg" alt="Georgia's new work permit regime guide">
 
 
 

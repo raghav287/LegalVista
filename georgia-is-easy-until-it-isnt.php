@@ -620,7 +620,7 @@ function legalVistaRenderArticleClose(array $article): string
     <div class="row">
       <div class="col-md-12">
         <div class="about-page aboutttinfo ">
-<img src="images/georgia-is-easy-until-it-isnt.jpg"  width="500px" class="ringhtimg">  
+<img src="images/georgia-is-easy-until-it-isnt.jpg"  width="500px" class="ringhtimg" alt="Georgia is easy until it isn't article illustration">  
          
 
 

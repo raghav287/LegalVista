@@ -41,8 +41,9 @@ if(isset($_POST['submit'])){
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>Legal Vista</title>
-        <meta name="description" content="" />
+        <title>Accounting &amp; Taxation Services in Georgia | Legal Vista</title>
+        <meta name="description" content="Full-service bookkeeping, VAT/CIT filings, payroll, and tax advisory for Georgian companies and individual entrepreneurs. Remote onboarding with English-speaking CPAs in Tbilisi." />
+        <meta name="keywords" content="Georgia accounting services, tax filing Georgia, VAT Georgia, payroll outsourcing Tbilisi, bookkeeping Georgia, Legal Vista accountants" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="images/fevicon.png" />

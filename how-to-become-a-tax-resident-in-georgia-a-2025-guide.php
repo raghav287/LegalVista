@@ -611,7 +611,7 @@ function legalVistaRenderArticleClose(array $article): string
             echo legalVistaRenderArticleHero($articleMeta);
             echo legalVistaRenderArticleOpen($articleMeta);
             ?>
-<img src="images/how-to-become-a-tax-resident-in-georgia-a-2025-guide.jpg"  width="500px" class="ringhtimg">  
+<img src="images/how-to-become-a-tax-resident-in-georgia-a-2025-guide.jpg"  width="500px" class="ringhtimg" alt="How to become a tax resident in Georgia 2025 guide">  
          
 <p>Georgia, the vibrant country at the  crossroads of Europe and Asia, has rapidly emerged as an attractive destination  for individuals and businesses seeking favorable tax regimes. For many,  achieving <strong>Georgia tax residency</strong> is  the gateway to unlocking these benefits. This 2025 guide provides a  comprehensive overview of the pathways to <strong>become  a tax resident in Georgia</strong>, exploring the key rules and significant <strong>tax advantages in Georgia country</strong>.</p>
 <h3><a name="_h7mbolit51km"></a><strong>Understanding Georgia Tax  Residency: The Core Pathways</strong></h3>

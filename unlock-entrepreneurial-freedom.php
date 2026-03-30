@@ -620,7 +620,7 @@ function legalVistaRenderArticleClose(array $article): string
     <div class="row">
       <div class="col-md-12">
         <div class="about-page aboutttinfo ">
-<img src="images/nlock-entrepreneurial.jpg" class="ringhtimg">  
+<img src="images/nlock-entrepreneurial.jpg" class="ringhtimg" alt="Unlock entrepreneurial freedom article hero">  
         <h4>Unlock Entrepreneurial Freedom: Why Georgia's 1% Tax for Individual Entrepreneurs Could be Your Golden Ticket</h4>
 <p>Have you ever dreamed of running your own business with minimal tax obligations and maximum benefits? Imagine a place where you can pay as little as 1% in taxes and still enjoy the advantages of being your own boss. Welcome to Georgia—the hidden gem for individual entrepreneurs and freelancers alike. Here, the tax system is not just friendly; it's revolutionary.<br><br>
 In Georgia, registering as an individual entrepreneur can drastically cut down your tax burden, leaving you more to invest back into your business. This small yet rapidly developing country offers a unique tax regime that is incredibly appealing for small business owners. Whether you're a digital nomad, a freelancer, or someone looking to start their own venture, the Georgian tax system could be the breath of fresh air you’ve been searching for.
@@ -674,7 +674,7 @@ In conclusion, becoming an Individual Entrepreneur in Georgia offers a unique bl
 
 <p>Are you considering registering as an individual entrepreneur in Georgia to take advantage of the enticing 1% tax rate? Before delving into this entrepreneurial journey, understanding the requirements is crucial. Let's walk through the legal steps, documentation needed, as well as the registration fees and timelines involved in becoming an individual entrepreneur in Georgia.</p>
 
-<img src="images/nlock-entrepreneurial1.jpg" class="lefttimg1">
+<img src="images/nlock-entrepreneurial1.jpg" class="lefttimg1" alt="Individual entrepreneur registration steps in Georgia">
 <h4>Legal Steps and Documentation</h4>
 
 
@@ -729,7 +729,7 @@ As you weigh your options for registering as an individual entrepreneur, conside
 <h4>Seeking Professional Advice</h4>
 
 <p>When setting up your business as an Individual Entrepreneur in Georgia, seeking professional advice is crucial. Consulting with tax and legal experts can provide valuable insights into the intricacies of the local regulations and help you make informed decisions. Experienced professionals can guide you through the process of tax registration, compliance requirements, and legal obligations specific to Georgia, ensuring you start your venture on the right footing.</p>
-<img src="images/nlock-entrepreneurial2.jpg" class="ringhtimg">  
+<img src="images/nlock-entrepreneurial2.jpg" class="ringhtimg" alt="Compliance tips for individual entrepreneurs in Georgia">  
 <h4>Maintaining Compliance and Records</h4>
 
 <p>To thrive as an Individual Entrepreneur in Georgia, maintaining compliance with tax regulations and keeping accurate records is paramount. Establish a system for record-keeping early on to track your income, expenses, and tax obligations effectively. Regularly update your financial records to stay compliant with the tax laws in Georgia. By staying organized and proactive in record-keeping, you can avoid potential penalties and ensure the smooth operation of your entrepreneurial endeavors.<br><br>

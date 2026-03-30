@@ -620,7 +620,7 @@ function legalVistaRenderArticleClose(array $article): string
     <div class="row">
       <div class="col-md-12">
         <div class="about-page aboutttinfo ">
-<img src="images/temporary-residence-permit-changes-202526.jpg"  width="500px" class="ringhtimg">  
+<img src="images/temporary-residence-permit-changes-202526.jpg"  width="500px" class="ringhtimg" alt="Temporary residence permit changes 2025-26 Georgia">  
          
 <p >Effective Timeline: Mid-2025 to 2026</p>
 <p >Issued by: Government of Georgia – Ministry of Justice and Public Service Development Agency</p>

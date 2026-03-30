@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-         <title>Legal Vista Ltd - Limited Liability Company in Tbilisi, Georgia</title>
-<meta name="description" content="Legal Vista Ltd, a premier law firm founded in 2017, offers bespoke legal services to expatriates looking to set up base in Georgia. We offer a gamut of company start up services to kick start your business and assist in its growth. Limited Liability Company in Tbilisi, Georgia"/>
-<meta name="keywords" content=  "Legal Vista Ltd, Limited Liability Company, Limited Liability Company in Tbilisi, Limited Liability Company in Georgia, Accounting & Taxation, Accounting & Taxation Company in Tbilisi, Accounting & Taxation Company in Georgia, Resident Permit, Resident Permit Company in Tbilisi, Resident Permit Company in Georgia , Bank Account Opening, Bank Account Opening Company in Tbilisi, Bank Account Opening Company in Georgia , Tax Residency, Tax Residency Company in Tbilisi, Tax Residency Company in Georgia, Nominee Services, Nominee Services Company in Tbilisi, Nominee Services Company in Georgia "/> 
+         <title>Enquire About Company Formation in Georgia | Legal Vista</title>
+<meta name="description" content="Request a consultation to register your Georgian company. Legal Vista handles name clearance, articles, tax numbers, bank account coordination, and residency options for founders."/>
+<meta name="keywords" content="company formation enquiry Georgia, start a company Tbilisi, Georgia business consultation, legal vista enquiry, Georgian LLC support"/> 
 <meta name="robots" content="all"/>
 <meta name= "resource-type" content="document"/>
 <meta name= "page-topic" content="Taxation Services"/>

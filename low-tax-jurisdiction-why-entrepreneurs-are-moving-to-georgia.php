@@ -611,7 +611,7 @@ function legalVistaRenderArticleClose(array $article): string
             echo legalVistaRenderArticleHero($articleMeta);
             echo legalVistaRenderArticleOpen($articleMeta);
             ?>
-<img src="images/low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia.jpg"  width="500px" class="ringhtimg">  
+<img src="images/low-tax-jurisdiction-why-entrepreneurs-are-moving-to-georgia.jpg"  width="500px" class="ringhtimg" alt="Low tax jurisdiction advantages in Georgia">  
          
 
 

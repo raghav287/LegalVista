@@ -42,11 +42,11 @@ if(isset($_POST['submit'])){
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Legal Vista Ltd - Resident Permit Company in Tbilisi, Georgia</title>
+    <title>Residence Permits in Georgia | Legal Vista</title>
     <meta name="description"
-        content="Legal Vista Ltd, a premier law firm founded in 2017, offers bespoke legal services to expatriates looking to set up base in Georgia. We offer a gamut of company start up services to kick start your business and assist in its growth. Limited Liability Company in Tbilisi, Georgia" />
+        content="Obtain work, short-term property-based, or permanent residence permits in Georgia. Legal Vista handles eligibility checks, documentation, and submissions so you can relocate with confidence." />
     <meta name="keywords"
-        content="Legal Vista Ltd, Limited Liability Company, Limited Liability Company in Tbilisi, Limited Liability Company in Georgia, Accounting & Taxation, Accounting & Taxation Company in Tbilisi, Accounting & Taxation Company in Georgia, Resident Permit, Resident Permit Company in Tbilisi, Resident Permit Company in Georgia , Bank Account Opening, Bank Account Opening Company in Tbilisi, Bank Account Opening Company in Georgia , Tax Residency, Tax Residency Company in Tbilisi, Tax Residency Company in Georgia, Nominee Services, Nominee Services Company in Tbilisi, Nominee Services Company in Georgia " />
+        content="Georgia residence permit, Georgian residency lawyer, work residence permit Georgia, property residence permit Georgia, permanent residence Georgia, Legal Vista immigration" />
     <meta name="robots" content="all" />
     <meta name="resource-type" content="document" />
     <meta name="page-topic" content="Taxation Services" />
@@ -238,7 +238,7 @@ if(isset($_POST['submit'])){
                     <div class="col-md-12">
                         <div class="about-page aboutttinfo ">
 
-                            <img src="images/resident-permit.jpg" class="ringhtimg">
+                            <img src="images/resident-permit.jpg" class="ringhtimg" alt="Georgia residence permit guidance">
 
                             <p>At <strong>Legal Vista LLC</strong>, we specialize in assisting individuals and families
                                 in obtaining Georgian residence permits. Whether you're looking to relocate for
@@ -332,7 +332,7 @@ if(isset($_POST['submit'])){
                     <div class="row">
                         <div class="col-md-6">
 
-                            <div class="ss1 "> <img src="images/swati.jpg" class="lefttimg">
+                            <div class="ss1 "> <img src="images/swati.jpg" class="lefttimg" alt="Legal Vista attorney Swati">
 
                             </div>
 

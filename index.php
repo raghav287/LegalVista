@@ -603,7 +603,7 @@ foreach ($homepageArticlesRaw as $article) {
                                         <div class="pbmit-box-content-inner">
                                             <div class="pbmit-pf-box-title jkllll">
                                                 <div class="pbmit-ihbox-icon">
-                                                    <img src="images/7th-in-the-world1.png">
+                                                    <img src="images/7th-in-the-world1.png" alt="Ease of doing business ranked 7th globally">
 
                                                 </div>
 
@@ -621,7 +621,7 @@ foreach ($homepageArticlesRaw as $article) {
 
                                         <div class="pbmit-box-content-inner">
                                             <div class="pbmit-pf-box-title jkllll">
-                                                <div class="pbmit-ihbox-icon"> <img src="images/low-tax-rate1.png">
+                                                <div class="pbmit-ihbox-icon"> <img src="images/low-tax-rate1.png" alt="Low tax rate in Georgia">
                                                 </div>
 
                                                 <h3><a href="#">Low Tax Rate</a></h3>
@@ -639,7 +639,7 @@ foreach ($homepageArticlesRaw as $article) {
                                         <div class="pbmit-box-content-inner">
                                             <div class="pbmit-pf-box-title jkllll">
                                                 <div class="pbmit-ihbox-icon"> <img
-                                                        src="images/free-trade-agreement-with-eu1.png"> </div>
+                                                        src="images/free-trade-agreement-with-eu1.png" alt="Georgia free trade agreements with EU"> </div>
 
                                                 <h3><a href="#">Free Trade Agreement with EU</a></h3>
                                             </div>
@@ -656,7 +656,7 @@ foreach ($homepageArticlesRaw as $article) {
                                         <div class="pbmit-box-content-inner">
                                             <div class="pbmit-pf-box-title jkllll">
                                                 <div class="pbmit-ihbox-icon"> <img
-                                                        src="images/premium-corporate-banking-services.png"> </div>
+                                                        src="images/premium-corporate-banking-services.png" alt="Premium corporate banking services"> </div>
 
                                                 <h3><a href="#">Premium corporate banking services</a></h3>
                                             </div>
@@ -718,7 +718,7 @@ foreach ($homepageArticlesRaw as $article) {
                             <div class="col-md-12 col-lg-5">
                                 <div class="about-seven-imgbox border border-warning">
                                     <figure>
-                                        <img src="images/about-img.jpg" class="img-fluid" alt="" />
+                                        <img src="images/about-img.jpg" class="img-fluid" alt="Legal Vista team providing company formation services in Georgia" />
                                     </figure>
                                 </div>
                             </div>
@@ -747,7 +747,7 @@ foreach ($homepageArticlesRaw as $article) {
       <div class="service-content">
         <div class="service-intro-content">
           <div class="service-intro-iconll"> 
-        <img src="images/sole-proprietorship1.png">
+        <img src="images/sole-proprietorship1.png" alt="Sole proprietorship service icon">
           </div>
           <h3 class="ts-title">
             <a href="#">Sole Proprietorship </a>
@@ -772,7 +772,7 @@ foreach ($homepageArticlesRaw as $article) {
       <div class="service-content">
         <div class="service-intro-content">
             <div class="service-intro-iconll"> 
-          <img src="images/accounting-and-bookkeeping1.png">
+          <img src="images/accounting-and-bookkeeping1.png" alt="Accounting and bookkeeping service icon">
           </div>
           <h3 class="ts-title">
             <a href="#">Accounting & Bookkeeping </a>
@@ -798,7 +798,7 @@ foreach ($homepageArticlesRaw as $article) {
       <div class="service-content">
         <div class="service-intro-content">
         <div class="service-intro-iconll"> 
-          <img src="images/resident-----permit.png">
+          <img src="images/resident-----permit.png" alt="Resident permit assistance icon">
           </div>
           <h3 class="ts-title">
             <a href="#">Resident Permit </a>
@@ -826,7 +826,7 @@ foreach ($homepageArticlesRaw as $article) {
       <div class="service-content">
         <div class="service-intro-content">
          <div class="service-intro-iconll"> 
-          <img src="images/bank-account-opening11.png">
+          <img src="images/bank-account-opening11.png" alt="Bank account opening service icon">
           </div>
           <h3 class="ts-title">
             <a href="#">Bank Account Opening </a>
@@ -851,7 +851,7 @@ foreach ($homepageArticlesRaw as $article) {
       <div class="service-content">
         <div class="service-intro-content">
            <div class="service-intro-iconll"> 
-          <img src="images/tax-residency1111.png">
+          <img src="images/tax-residency1111.png" alt="Tax residency service icon">
           </div>
           <h3 class="ts-title">
             <a href="#">Tax Residency  </a>
@@ -885,7 +885,7 @@ foreach ($homepageArticlesRaw as $article) {
       <div class="service-content">
         <div class="service-intro-content">
            <div class="service-intro-iconll"> 
-          <img src="images/nominee-services111.png">
+          <img src="images/nominee-services111.png" alt="Nominee services icon">
           </div>
           <h3 class="ts-title">
             <a href="nominee-services">Nominee Services </a>
@@ -924,7 +924,7 @@ foreach ($homepageArticlesRaw as $article) {
                             <div class="col-md-6 col-lg-3">
                                 <div class="box11">
                                     <ul class="bobbbb">
-                                        <li><img src="images/remote-company-formation1.png" /> Remote Company Formation</li>
+                                        <li><img src="images/remote-company-formation1.png" alt="Remote company formation" /> Remote Company Formation</li>
                                     </ul>
                                 </div>
                             </div>
@@ -932,7 +932,7 @@ foreach ($homepageArticlesRaw as $article) {
                             <div class="col-md-6 col-lg-3">
                                 <div class="box11">
                                     <ul class="bobbbb">
-                                        <li><img src="images/bank-account-opening.png" /> Bank Account Opening with Company Registration</li>
+                                        <li><img src="images/bank-account-opening.png" alt="Bank account opening with company registration" /> Bank Account Opening with Company Registration</li>
                                     </ul>
                                 </div>
                             </div>
@@ -940,7 +940,7 @@ foreach ($homepageArticlesRaw as $article) {
                             <div class="col-md-6 col-lg-3">
                                 <div class="box11">
                                     <ul class="bobbbb">
-                                        <li><img src="images/registered-companies1.png" /> Bank Account Opening for Registered Companies</li>
+                                        <li><img src="images/registered-companies1.png" alt="Bank accounts for registered companies" /> Bank Account Opening for Registered Companies</li>
                                     </ul>
                                 </div>
                             </div>
@@ -949,7 +949,7 @@ foreach ($homepageArticlesRaw as $article) {
                                 <div class="box11">
                                     <ul class="bobbbb">
                                         <li>
-                                            <img src="images/vat-registration-assistance1.png" /> VAT Registration <br />
+                                            <img src="images/vat-registration-assistance1.png" alt="VAT registration assistance" /> VAT Registration <br />
                                             Assistance
                                         </li>
                                     </ul>
@@ -959,7 +959,7 @@ foreach ($homepageArticlesRaw as $article) {
                             <div class="col-md-6 col-lg-3">
                                 <div class="box11">
                                     <ul class="bobbbb">
-                                        <li><img src="images/virtual-office-services.png" /> Virtual Office Services (Starting from...)</li>
+                                        <li><img src="images/virtual-office-services.png" alt="Virtual office services" /> Virtual Office Services (Starting from...)</li>
                                     </ul>
                                 </div>
                             </div>
@@ -967,7 +967,7 @@ foreach ($homepageArticlesRaw as $article) {
                             <div class="col-md-6 col-lg-3">
                                 <div class="box11">
                                     <ul class="bobbbb">
-                                        <li><img src="images/accounting-and-bookkeeping-support1.png" /> Accounting and Bookkeeping Support</li>
+                                        <li><img src="images/accounting-and-bookkeeping-support1.png" alt="Accounting and bookkeeping support" /> Accounting and Bookkeeping Support</li>
                                     </ul>
                                 </div>
                             </div>
@@ -976,7 +976,7 @@ foreach ($homepageArticlesRaw as $article) {
                                 <div class="box11">
                                     <ul class="bobbbb">
                                         <li>
-                                            <img src="images/tax-advisory-services1.png" /> Tax Advisory <br />
+                                            <img src="images/tax-advisory-services1.png" alt="Tax advisory services" /> Tax Advisory <br />
                                             Services
                                         </li>
                                     </ul>
@@ -986,7 +986,7 @@ foreach ($homepageArticlesRaw as $article) {
                             <div class="col-md-6 col-lg-3">
                                 <div class="box11">
                                     <ul class="bobbbb">
-                                        <li><img src="images/legal-compliance-consulting1.png" />Legal Compliance Consulting</li>
+                                        <li><img src="images/legal-compliance-consulting1.png" alt="Legal compliance consulting" />Legal Compliance Consulting</li>
                                     </ul>
                                 </div>
                             </div>

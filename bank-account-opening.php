@@ -44,9 +44,9 @@ if(isset($_POST['submit'])){
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Legal Vista Ltd - Bank Account Opening Company in Tbilisi, Georgia</title>
     <meta name="description"
-        content="Legal Vista Ltd, a premier law firm founded in 2017, offers bespoke legal services to expatriates looking to set up base in Georgia. We offer a gamut of company start up services to kick start your business and assist in its growth. Limited Liability Company in Tbilisi, Georgia" />
+        content="Open corporate and personal bank accounts in Georgia with Legal Vista. Remote or in-person setup, multi-currency accounts, online banking, and compliance support with Bank of Georgia, TBC and other top banks." />
     <meta name="keywords"
-        content="Legal Vista Ltd, Limited Liability Company, Limited Liability Company in Tbilisi, Limited Liability Company in Georgia, Accounting & Taxation, Accounting & Taxation Company in Tbilisi, Accounting & Taxation Company in Georgia, Resident Permit, Resident Permit Company in Tbilisi, Resident Permit Company in Georgia , Bank Account Opening, Bank Account Opening Company in Tbilisi, Bank Account Opening Company in Georgia , Tax Residency, Tax Residency Company in Tbilisi, Tax Residency Company in Georgia, Nominee Services, Nominee Services Company in Tbilisi, Nominee Services Company in Georgia " />
+        content="Georgia bank account opening, corporate account Georgia, remote bank account Georgia, multi currency account Tbilisi, Bank of Georgia business account, TBC bank account, Legal Vista" />
     <meta name="robots" content="all" />
     <meta name="resource-type" content="document" />
     <meta name="page-topic" content="Taxation Services" />
@@ -247,7 +247,7 @@ if(isset($_POST['submit'])){
                 <div class="row">
                     <div class="col-md-12">
                         <div class="about-page aboutttinfo "> <img src="images/bank-account-opening1.jpg"
-                                class="ringhtimg">
+                                class="ringhtimg" alt="Business bank account opening in Georgia">
                             <h1>Open a Corporate Bank Account in Georgia</h1>
                             <p>Starting a company in Georgia is just the beginning. Most businesses need a proper bank
                                 account to run smoothly. Opening a business bank account has certain requirements, and
@@ -315,7 +315,7 @@ if(isset($_POST['submit'])){
                     <div class="col-md-6">
 
                         <div class="ss1 "> <img src="images/opening-a-company-bank-account-in-georgia.jpg"
-                                class="lefttimg">
+                                class="lefttimg" alt="Opening a company bank account in Georgia">
 
                         </div>
 

@@ -34,11 +34,11 @@
 
 <div class="cp-widget-button">
     <div data-brand-color="background" onClick="show()" class="cp-widget-button__inner"> <a
-            href="https://api.whatsapp.com/send?phone=+995599848487"><img src="images/whatsapp.png" /></a> </div>
+            href="https://api.whatsapp.com/send?phone=+995599848487"><img src="images/whatsapp.png" alt="Chat with Legal Vista on WhatsApp" /></a> </div>
 </div>
 <div class="cp-widget-button1">
     <div data-brand-color="background" onClick="show()" class="cp-widget-button__inner1"> <a
-            href="tel:+995599848487"><img src="images/call.png" /></a> </div>
+            href="tel:+995599848487"><img src="images/call.png" alt="Call Legal Vista" /></a> </div>
 </div>
 
 <!-- Header Main Area -->
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="site-branding">
                         <span class="site-title">
                             <a href="./">
-                                <img class="logo-img" src="images/logo.png" alt="" />
+                                <img class="logo-img" src="images/logo.png" alt="Legal Vista logo" />
                             </a>
                         </span>
                     </div>
@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="pbmit-right-side">
                         <div class="right-logoo"> <img
                                 src="images/3e-international-3e-accounting-independent-member1-300x55.png"
-                                width="200px"> </div>
+                                width="200px" alt="3E International and 3E Accounting independent member badge"> </div>
                     </div>
                 </div>
 

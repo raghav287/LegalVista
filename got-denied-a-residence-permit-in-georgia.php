@@ -611,7 +611,7 @@ function legalVistaRenderArticleClose(array $article): string
             echo legalVistaRenderArticleHero($articleMeta);
             echo legalVistaRenderArticleOpen($articleMeta);
             ?>
-<img src="images/got-denied-a-residence-permit-in-georgia.jpg"  width="500px" class="ringhtimg">  
+<img src="images/got-denied-a-residence-permit-in-georgia.jpg"  width="500px" class="ringhtimg" alt="Denied residence permit in Georgia guidance">  
 
 
 
