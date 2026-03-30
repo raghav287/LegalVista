@@ -60,7 +60,6 @@ foreach ($homepagePackages as $homepagePackage) {
 
 $homepageArticlesRaw = lv_get_articles([
     'status' => 'published',
-    'limit' => 8,
 ], true);
 
 $homepageArticles = [];

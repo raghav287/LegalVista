@@ -382,6 +382,103 @@ if(isset($_POST['submit'])){
     .letter-sp-1 {
         letter-spacing: .12rem;
     }
+
+    /* Page-specific package bar styling */
+    .ie-package {
+        background-color: #00204e;
+        padding: 26px 36px;
+        border-radius: 16px;
+        box-shadow: 0 18px 28px rgba(0, 0, 0, 0.18), 6px 10px 0 rgba(1, 71, 106, 0.45);
+        margin-bottom: 35px;
+    }
+
+    .ie-package h5 {
+        color: #ffffff;
+        margin-bottom: 7px;
+        font-weight: 800;
+        font-size: 24px;
+        text-transform: uppercase;
+    }
+
+    .ie-package .cnt {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+
+    .ie-package .btnnnnnn {
+        margin-left: auto;
+    }
+
+    .ie-package .price-button {
+        display: inline-block;
+        padding: 14px 64px;
+        font-size: 16px;
+        font-weight: 800;
+        color: #fff;
+        text-decoration: none;
+        background: linear-gradient(135deg, #0e4ba3, #133158);
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .ie-package .price-button:hover {
+        background: linear-gradient(135deg, #fbcb8a, #f2bb31);
+        box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+    }
+
+    .ie-container {
+        margin-top: 20px;
+    }
+
+    .ie-package {
+        background-color: #00204e;
+        padding: 16px 30px;
+        /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+        border-radius: 10px;
+        /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        margin-bottom: 35px;
+        box-shadow: 6px 8px #01476a8c;
+    }
+
+    .ie-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .ie-content h5 {
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        font-weight: 600;
+        font-family: Montserrat;
+        text-transform: uppercase;
+        font-size: 20px;
+    }
+
+    .ie-btn {
+        display: inline-block;
+        padding: 8px 59px;
+        font-size: 15px;
+        font-weight: bold;
+        color: orange;
+        text-decoration: none;
+        background: linear-gradient(135deg, #0e4ba3, #133158);
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .ie-btn:hover {
+        background: linear-gradient(135deg, #fbcb8a, #f2bb31);
+        color: #ffffff;
+    }
     </style>
 </head>
 
@@ -554,15 +651,26 @@ if(isset($_POST['submit'])){
             </div>
         </section>
 
-
+        <!-- 
         <div class="container">
-            <div class="package">
+            <div class="package ie-package">
                 <div class="cnt">
                     <h5>PACKAGE FEE - EUR 699</h5>
                     <div class="btnnnnnn">
                         <p><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal4"
-                                class="price-button">Enquire</a></p>
+                                class="price-button">ENQUIRE</a></p>
                     </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="container ie-container">
+            <div class="ie-package">
+                <div class="ie-content">
+                    <h5>PACKAGE FEE - EUR 699</h5>
+                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal4" class="ie-btn">
+                        ENQUIRE
+                    </a>
                 </div>
             </div>
         </div>
