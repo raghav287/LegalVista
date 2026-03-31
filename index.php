@@ -302,8 +302,19 @@ foreach ($homepageArticlesRaw as $article) {
         text-align: center;
     }
 
-    .inf-blog-controls {
+    .inf-blog-actions {
+        display: flex;
+        align-items: center;
+        gap: 24px;
         margin-top: 32px;
+    }
+
+    .inf-blog-controls {
+        margin-top: 0;
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex: 1;
     }
 
     .inf-main-swiper {
@@ -363,6 +374,39 @@ foreach ($homepageArticlesRaw as $article) {
         z-index: 3;
         padding: 30px 25px;
         color: #fff;
+    }
+
+    .inf-view-all-btn {
+        background: #c0a262;
+        border: 1px solid #c0a262;
+        color: #fff;
+        padding: 12px 28px;
+        letter-spacing: 1px;
+        font-weight: 600;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-size: 13px;
+    }
+
+    .inf-view-all-btn:hover,
+    .inf-view-all-btn:focus {
+        background: #a5894f;
+        border-color: #a5894f;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    @media (max-width: 767.98px) {
+        .inf-blog-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .inf-view-all-btn {
+            width: 100%;
+            text-align: center;
+        }
     }
 
     .inf-date {
@@ -603,7 +647,8 @@ foreach ($homepageArticlesRaw as $article) {
                                         <div class="pbmit-box-content-inner">
                                             <div class="pbmit-pf-box-title jkllll">
                                                 <div class="pbmit-ihbox-icon">
-                                                    <img src="images/7th-in-the-world1.png" alt="Ease of doing business ranked 7th globally">
+                                                    <img src="images/7th-in-the-world1.png"
+                                                        alt="Ease of doing business ranked 7th globally">
 
                                                 </div>
 
@@ -621,7 +666,8 @@ foreach ($homepageArticlesRaw as $article) {
 
                                         <div class="pbmit-box-content-inner">
                                             <div class="pbmit-pf-box-title jkllll">
-                                                <div class="pbmit-ihbox-icon"> <img src="images/low-tax-rate1.png" alt="Low tax rate in Georgia">
+                                                <div class="pbmit-ihbox-icon"> <img src="images/low-tax-rate1.png"
+                                                        alt="Low tax rate in Georgia">
                                                 </div>
 
                                                 <h3><a href="#">Low Tax Rate</a></h3>
@@ -639,7 +685,8 @@ foreach ($homepageArticlesRaw as $article) {
                                         <div class="pbmit-box-content-inner">
                                             <div class="pbmit-pf-box-title jkllll">
                                                 <div class="pbmit-ihbox-icon"> <img
-                                                        src="images/free-trade-agreement-with-eu1.png" alt="Georgia free trade agreements with EU"> </div>
+                                                        src="images/free-trade-agreement-with-eu1.png"
+                                                        alt="Georgia free trade agreements with EU"> </div>
 
                                                 <h3><a href="#">Free Trade Agreement with EU</a></h3>
                                             </div>
@@ -656,7 +703,8 @@ foreach ($homepageArticlesRaw as $article) {
                                         <div class="pbmit-box-content-inner">
                                             <div class="pbmit-pf-box-title jkllll">
                                                 <div class="pbmit-ihbox-icon"> <img
-                                                        src="images/premium-corporate-banking-services.png" alt="Premium corporate banking services"> </div>
+                                                        src="images/premium-corporate-banking-services.png"
+                                                        alt="Premium corporate banking services"> </div>
 
                                                 <h3><a href="#">Premium corporate banking services</a></h3>
                                             </div>
@@ -1437,45 +1485,55 @@ foreach ($homepageArticlesRaw as $article) {
                     <div class="swiper-container inf-main-swiper">
                         <div class="swiper-wrapper">
                             <?php if ($homepageArticles): ?>
-                                <?php foreach ($homepageArticles as $article): ?>
-                                    <div class="swiper-slide">
-                                        <article class="inf-blog-item">
-                                            <div class="inf-image-holder">
-                                                <img src="<?php echo htmlspecialchars($article['image'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?>">
-                                                <div class="inf-image-overlay"></div>
-                                            </div>
-                                            <div class="inf-blog-content">
-                                                <?php if (!empty($article['date_text'])): ?>
-                                                    <span class="inf-date"><?php echo htmlspecialchars($article['date_text'], ENT_QUOTES, 'UTF-8'); ?></span>
-                                                <?php endif; ?>
-                                                <h5 class="inf-title"><a href="article.php?slug=<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?></a></h5>
-                                                <?php if (!empty($article['excerpt'])): ?>
-                                                    <p class="inf-excerpt"><?php echo htmlspecialchars($article['excerpt'], ENT_QUOTES, 'UTF-8'); ?></p>
-                                                <?php endif; ?>
-                                                <a class="inf-read-more" href="article.php?slug=<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>">Read
-                                                    More</a>
-                                            </div>
-                                        </article>
+                            <?php foreach ($homepageArticles as $article): ?>
+                            <div class="swiper-slide">
+                                <article class="inf-blog-item">
+                                    <div class="inf-image-holder">
+                                        <img src="<?php echo htmlspecialchars($article['image'], ENT_QUOTES, 'UTF-8'); ?>"
+                                            alt="<?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                                        <div class="inf-image-overlay"></div>
                                     </div>
-                                <?php endforeach; ?>
+                                    <div class="inf-blog-content">
+                                        <?php if (!empty($article['date_text'])): ?>
+                                        <span
+                                            class="inf-date"><?php echo htmlspecialchars($article['date_text'], ENT_QUOTES, 'UTF-8'); ?></span>
+                                        <?php endif; ?>
+                                        <h5 class="inf-title"><a
+                                                href="article.php?slug=<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?></a>
+                                        </h5>
+                                        <?php if (!empty($article['excerpt'])): ?>
+                                        <p class="inf-excerpt">
+                                            <?php echo htmlspecialchars($article['excerpt'], ENT_QUOTES, 'UTF-8'); ?>
+                                        </p>
+                                        <?php endif; ?>
+                                        <a class="inf-read-more"
+                                            href="article.php?slug=<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>">Read
+                                            More</a>
+                                    </div>
+                                </article>
+                            </div>
+                            <?php endforeach; ?>
                             <?php else: ?>
-                                <div class="swiper-slide">
-                                    <article class="inf-blog-item">
-                                        <div class="inf-blog-content">
-                                            <h5 class="inf-title">Articles coming soon</h5>
-                                            <p class="inf-excerpt">Check back shortly for our latest legal insights.</p>
-                                        </div>
-                                    </article>
-                                </div>
+                            <div class="swiper-slide">
+                                <article class="inf-blog-item">
+                                    <div class="inf-blog-content">
+                                        <h5 class="inf-title">Articles coming soon</h5>
+                                        <p class="inf-excerpt">Check back shortly for our latest legal insights.</p>
+                                    </div>
+                                </article>
+                            </div>
                             <?php endif; ?>
                         </div>
                     </div>
 
-                    <div class="inf-slider-controls inf-blog-controls">
-                        <button type="button" class="inf-slider-button inf-blog-prev"
-                            aria-label="Previous article">&#8592;</button>
-                        <button type="button" class="inf-slider-button inf-blog-next"
-                            aria-label="Next article">&#8594;</button>
+                    <div class="inf-blog-actions">
+                        <div class="inf-slider-controls inf-blog-controls">
+                            <button type="button" class="inf-slider-button inf-blog-prev"
+                                aria-label="Previous article">&#8592;</button>
+                            <button type="button" class="inf-slider-button inf-blog-next"
+                                aria-label="Next article">&#8594;</button>
+                        </div>
+                        <a class="inf-view-all-btn" href="articles-and-resources">View All Articles</a>
                     </div>
                 </div>
             </section>
