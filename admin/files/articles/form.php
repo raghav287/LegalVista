@@ -154,7 +154,7 @@ include LAYOUT_PATH . '/head.php';
 
                                             <div class="form-group mt-3">
                                                 <label class="form-label">Body (HTML allowed)</label>
-                                                <textarea class="form-control" name="body_html" rows="14" placeholder="Write or paste article content here." required><?= htmlspecialchars($formValues['body_html'], ENT_QUOTES, 'UTF-8') ?></textarea>
+                                                <textarea class="form-control summernote" name="body_html" rows="14" placeholder="Write or paste article content here." required><?= htmlspecialchars($formValues['body_html'], ENT_QUOTES, 'UTF-8') ?></textarea>
                                             </div>
                                         </div>
 
@@ -221,6 +221,9 @@ include LAYOUT_PATH . '/head.php';
     </div>
 
         <?php include LAYOUT_PATH . '/scripts.php'; ?>
+    <!-- Summernote (CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.js"></script>
     <script>
     document.getElementById('article-form').addEventListener('submit', function(e) {
         const title = this.title.value.trim();
@@ -242,6 +245,18 @@ include LAYOUT_PATH . '/head.php';
             e.preventDefault();
             alert(msg);
         }
+    });
+    $(function() {
+        $('.summernote').summernote({
+            height: 400,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['fontsize', 'color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview']]
+            ]
+        });
     });
     </script>
 </body>
