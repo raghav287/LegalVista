@@ -154,7 +154,14 @@ include LAYOUT_PATH . '/head.php';
 
                                             <div class="form-group mt-3">
                                                 <label class="form-label">Body (HTML allowed)</label>
-                                                <textarea class="form-control summernote" name="body_html" rows="14" placeholder="Write or paste article content here." required><?= htmlspecialchars($formValues['body_html'], ENT_QUOTES, 'UTF-8') ?></textarea>
+                                                <textarea
+                                                    class="form-control summernote"
+                                                    id="body-html-editor"
+                                                    name="body_html"
+                                                    rows="14"
+                                                    placeholder="Write or paste article content here."
+                                                    required
+                                                ><?= htmlspecialchars($formValues['body_html'], ENT_QUOTES, 'UTF-8') ?></textarea>
                                             </div>
                                         </div>
 
@@ -221,9 +228,9 @@ include LAYOUT_PATH . '/head.php';
     </div>
 
         <?php include LAYOUT_PATH . '/scripts.php'; ?>
-    <!-- Summernote (CDN) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.js"></script>
+    <!-- Summernote bundle (local) - rely on existing layout jQuery/Bootstrap to avoid conflicts -->
+    <link rel="stylesheet" href="summernote-bundle/assets/css/plugins.css">
+    <script src="summernote-bundle/assets/plugins/summernote/summernote1.js"></script>
     <script>
     document.getElementById('article-form').addEventListener('submit', function(e) {
         const title = this.title.value.trim();
@@ -247,14 +254,37 @@ include LAYOUT_PATH . '/head.php';
         }
     });
     $(function() {
-        $('.summernote').summernote({
-            height: 400,
+        $('#body-html-editor').summernote({
+            height: 260,
+            placeholder: 'Start typing...',
             toolbar: [
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['fontsize', 'color']],
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview']]
+                ['height', ['height']],
+                ['insert', ['link', 'picture', 'video', 'table', 'hr']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather', 'Montserrat', 'Roboto', 'Times New Roman'],
+            fontNamesIgnoreCheck: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather', 'Montserrat', 'Roboto', 'Times New Roman'],
+            fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','32','36','48','64'],
+            colors: [
+                ['#000000', '#444444', '#666666', '#999999', '#cccccc', '#eeeeee', '#f3f3f3', '#ffffff'],
+                ['#ff0000', '#ff9900', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#9900ff', '#ff00ff'],
+                ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4'],
+                ['#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722'],
+                ['#795548', '#9e9e9e', '#607d8b', '#b71c1c', '#880e4f', '#4a148c', '#311b92', '#1a237e']
+            ],
+            colorsName: [
+                ['Black', 'Dim gray', 'Gray', 'Light gray', 'White'],
+                ['Red', 'Orange', 'Yellow', 'Lime', 'Cyan', 'Blue', 'Purple', 'Magenta'],
+                ['Pomegranate', 'Razzmatazz', 'Amethyst', 'Purple', 'Indigo', 'Dodger blue', 'Cerulean', 'Turquoise'],
+                ['Teal', 'Green', 'Light green', 'Limeade', 'Sunflower', 'Amber', 'Orange', 'Pumpkin'],
+                ['Brown', 'Concrete', 'Slate', 'Dark red', 'Wine', 'Deep purple', 'Ultramarine', 'Navy']
             ]
         });
     });

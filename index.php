@@ -1499,7 +1499,7 @@ foreach ($homepageArticlesRaw as $article) {
                                             class="inf-date"><?php echo htmlspecialchars($article['date_text'], ENT_QUOTES, 'UTF-8'); ?></span>
                                         <?php endif; ?>
                                         <h5 class="inf-title"><a
-                                                href="article.php?slug=<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?></a>
+                                                href="article?slug=<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8'); ?></a>
                                         </h5>
                                         <?php if (!empty($article['excerpt'])): ?>
                                         <p class="inf-excerpt">
@@ -1507,7 +1507,7 @@ foreach ($homepageArticlesRaw as $article) {
                                         </p>
                                         <?php endif; ?>
                                         <a class="inf-read-more"
-                                            href="article.php?slug=<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>">Read
+                                            href="article?slug=<?php echo htmlspecialchars($article['slug'], ENT_QUOTES, 'UTF-8'); ?>">Read
                                             More</a>
                                     </div>
                                 </article>
