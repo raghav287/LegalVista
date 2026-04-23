@@ -168,6 +168,24 @@ function lv_render_article_page(array $article): void
         hyphens: auto;
     }
 
+    /* Ensure lists inside article body show bullets/numbers despite global resets */
+    .article-detail-content ul {
+        list-style: disc;
+        padding-left: 22px;
+        margin: 16px 0;
+    }
+
+    .article-detail-content ol {
+        list-style: decimal;
+        padding-left: 22px;
+        margin: 16px 0;
+    }
+
+    .article-detail-content li {
+        margin-bottom: 8px;
+        list-style-position: outside;
+    }
+
     .article-detail-content {
         max-width: 880px;
         margin: 0 auto;

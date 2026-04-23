@@ -575,7 +575,10 @@ foreach ($homepageArticlesRaw as $article) {
                             <?php
                                 $services = preg_split('/\r\n|\r|\n/', (string) ($package['services_text'] ?? '')) ?: [];
                                 $isFeatured = !empty($package['is_featured']);
-                                $buttonUrl = trim((string) ($package['button_url'] ?? 'company-registration.php'));
+                                $buttonUrl = trim((string) ($package['button_url'] ?? 'company-registration'));
+                                // Normalize: drop trailing .php even if there's a query/hash, and force root-relative clean URL
+                                $buttonUrl = preg_replace('/\.php(?=$|[?#])/i', '', $buttonUrl);
+                                $buttonUrl = '/' . ltrim($buttonUrl, '/');
                                 $buttonClass = $isFeatured
                                     ? 'pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md jklllllllll'
                                     : 'pbmit-vc_general pbmit-vc_btn3 pbmit-vc_btn3-size-md';
@@ -1527,8 +1530,8 @@ foreach ($homepageArticlesRaw as $article) {
                     </div>
 
                     <div class="inf-blog-actions">
-                        <div class="inf-slider-controls inf-blog-controls">
-                            <button type="button" class="inf-slider-button inf-blog-prev"
+                        <div class="inf-slider-controls inf-blog-controls" style="transform: translateX(12%);">
+                            <button type=" button" class="inf-slider-button inf-blog-prev"
                                 aria-label="Previous article">&#8592;</button>
                             <button type="button" class="inf-slider-button inf-blog-next"
                                 aria-label="Next article">&#8594;</button>
