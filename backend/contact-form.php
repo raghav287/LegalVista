@@ -69,6 +69,28 @@ if(isset($_POST['submit'])){
     $mail->Body = "Hi $name, we received your enquiry.";
     $mail->send();
 
-    header("Location: ../?lead_submitted=1#lead-form-section");
+    // Redirect back to the same page where the form was submitted.
+    $redirectUrl = "../?lead_submitted=1&mail_sent=1#lead-form-section";
+    $referer = $_SERVER['HTTP_REFERER'] ?? '';
+    $currentHost = $_SERVER['HTTP_HOST'] ?? '';
+
+    if ($referer !== '') {
+        $parsed = parse_url($referer);
+        $refererHost = $parsed['host'] ?? '';
+        $sameHost = $refererHost === '' || strcasecmp($refererHost, $currentHost) === 0;
+
+        if ($sameHost) {
+            $path = $parsed['path'] ?? '/';
+            $query = [];
+            if (!empty($parsed['query'])) {
+                parse_str($parsed['query'], $query);
+            }
+            $query['lead_submitted'] = 1;
+            $query['mail_sent'] = 1;
+            $redirectUrl = $path . '?' . http_build_query($query);
+        }
+    }
+
+    header("Location: " . $redirectUrl);
     exit();
 }

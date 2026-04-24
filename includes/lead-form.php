@@ -48,9 +48,9 @@
 
                     </div>
 
-                    <?php if (isset($_GET["lead_submitted"]) && $_GET["lead_submitted"] === "1"): ?>
-                        <div class="alert alert-success js-lead-flash-alert mb-3" data-flash-param="lead_submitted">
-                            Your enquiry has been sent successfully.
+                    <?php if ((isset($_GET["lead_submitted"]) && $_GET["lead_submitted"] === "1") || (isset($_GET["mail_sent"]) && $_GET["mail_sent"] === "1")): ?>
+                        <div class="alert alert-success js-lead-flash-alert mb-3" data-flash-params="lead_submitted,mail_sent">
+                            Your enquiry has been sent successfully. A confirmation email has also been sent.
                         </div>
                     <?php endif; ?>
 
@@ -137,10 +137,22 @@
                             }
 
                             const url = new URL(window.location.href);
-                            const paramName = leadAlert.getAttribute("data-flash-param");
+                            const paramNames = (leadAlert.getAttribute("data-flash-params") || "")
+                                .split(",")
+                                .map(function (param) {
+                                    return param.trim();
+                                })
+                                .filter(Boolean);
 
-                            if (paramName && url.searchParams.has(paramName)) {
-                                url.searchParams.delete(paramName);
+                            let hasAnyFlashParam = false;
+                            paramNames.forEach(function (paramName) {
+                                if (url.searchParams.has(paramName)) {
+                                    url.searchParams.delete(paramName);
+                                    hasAnyFlashParam = true;
+                                }
+                            });
+
+                            if (hasAnyFlashParam) {
                                 let cleanPath = url.pathname;
                                 if (cleanPath.endsWith("/index")) {
                                     cleanPath = cleanPath.slice(0, -6) || "/";

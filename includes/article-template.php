@@ -120,6 +120,11 @@ function lv_render_article_page(array $article): void
         text-transform: uppercase;
     }
 
+    .article-detail-meta a:hover {
+        color: #163760 !important;
+        text-decoration: underline !important;
+    }
+
     .article-detail-title {
         margin: 0;
         color: #111111;
@@ -153,8 +158,23 @@ function lv_render_article_page(array $article): void
 
     .article-detail-content img {
         max-width: 100%;
-        height: auto;
+        height: auto !important;
         border-radius: 12px;
+    }
+
+    .article-detail-content table {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block;
+        overflow-x: auto;
+        border-collapse: collapse;
+        margin-bottom: 24px;
+    }
+
+    .article-detail-content table td,
+    .article-detail-content table th {
+        padding: 12px;
+        border: 1px solid #e5e9ef;
     }
 
     .article-detail-content p,
@@ -390,6 +410,46 @@ function lv_render_article_page(array $article): void
             justify-self: start;
         }
     }
+
+    @media (max-width: 767px) {
+        .article-hero {
+            padding: 72px 0 68px;
+        }
+
+        .article-hero-content h1 {
+            font-size: 34px;
+        }
+
+        .article-hero-content p {
+            font-size: 16px;
+        }
+
+        .article-detail-section {
+            padding: 56px 0 64px;
+        }
+
+        .article-detail-layout {
+            gap: 34px;
+        }
+
+        .article-detail-title {
+            font-size: 28px;
+        }
+
+        .article-detail-content p,
+        .article-detail-content li {
+            font-size: 15px;
+        }
+
+        .article-featured-image {
+            border-radius: 12px;
+            margin-bottom: 22px;
+        }
+
+        .article-related h3 {
+            font-size: 26px;
+        }
+    }
     </style>
 </head>
 
@@ -410,8 +470,11 @@ function lv_render_article_page(array $article): void
             <div class="container">
                 <div class="article-detail-layout">
                     <article class="article-detail-main">
-                        <?php if ($categoryText !== ''): ?>
-                        <div class="article-detail-meta"><?= htmlspecialchars($categoryText, ENT_QUOTES, 'UTF-8') ?>
+                        <?php if (!empty($categories)): ?>
+                        <div class="article-detail-meta">
+                            <?php foreach ($categories as $idx => $cat): ?>
+                                <a href="articles-and-resources?category=<?= urlencode($cat) ?>" style="color: inherit; text-decoration: none;"><?= htmlspecialchars($cat, ENT_QUOTES, 'UTF-8') ?></a><?= ($idx < count($categories) - 1) ? ', ' : '' ?>
+                            <?php endforeach; ?>
                         </div>
                         <?php endif; ?>
                         <h1 class="article-detail-title"><?= htmlspecialchars($article['title'], ENT_QUOTES, 'UTF-8') ?>
